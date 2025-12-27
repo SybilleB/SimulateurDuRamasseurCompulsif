@@ -14,13 +14,13 @@ public class Troubadour : HerosClasse {
     private Random lancerDe = new Random();
 
     public override int attaqueSpeciale(Personnage personnage) {
-        //Concerto des Cieux, lancer de dés, si 5 ou plus alors +15% d'esquive (charisme)
+        //Concerto des Cieux, lancer de dés, si 5 ou plus alors +30% d'esquive (charisme)
         
         int resultatDe = lancerDe.Next(1, 7);
         int esquive = personnage.race.stats.charisme;
         
         if (resultatDe >= 5) {
-            esquive += (personnage.race.stats.charisme * 15 / 100);
+            esquive += (personnage.race.stats.charisme * 30 / 100);
             Console.WriteLine("Quelle standing ovation du public !");
         }
         else {

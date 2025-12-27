@@ -7,6 +7,7 @@ public class Guerrier : HerosClasse {
     public Guerrier() : base() {
         bonusClasseStats.force = 2;
         bonusClasseStats.charisme = 1;
+        bonusClasseStats.intelligence = -1;
         bonusClasseStats.agilite = -2;
     }
 

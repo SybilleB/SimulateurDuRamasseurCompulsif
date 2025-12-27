@@ -5,10 +5,10 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 public class Gobelin : Race {
     
     public Gobelin(string _nom, string _genre, int _poids) : base(_nom, _genre, _poids, new Stats()) {
-        stats.force += 3;
-        stats.charisme -= 1;
-        stats.intelligence -= 1;
-        stats.chance -= 1;
+        stats.force -= 1;
+        stats.charisme -= 2;
+        stats.intelligence += 2;
+        stats.agilite += 1;
         talent = "Pillard";
     }
     

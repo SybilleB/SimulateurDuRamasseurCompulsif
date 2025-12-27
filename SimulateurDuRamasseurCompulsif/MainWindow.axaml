@@ -19,7 +19,7 @@
                    Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
 
             <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,34" Padding="30,10"
-                    FontFamily="{StaticResource Metamorphous}" FontSize="24" Background="#CC000000" Foreground="#E9E7CA"
+                    CornerRadius="20" FontFamily="{StaticResource Metamorphous}" FontSize="24" Background="#CC000000" Foreground="#E9E7CA"
                     Cursor="Hand" Name="boutonCommencer" Click="BoutonCommencer_OnClickCommencerClick">
                 
                 <Button.Transitions>

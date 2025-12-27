@@ -7,18 +7,34 @@ namespace SimulateurDuRamasseurCompulsif.userControl;
 
 public partial class choixRace : UserControl {
     public string nomJoueur;
+    public string choixRaceDefinitif;
 
-    public choixRace()
-    {
+    public choixRace() {
         InitializeComponent();
     }
-    public choixRace(string nom) {
+    public choixRace(string _nomJoueur) {
         InitializeComponent();
-        nomJoueur = nom;
+        nomJoueur = _nomJoueur;
     }
 
-    public void onRaceClick(object? sender, RoutedEventArgs routedEventArgs)
-    {
-        return;
+    public void onRaceClick(object? sender, RoutedEventArgs routedEventArgs) {
+        var button = (Button)sender;
+        
+        if (button.Name == "choixHumain") {
+            choixRaceDefinitif = "Humain";
+        } else if (button.Name == "choixElfe") {
+            choixRaceDefinitif = "Elfe";
+        } else if (button.Name == "choixNain") {
+            choixRaceDefinitif = "Nain";
+        } else if (button.Name == "choixGobelin") {
+            choixRaceDefinitif = "Gobelin";
+        } else if (button.Name == "choixFee") {
+            choixRaceDefinitif = "Fee";
+        }
+        
+        
+        if (VisualRoot is MainWindow mainWindow){
+            mainWindow.ecranTitre.Content = new choixClasse(nomJoueur, choixRaceDefinitif);
+        }
     }
 }

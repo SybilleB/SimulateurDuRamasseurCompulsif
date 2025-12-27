@@ -2,7 +2,548 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="SimulateurDuRamasseurCompulsif.userControl.choixClasse">
-    Welcome to Avalonia!
+    
+    
+    <UserControl.Styles>
+        <Style Selector="UniformGrid>Border">
+            
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" Easing="CubicEaseOut"></TransformOperationsTransition>
+                </Transitions>
+            </Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.1)"></Setter>
+            <Setter Property="ZIndex" Value="1"></Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid>Border:pointerover Image">
+            <Setter Property="Effect">
+                <BlurEffect Radius="10"></BlurEffect>
+            </Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border > Grid > Border">
+            <Setter Property="Opacity" Value="0.4"/> 
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.3"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border:pointerover > Grid > Border">
+        <Setter Property="Opacity" Value="0.8"/>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border > Grid > StackPanel > StackPanel">
+            <Setter Property="MaxHeight" Value="0"></Setter>
+            <Setter Property="Opacity" Value="0"></Setter>
+            <Setter Property="ClipToBounds" Value="True"></Setter>
+            
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="MaxHeight" Duration="0:0:0.4" Easing="CubicEaseOut"/>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.4" Easing="CubicEaseOut"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border:pointerover > Grid > StackPanel > StackPanel">
+            <Setter Property="MaxHeight" Value="300"></Setter>
+            <Setter Property="Opacity" Value="1"></Setter>
+        </Style>
+        
+    </UserControl.Styles>
+    
+    <Grid Background="#2A2A2A">
+        <StackPanel>
+            <Button HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
+                    CornerRadius="20" Padding="30,10" Margin="30 30 0 0" 
+                    Background="#CC000000" Foreground="#E9E7CA" FontFamily="{StaticResource Alice}" 
+                    FontSize="15" Cursor="Hand" Click="onRetourClick">
+                Retour
+            </Button>
+        </StackPanel>
+        
+        <StackPanel VerticalAlignment="Center" Spacing="50">
+            
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontFamily="{StaticResource Alice}" Foreground="#E9E7CA">
+                Choisissez votre classe
+            </TextBlock>
+            
+            <UniformGrid Rows="1" HorizontalAlignment="Stretch" Margin="20 0">
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True" Name="carteGuerrier" Tag="carte">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/guerrier_v1.png" Stretch="UniformToFill"></Image>
+                        
+                        <Border BorderThickness="2" CornerRadius="30" IsVisible="False" IsHitTestVisible="False" ZIndex="10" Name = "affiniteGuerrier">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                    <GradientStop Offset="0" Color="#FFD700"/>    <GradientStop Offset="0.5" Color="#FFFFE0"/>  <GradientStop Offset="1" Color="#DAA520"/>    </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            
+                            <Border.Styles>
+                                <Style Selector="Border[IsVisible=True]">
+                                    <Style.Animations>
+                                        <Animation Duration="0:0:1.5" IterationCount="Infinite" PlaybackDirection="Alternate"> 
+                                            <KeyFrame Cue="0%">
+                                                <Setter Property="Opacity" Value="0.6"/>
+                                            </KeyFrame>
+                                            <KeyFrame Cue="100%">
+                                                <Setter Property="Opacity" Value="1.0"/>
+                                            </KeyFrame>
+                                        </Animation>
+                                    </Style.Animations>
+                                </Style>
+                            </Border.Styles>
+                        </Border>
+                        
+                        <Border>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name = "combinaisonForteGuerrier">
+                                Combinaison forte
+                            </TextBlock>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name ="combinaisonImpossibleGuerrier">
+                                Combinaison impossible
+                            </TextBlock>
+                        </StackPanel>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="27" Foreground="#E9E7CA">
+                                Guerrier
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="10">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    Frappe fort et sans peur, pour être sûr de pouvoir raconter ses exploits à la taverne.
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    +2 force, +1 charisme
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    -2 agilité, -1 intelligence
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" 
+                                           Foreground="#BBB" TextWrapping="Wrap" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusGuerrier">
+                                    Bonus de combinaison : +2 force 
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E9E7CA" >
+                                            Cri de guerre
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                             Inflige +20 dégats si le résultat du jet de dé est supérieur à 4.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixGuerrier" Click="onClasseClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True" Name="carteMage">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/mage_v1.png" Stretch="UniformToFill"></Image>
+                       
+                        <Border BorderThickness="2" CornerRadius="30" IsVisible="False" IsHitTestVisible="False" ZIndex="10" Name = "affiniteMage">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                    <GradientStop Offset="0" Color="#FFD700"/>    <GradientStop Offset="0.5" Color="#FFFFE0"/>  <GradientStop Offset="1" Color="#DAA520"/>    </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            
+                            <Border.Styles>
+                                <Style Selector="Border[IsVisible=True]">
+                                    <Style.Animations>
+                                        <Animation Duration="0:0:1.5" IterationCount="Infinite" PlaybackDirection="Alternate"> 
+                                            <KeyFrame Cue="0%">
+                                                <Setter Property="Opacity" Value="0.6"/>
+                                            </KeyFrame>
+                                            <KeyFrame Cue="100%">
+                                                <Setter Property="Opacity" Value="1.0"/>
+                                            </KeyFrame>
+                                        </Animation>
+                                    </Style.Animations>
+                                </Style>
+                            </Border.Styles>
+                        </Border>
+                        
+                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name = "combinaisonForteMage">
+                                Combinaison forte
+                            </TextBlock>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name ="combinaisonImpossibleMage">
+                                Combinaison impossible
+                            </TextBlock>
+                        </StackPanel>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="27" Foreground="#E9E7CA">
+                                Mage
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="10">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    Lance des sorts complexes, en espérant ne pas se crâmer les sourcils.
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    +3 chance
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    -2 force, -2 agilité
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" 
+                                           Foreground="#BBB" TextWrapping="Wrap" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusMage">
+                                    Bonus de combinaison : +2 intelligence 
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E9E7CA" >
+                                            Champs de force
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                             Augmente sa défense de 15% si le résultat du jet de dé est inférieur à 4.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixMage" Click="onClasseClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True" Name="carteVoleur">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/voleur_v2.png" Stretch="UniformToFill"></Image>
+                       
+                        <Border BorderThickness="2" CornerRadius="30" IsVisible="False" IsHitTestVisible="False" ZIndex="10" Name = "affiniteVoleur">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                    <GradientStop Offset="0" Color="#FFD700"/>    <GradientStop Offset="0.5" Color="#FFFFE0"/>  <GradientStop Offset="1" Color="#DAA520"/>    </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            
+                            <Border.Styles>
+                                <Style Selector="Border[IsVisible=True]">
+                                    <Style.Animations>
+                                        <Animation Duration="0:0:1.5" IterationCount="Infinite" PlaybackDirection="Alternate"> 
+                                            <KeyFrame Cue="0%">
+                                                <Setter Property="Opacity" Value="0.6"/>
+                                            </KeyFrame>
+                                            <KeyFrame Cue="100%">
+                                                <Setter Property="Opacity" Value="1.0"/>
+                                            </KeyFrame>
+                                        </Animation>
+                                    </Style.Animations>
+                                </Style>
+                            </Border.Styles>
+                        </Border>
+                        
+                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name = "combinaisonForteVoleur">
+                                Combinaison forte
+                            </TextBlock>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name ="combinaisonImpossibleVoleur">
+                                Combinaison impossible
+                            </TextBlock>
+                        </StackPanel>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="27" Foreground="#E9E7CA">
+                                Voleur
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="15">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    Considère que la propriété privée est un concept très relatif, surtout quand le propriétaire ne regarde pas.
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    +1 intelligence, +2 agilité
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    -3 force
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" 
+                                           Foreground="#BBB" TextWrapping="Wrap" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusVoleur">
+                                    Bonus de combinaison : +2 agilité 
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E9E7CA" >
+                                            Festin de l'ombre
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                             Vole 20PV de l'ennemi au début du combat si le résultat du jet de dé est supérieur à 4.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixVoleur" Click="onClasseClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True" Name="carteAlchimiste">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/alchimiste_v1.png" Stretch="UniformToFill"></Image>
+                       
+                        <Border BorderThickness="2" CornerRadius="30" IsVisible="False" IsHitTestVisible="False" ZIndex="10" Name = "affiniteAlchimiste">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                    <GradientStop Offset="0" Color="#FFD700"/>    <GradientStop Offset="0.5" Color="#FFFFE0"/>  <GradientStop Offset="1" Color="#DAA520"/>    </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            
+                            <Border.Styles>
+                                <Style Selector="Border[IsVisible=True]">
+                                    <Style.Animations>
+                                        <Animation Duration="0:0:1.5" IterationCount="Infinite" PlaybackDirection="Alternate"> 
+                                            <KeyFrame Cue="0%">
+                                                <Setter Property="Opacity" Value="0.6"/>
+                                            </KeyFrame>
+                                            <KeyFrame Cue="100%">
+                                                <Setter Property="Opacity" Value="1.0"/>
+                                            </KeyFrame>
+                                        </Animation>
+                                    </Style.Animations>
+                                </Style>
+                            </Border.Styles>
+                        </Border>
+                        
+                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name = "combinaisonForteAlchimiste">
+                                Combinaison forte
+                            </TextBlock>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name ="combinaisonImpossibleAlchimiste">
+                                Combinaison impossible
+                            </TextBlock>
+                        </StackPanel>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="27" Foreground="#E9E7CA">
+                                Alchimiste
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="15">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    Mélange des trucs avec d'autres trucs pour créer des miracles ou des explosions. Généralement les deux en même temps.
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    +2 chance, +1 vitalité
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    -2 force, -1 charisme
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" 
+                                           Foreground="#BBB" TextWrapping="Wrap" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusAlchimiste">
+                                    Bonus de combinaison : +2 vitalité 
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E9E7CA" >
+                                            La fiole de Schrödinger
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                             Si le résultat du jet de dé est pair, alors sa défense augmente de 15%. Si c'est impair, elle diminue de 15%.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixAlchimiste" Click="onClasseClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True" Name="carteTroubadour">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/troubadour_v1.png" Stretch="UniformToFill"></Image>
+                       
+                        <Border BorderThickness="2" CornerRadius="30" IsVisible="False" IsHitTestVisible="False" ZIndex="10" Name = "affiniteTroubadour">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                    <GradientStop Offset="0" Color="#FFD700"/>    <GradientStop Offset="0.5" Color="#FFFFE0"/>  <GradientStop Offset="1" Color="#DAA520"/>    </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            
+                            <Border.Styles>
+                                <Style Selector="Border[IsVisible=True]">
+                                    <Style.Animations>
+                                        <Animation Duration="0:0:1.5" IterationCount="Infinite" PlaybackDirection="Alternate"> 
+                                            <KeyFrame Cue="0%">
+                                                <Setter Property="Opacity" Value="0.6"/>
+                                            </KeyFrame>
+                                            <KeyFrame Cue="100%">
+                                                <Setter Property="Opacity" Value="1.0"/>
+                                            </KeyFrame>
+                                        </Animation>
+                                    </Style.Animations>
+                                </Style>
+                            </Border.Styles>
+                        </Border>
+                        
+                        <Border>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name = "combinaisonForteTroubadour">
+                                Combinaison forte
+                            </TextBlock>
+                            <TextBlock Margin="0 20" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="14" Foreground="#E9E7CA" IsVisible="False" IsHitTestVisible="False" Name ="combinaisonImpossibleTroubadour">
+                                Combinaison impossible
+                            </TextBlock>
+                        </StackPanel>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="27" Foreground="#E9E7CA">
+                                Troubadour
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="15">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    Convaincu que le monde a besoin d'un fond sonore pour ses exploits, même si personne ne lui a rien demandé.
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    +2 charisme, +3 chance
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                    -1 force, -2 agilité
+                                </TextBlock>
+                                
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" 
+                                           Foreground="#BBB" TextWrapping="Wrap" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusTroubadour">
+                                    Bonus de combinaison : +2 chance 
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E9E7CA" >
+                                            Concerto des Cieux
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#BBB" TextWrapping="Wrap">
+                                             Augmente son esquive de 30% si le résultat du jet de dé est supérieur à 5.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixTroubadour" Click="onClasseClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+            </UniformGrid> 
+        </StackPanel>
+    </Grid>
 </UserControl>

@@ -5,10 +5,9 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 public class Mage : HerosClasse {
     
     public Mage() : base() {
-        bonusClasseStats.force = -1;
-        bonusClasseStats.intelligence = 1;
-        bonusClasseStats.agilite = -1;
-        bonusClasseStats.chance = 2;
+        bonusClasseStats.force = -2;
+        bonusClasseStats.agilite = -2;
+        bonusClasseStats.chance = 3;
     }
     
     private Random lancerDe = new Random();

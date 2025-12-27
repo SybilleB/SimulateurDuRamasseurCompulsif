@@ -5,8 +5,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 public class Voleur : HerosClasse {
     
     public Voleur() : base() {
-        bonusClasseStats.force = -1;
-        bonusClasseStats.charisme = -1;
+        bonusClasseStats.force = -3;
         bonusClasseStats.intelligence = 1;
         bonusClasseStats.agilite = 2;
     }
@@ -14,10 +13,10 @@ public class Voleur : HerosClasse {
     private Random lancerDe = new Random();
 
     public override int attaqueSpeciale(Personnage personnage) {
-        //Festin de l'ombre, lancer de dés, si 4 ou + alors +15% de hp ennemis
+        //Festin de l'ombre, lancer de dés au début du combat, si 5 ou + alors vole 20hp de l'ennemi 
         
         int resultatDe = lancerDe.Next(1, 7);
-        if (resultatDe >= 4) {
+        if (resultatDe >= 5) {
             personnage.race.pv += 15;
             Console.WriteLine("La ceinture crie au secours mais le festin était succulent");
         }
