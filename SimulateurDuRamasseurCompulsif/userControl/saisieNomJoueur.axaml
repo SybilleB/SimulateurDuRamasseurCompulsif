@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SimulateurDuRamasseurCompulsif.userControl.saisieNomJoueur">
+    
+    <UserControl.Styles>
+        <Style Selector="Button:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.1)"></Setter>
+        </Style>
+    </UserControl.Styles>
+    
+    <Grid Background="#2a2a2a">
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource Alice}" FontSize= "25" Foreground="#E9E7CA">
+                Nom du Joueur
+            </TextBlock>
+            
+            <TextBox HorizontalAlignment="Center" FontFamily="{StaticResource Alice}" Name="inputNomJoueur" 
+                     Width= "200" Watermark="Entrez votre nom..." Margin="0 10 0 10">
+            </TextBox>
+                
+            <Button HorizontalAlignment="Center" FontFamily="{StaticResource Alice}" Cursor="Hand" 
+                    Background="#CC000000" Foreground="#E9E7CA" Click="onConfirmerNomClick">
+                
+                <Button.Transitions>
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"></TransformOperationsTransition>
+                    </Transitions>
+                </Button.Transitions>
+                Confirmer
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

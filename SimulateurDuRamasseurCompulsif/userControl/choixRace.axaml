@@ -1,0 +1,309 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="720"
+             x:Class="SimulateurDuRamasseurCompulsif.userControl.choixRace">
+    
+    
+    <UserControl.Styles>
+        <Style Selector="UniformGrid>Border">
+            
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" Easing="CubicEaseOut"></TransformOperationsTransition>
+                </Transitions>
+            </Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.1)"></Setter>
+            <Setter Property="ZIndex" Value="1"></Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid>Border:pointerover Image">
+            <Setter Property="Effect">
+                <BlurEffect Radius="10"></BlurEffect>
+            </Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border > Grid > Border">
+            <Setter Property="Opacity" Value="0.4"/> 
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.3"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border:pointerover > Grid > Border">
+        <Setter Property="Opacity" Value="0.8"/>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border > Grid > StackPanel > StackPanel">
+            <Setter Property="MaxHeight" Value="0"></Setter>
+            <Setter Property="Opacity" Value="0"></Setter>
+            <Setter Property="ClipToBounds" Value="True"></Setter>
+            
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="MaxHeight" Duration="0:0:0.4" Easing="CubicEaseOut"/>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.4" Easing="CubicEaseOut"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        
+        <Style Selector="UniformGrid > Border:pointerover > Grid > StackPanel > StackPanel">
+            <Setter Property="MaxHeight" Value="300"></Setter>
+            <Setter Property="Opacity" Value="1"></Setter>
+        </Style>
+        
+    </UserControl.Styles>
+    
+    <Grid Background="#2A2A2A">
+        <StackPanel VerticalAlignment="Center" Spacing="50">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontFamily="{StaticResource Alice}" Foreground="#E9E7CA">
+                Choisissez votre origine
+            </TextBlock>
+            
+            <UniformGrid Rows="1" HorizontalAlignment="Stretch" Margin="20 0">
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/humain_v2.png" Stretch="UniformToFill"></Image>
+                       
+                        <Border> <!--Retirer les propriétés-->
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="25" Foreground="#E9E7CA">
+                                Humain
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="15">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                    Polyvalent et ambitieux, l'humain s'adapte à toutes les situations.
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="15" Foreground="#E9E7CA" >
+                                            Volonté de fer
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                             Garde 1 PV au lieu de mourir, par pure obstination.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixHumain" Click="onRaceClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/elfe_v2.png" Stretch="UniformToFill"></Image>
+                       
+                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="25" Foreground="#E9E7CA">
+                                Elfe
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="15">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                    Etre gracieux et agile, maître de l'arc et de la magie naturelle.
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="15" Foreground="#E9E7CA" >
+                                            Vision Nocturne
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                             Repère les pièges assez tôt pour ne pas abimer ses cheveux.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixElfe" Click="onRaceClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/nain_v2.png" Stretch="UniformToFill"></Image>
+                       
+                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="25" Foreground="#E9E7CA">
+                                Nain
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="15">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                    Combattant robuste et obstiné, expert des profondeurs et de la forge.
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="15" Foreground="#E9E7CA" >
+                                            Forgeron
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                             Considère que porter une armure "Commune" est une insulte à ses ancêtres.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixNain" Click="onRaceClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/gobelin_v2.png" Stretch="UniformToFill"></Image>
+                       
+                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="25" Foreground="#E9E7CA">
+                                Gobelin
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="15">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                    Créature rusée et agile, compensant sa petite taille par sa malice et sa cupidité.
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="15" Foreground="#E9E7CA" >
+                                            Pillard
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                             Gagne 10% d'or bonus grâce à son talent pour secouer les cadavres encore chauds.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixGobelin" Click="onRaceClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
+                    
+                    <Grid>
+                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/fee_v3.png" Stretch="UniformToFill"></Image>
+                       
+                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="25" Foreground="#E9E7CA">
+                                Fée
+                            </TextBlock>
+                            
+                            <StackPanel Spacing="15">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                    Minuscule et insaisissable, elle manie la magie ancienne et voltige avec grâce.
+                                </TextBlock>
+                                
+                                <Border BorderThickness="1" CornerRadius="5" Padding="5" >
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="15" Foreground="#E9E7CA" >
+                                            Providence Ailée
+                                        </TextBlock>
+                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#BBB" TextWrapping="Wrap">
+                                             Améliore de butin trouvé parce qu'elle a des goûts de luxe et peu de patience.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
+                                    FontFamily="{StaticResource Alice}" Name="choixFee" Click="onRaceClick" Cursor="Hand">
+                                Choisir
+                            </Button>
+                    </Grid>
+                </Border>
+                
+            </UniformGrid> 
+        </StackPanel>
+    </Grid>
+</UserControl>

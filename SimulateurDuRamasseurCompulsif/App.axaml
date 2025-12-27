@@ -1,0 +1,17 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="SimulateurDuRamasseurCompulsif.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    
+    <Application.Resources>
+        <FontFamily x:Key="Almendra">avares://SimulateurDuRamasseurCompulsif/assets/fonts#Almendra SC</FontFamily>
+        <FontFamily x:Key="Fondamento">avares://SimulateurDuRamasseurCompulsif/assets/fonts#Fondamento</FontFamily>
+        <FontFamily x:Key="Metamorphous">avares://SimulateurDuRamasseurCompulsif/assets/fonts#Metamorphous</FontFamily>
+        <FontFamily x:Key="Alice">avares://SimulateurDuRamasseurCompulsif/assets/fonts#Alice</FontFamily>
+    </Application.Resources>
+             
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+</Application>
