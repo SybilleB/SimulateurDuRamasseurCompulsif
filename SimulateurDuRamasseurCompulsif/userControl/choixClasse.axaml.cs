@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
@@ -10,6 +11,7 @@ public partial class choixClasse : UserControl {
     public string nomJoueur;
     public string choixRaceDefinitif;
     public string choixClasseDefinitif;
+    public HerosClasse classeFinale;
     
     public choixClasse() {
         InitializeComponent();
@@ -20,6 +22,7 @@ public partial class choixClasse : UserControl {
         choixRaceDefinitif = _choixRaceDefinitif;
         restrictionsClasse();
         affinite();
+        
     }
 
     public void restrictionsClasse() {
@@ -40,7 +43,7 @@ public partial class choixClasse : UserControl {
         if (choixRaceDefinitif == "Gobelin") {
             interdireCarte(carteMage);
         }
-        if (choixRaceDefinitif == "Fee") {
+        if (choixRaceDefinitif == "Fée") {
             interdireCarte(carteTroubadour);
         }
     }
@@ -105,7 +108,7 @@ public partial class choixClasse : UserControl {
             combinaisonImpossibleMage.IsVisible = true;
             attributBonusTroubadour.IsVisible = true;
         }
-        if (choixRaceDefinitif == "Fee")
+        if (choixRaceDefinitif == "Fée")
         {
             affiniteMage.IsVisible = true;
             combinaisonForteMage.IsVisible = true;

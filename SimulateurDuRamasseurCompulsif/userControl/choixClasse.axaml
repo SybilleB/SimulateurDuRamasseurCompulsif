@@ -8,7 +8,6 @@
     
     <UserControl.Styles>
         <Style Selector="UniformGrid>Border">
-            
             <Setter Property="Transitions">
                 <Transitions>
                     <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" Easing="CubicEaseOut"></TransformOperationsTransition>

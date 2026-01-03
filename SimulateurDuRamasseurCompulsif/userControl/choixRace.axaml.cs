@@ -29,7 +29,7 @@ public partial class choixRace : UserControl {
         } else if (button.Name == "choixGobelin") {
             choixRaceDefinitif = "Gobelin";
         } else if (button.Name == "choixFee") {
-            choixRaceDefinitif = "Fee";
+            choixRaceDefinitif = "Fée";
         }
         
         
