@@ -13,6 +13,7 @@ public partial class donneesPersonnage : UserControl {
     public string nomJoueur;
     public string choixRaceDefinitif;
     public string choixClasseDefinitif;
+    public string genre;
     
     public donneesPersonnage() {
         InitializeComponent();
@@ -29,6 +30,20 @@ public partial class donneesPersonnage : UserControl {
         txtNomJoueur.Text = nomJoueur;
     }
 
+    public void determinerGenre() {
+        var femmeChoisi = this.FindControl<RadioButton>("Femme");
+        var hommeChoisi = this.FindControl<RadioButton>("Homme");
+        var trollChoisi = this.FindControl<RadioButton>("Troll");
+
+        if (femmeChoisi.IsChecked == true) {
+            genre = "Femme";
+        } else if (hommeChoisi.IsChecked == true) {
+            genre = "Male";
+        } else if (trollChoisi.IsChecked == true) {
+            genre = "Troll";
+        }
+    }
+    
     public void affichageRace() {
         var imgRace = this.FindControl<Image>("imgRace");
         var txtRaceNom = this.FindControl<TextBlock>("txtRaceNom");
@@ -96,17 +111,15 @@ public partial class donneesPersonnage : UserControl {
         txtClasseNom.Text = choixClasseDefinitif;
     }
 
-    private void onRetourClick(object? sender, RoutedEventArgs e)
-    {
+    private void onRetourClick(object? sender, RoutedEventArgs e) {
         if (VisualRoot is MainWindow mainWindow){
             mainWindow.ecranTitre.Content = new choixClasse(nomJoueur, choixRaceDefinitif);
         }
     }
 
-    private void onValiderClick(object? sender, RoutedEventArgs e)
-    {
+    private void onValiderClick(object? sender, RoutedEventArgs e) {
         if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new choixClasse(nomJoueur, choixRaceDefinitif);
+            mainWindow.ecranTitre.Content = new competences(nomJoueur, choixRaceDefinitif, choixClasseDefinitif, genre);
         }
     }
 
@@ -125,5 +138,38 @@ public partial class donneesPersonnage : UserControl {
             }
         }
 
+    }
+
+    private void OnAleatoireClick(object? sender, RoutedEventArgs e) {
+
+        Random rng = new Random();
+        int nbAleatoire = rng.Next(1,13);
+        var titreHonorifique = this.FindControl<TextBox>("titreHonorifique");
+        
+        if (nbAleatoire == 1) {
+            titreHonorifique.Text = "L'aimant à ennui";
+        } else if (nbAleatoire == 2) {
+            titreHonorifique.Text = "Le fléau des pots de fleur";
+        } else if (nbAleatoire == 3) {
+            titreHonorifique.Text = "Le cauchemar des aubergistes";
+        } else if (nbAleatoire == 4) {
+            titreHonorifique.Text = "La légende (dans sa tête)";
+        } else if (nbAleatoire == 5) {
+            titreHonorifique.Text = "Le porteur de sac officiel";
+        } else if (nbAleatoire == 6) {
+            titreHonorifique.Text = "L'expert en fuite tactique";
+        } else if (nbAleatoire == 7) {
+            titreHonorifique.Text = "L'ami des rats";
+        } else if (nbAleatoire == 8) {
+            titreHonorifique.Text = "Le porteur de poisse";
+        } else if (nbAleatoire == 9) {
+            titreHonorifique.Text = "Le couteau le moins aiguisé du tiroir";
+        } else if (nbAleatoire == 10) {
+            titreHonorifique.Text = "Le collectionneur de cailloux";
+        } else if (nbAleatoire == 11) {
+            titreHonorifique.Text = "Le héros par intérim";
+        } else if (nbAleatoire == 12) {
+            titreHonorifique.Text = "Le délégoat de la B2B";
+        }
     }
 }

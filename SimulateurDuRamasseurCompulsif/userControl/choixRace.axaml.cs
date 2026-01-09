@@ -37,4 +37,10 @@ public partial class choixRace : UserControl {
             mainWindow.ecranTitre.Content = new choixClasse(nomJoueur, choixRaceDefinitif);
         }
     }
+    
+    private void onRetourClick(object? sender, RoutedEventArgs e) {
+        if (VisualRoot is MainWindow mainWindow){
+            mainWindow.ecranTitre.Content = new saisieNomJoueur();
+        }
+    }
 }

@@ -22,7 +22,6 @@ public partial class choixClasse : UserControl {
         choixRaceDefinitif = _choixRaceDefinitif;
         restrictionsClasse();
         affinite();
-        
     }
 
     public void restrictionsClasse() {
@@ -44,7 +43,7 @@ public partial class choixClasse : UserControl {
             interdireCarte(carteMage);
         }
         if (choixRaceDefinitif == "Fée") {
-            interdireCarte(carteTroubadour);
+            interdireCarte(carteAlchimiste);
         }
     }
 

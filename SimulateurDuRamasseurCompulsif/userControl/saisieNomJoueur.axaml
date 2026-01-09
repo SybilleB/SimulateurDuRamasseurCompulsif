@@ -22,7 +22,7 @@
             </TextBox>
                 
             <Button HorizontalAlignment="Center" FontFamily="{StaticResource Alice}" Cursor="Hand" 
-                    Background="#CC000000" Foreground="#E9E7CA" Click="onConfirmerNomClick">
+                    Background="#CC000000" Foreground="#E9E7CA" Click="onConfirmerNomClick" Name="ConfirmerBouton">
                 
                 <Button.Transitions>
                     <Transitions>

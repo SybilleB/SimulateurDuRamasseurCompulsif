@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
 public class Fee : Race {
     
-    public Fee(string _nom, string _genre, int _poids) : base(_nom, _genre, _poids, new Stats()) {
+    public Fee(string _nom, string _genre) : base(_nom, _genre, new Stats()) {
         stats.agilite += 1;
         stats.chance += 1;
         stats.force -= 1;

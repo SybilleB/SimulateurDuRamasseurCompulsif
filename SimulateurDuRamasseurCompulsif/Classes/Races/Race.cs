@@ -36,16 +36,14 @@ public class Stats { //Attributs, utiles pour les méthodes virtuelles à overri
 public class Race {
     public string nom;
     public string genre;
-    public int poids;
     public int or;
     public int pv;
     public Stats stats;
     public string talent;
 
-    public Race(string _nom, string _genre, int _poids, Stats _stats) {
+    public Race(string _nom, string _genre, Stats _stats) {
         nom = _nom;
         genre = _genre;
-        poids = _poids;
         or = 100;
         pv = 100;
         stats = _stats;
@@ -54,7 +52,7 @@ public class Race {
 
     public void afficherInfos() {
         
-        Console.Write("Nom du personnage : " + nom + "\nGenre : " + genre + "\nPoids : " + poids + 
+        Console.Write("Nom du personnage : " + nom + "\nGenre : " + genre + 
                       " kg" + "\nPoints de vie : " + pv + "\n");
         stats.afficherStats();
     }

@@ -14,14 +14,13 @@ public class Personnage {
     
     public int capaciteMax = 10;
     
-    public Personnage(string _nomJoueur, Race _race, HerosClasse _hero) {
+    public Personnage(Race _race, HerosClasse _hero) {
         
         if (!_race.classeAutorisee(_hero)) {
             Console.WriteLine("Erreur, un " + _race.GetType().Name + "ne peut pas être un " + _hero.GetType().Name);
             return; 
         }
         else {
-            nomJoueur = _nomJoueur;
             race = _race;
             hero = _hero;
 
@@ -31,8 +30,6 @@ public class Personnage {
         if (_hero is Alchimiste) {
             _race.pv += 25;
         }
-        
-        
     }
 
     public void affinités() {
