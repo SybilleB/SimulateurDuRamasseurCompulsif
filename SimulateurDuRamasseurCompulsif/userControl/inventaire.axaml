@@ -25,7 +25,7 @@
                 </Grid.ColumnDefinitions>
                 
                 
-                <Border Grid.Column="0">
+                <Border Grid.Column="0" CornerRadius="9 0 0 0">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
                             <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
@@ -50,10 +50,9 @@
                                 
                             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
                                        FontSize="26" Foreground="#D4AF37" Name="txtNomJoueur">
-                                Axven_
                             </TextBlock>
                                 
-                            <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="12" Foreground="#666" HorizontalAlignment="Center">
+                            <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="12" Foreground="#666" HorizontalAlignment="Center" Name="titreHonorifique">
                                 TITRE HONORIFIQUE
                             </TextBlock>
                         </StackPanel>

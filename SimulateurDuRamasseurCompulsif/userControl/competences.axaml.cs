@@ -12,26 +12,14 @@ using SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
 public partial class competences : UserControl {
-    public string nomJoueur;
-    public string choixRaceDefinitif;
-    public string choixClasseDefinitif;
-    public string genre;
 
     public bool deslances = false;
     
     public competences() {
         InitializeComponent();
-    }
-    public competences(string _nomJoueur, string _choixRaceDefinitif, string _choixClasseDefinitif, string _genre) {
-        InitializeComponent();
         verifierBoutonConfirmer();
         desactiverBoutonsMoins();
         desactiverBoutonsPlus();
-        nomJoueur = _nomJoueur;
-        choixRaceDefinitif = _choixRaceDefinitif;
-        choixClasseDefinitif = _choixClasseDefinitif;
-        genre = _genre;
-        
     }
 
     public void creationPersonnage() {
@@ -39,35 +27,35 @@ public partial class competences : UserControl {
         Race racePersonnage = null;
         HerosClasse classePersonnage = null;
         
-        if (choixRaceDefinitif == "Humain") {
-            racePersonnage = new Humain(genre);
+        if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
+            racePersonnage = new Humain(DonneesTemporaires.genre);
         }
-        if (choixRaceDefinitif == "Elfe") {
-            racePersonnage = new Elfe(genre);
+        if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
+            racePersonnage = new Elfe(DonneesTemporaires.genre);
         }
-        if (choixRaceDefinitif == "Nain") {
-            racePersonnage = new Nain(genre);
+        if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
+            racePersonnage = new Nain(DonneesTemporaires.genre);
         }
-        if (choixRaceDefinitif == "Gobelin") {
-            racePersonnage = new Gobelin(genre);
+        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
+            racePersonnage = new Gobelin(DonneesTemporaires.genre);
         }
-        if (choixRaceDefinitif == "Fée") {
-            racePersonnage = new Fee(genre);
+        if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
+            racePersonnage = new Fee(DonneesTemporaires.genre);
         }
 
-        if (choixClasseDefinitif == "Guerrier") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {
             classePersonnage = new Guerrier();
         }
-        if (choixClasseDefinitif == "Mage") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
             classePersonnage = new Mage();
         }
-        if (choixClasseDefinitif == "Voleur") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
             classePersonnage = new Voleur();
         }
-        if (choixClasseDefinitif == "Alchimiste") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
             classePersonnage = new Alchimiste();
         }
-        if (choixClasseDefinitif == "Troubadour") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
             classePersonnage = new Troubadour();
         }
 
@@ -121,7 +109,6 @@ public partial class competences : UserControl {
         }else {
             moinsChance.IsEnabled = true; 
         }
-        
     }
 
     public void desactiverBoutonsPlus() {
@@ -167,8 +154,6 @@ public partial class competences : UserControl {
         verifierBoutonConfirmer();
     }
     
-    
-    
     public void onMoinsForceClick(object? sender, RoutedEventArgs e) {
         modifierStats(ptsForce,-1);
     }
@@ -208,13 +193,13 @@ public partial class competences : UserControl {
 
 
     public void verifierBoutonConfirmer() {
-        
         if (deslances == true && ptsRestants.Text == "0") {
             boutonConfirmerStats.IsEnabled = true;
         }else {
             boutonConfirmerStats.IsEnabled = false;
         }
     }
+    
     public void onValiderClick(object? sender, RoutedEventArgs e) {
         if (VisualRoot is MainWindow mainWindow){
             mainWindow.ecranTitre.Content = new inventaire();
@@ -223,7 +208,7 @@ public partial class competences : UserControl {
 
     public void onRetourClick(object? sender, RoutedEventArgs e) {
         if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new donneesPersonnage(nomJoueur, choixRaceDefinitif, choixClasseDefinitif);
+            mainWindow.ecranTitre.Content = new donneesPersonnage();
         }
     }
     

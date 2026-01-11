@@ -8,41 +8,26 @@ using SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
 public partial class choixClasse : UserControl {
-    public string nomJoueur;
-    public string choixRaceDefinitif;
-    public string choixClasseDefinitif;
-    public HerosClasse classeFinale;
     
     public choixClasse() {
         InitializeComponent();
-    }
-    public choixClasse(string _nomJoueur, string _choixRaceDefinitif) {
-        InitializeComponent();
-        nomJoueur = _nomJoueur;
-        choixRaceDefinitif = _choixRaceDefinitif;
         restrictionsClasse();
         affinite();
     }
 
     public void restrictionsClasse() {
-        var carteGuerrier = this.FindControl<Border>("carteGuerrier");
-        var carteMage = this.FindControl<Border>("carteMage");
-        var carteVoleur = this.FindControl<Border>("carteVoleur");
-        var carteAlchimiste = this.FindControl<Border>("carteAlchimiste");
-        var carteTroubadour = this.FindControl<Border>("carteTroubadour");
-
         
-        if (choixRaceDefinitif == "Elfe") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
            interdireCarte(carteTroubadour); 
         }
-        if (choixRaceDefinitif == "Nain") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
             interdireCarte(carteMage);
             interdireCarte(carteVoleur);
         }
-        if (choixRaceDefinitif == "Gobelin") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
             interdireCarte(carteMage);
         }
-        if (choixRaceDefinitif == "Fée") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
             interdireCarte(carteAlchimiste);
         }
     }
@@ -53,46 +38,20 @@ public partial class choixClasse : UserControl {
     }
 
     public void affinite() {
-        
-        var affiniteGuerrier = this.FindControl<Border>("affiniteGuerrier");
-        var combinaisonForteGuerrier = this.FindControl<TextBlock>("combinaisonForteGuerrier");
-        var combinaisonImpossibleGuerrier = this.FindControl<TextBlock>("combinaisonImpossibleGuerrier");
-        var attributBonusGuerrier = this.FindControl<TextBlock>("attributBonusGuerrier");
-        
-        var affiniteMage = this.FindControl<Border>("affiniteMage");
-        var combinaisonForteMage = this.FindControl<TextBlock>("combinaisonForteMage");
-        var combinaisonImpossibleMage = this.FindControl<TextBlock>("combinaisonImpossibleMage");
-        var attributBonusMage = this.FindControl<TextBlock>("attributBonusMage");
-        
-        var affiniteVoleur = this.FindControl<Border>("affiniteVoleur");
-        var combinaisonForteVoleur = this.FindControl<TextBlock>("combinaisonForteVoleur");
-        var combinaisonImpossibleVoleur = this.FindControl<TextBlock>("combinaisonImpossibleVoleur");
-        var attributBonusVoleur = this.FindControl<TextBlock>("attributBonusVoleur");
-        
-        var affiniteAlchimiste = this.FindControl<Border>("affiniteAlchimiste");
-        var combinaisonForteAlchimiste = this.FindControl<TextBlock>("combinaisonForteAlchimiste");
-        var combinaisonImpossibleAlchimiste = this.FindControl<TextBlock>("combinaisonImpossibleAlchimiste");
-        var attributBonusAlchimiste = this.FindControl<TextBlock>("attributBonusAlchimiste");
-        
-        var affiniteTroubadour = this.FindControl<Border>("affiniteTroubadour");
-        var combinaisonForteTroubadour = this.FindControl<TextBlock>("combinaisonForteTroubadour");
-        var combinaisonImpossibleTroubadour = this.FindControl<TextBlock>("combinaisonImpossibleTroubadour");
-        var attributBonusTroubadour = this.FindControl<TextBlock>("attributBonusTroubadour");
 
-
-        if (choixRaceDefinitif == "Humain")
+        if (DonneesTemporaires.choixRaceDefinitif == "Humain")
         {
             affiniteGuerrier.IsVisible = true;
             combinaisonForteGuerrier.IsVisible = true;
             attributBonusGuerrier.IsVisible = true;
         }
-        if (choixRaceDefinitif == "Elfe") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
             affiniteVoleur.IsVisible = true;
             combinaisonForteVoleur.IsVisible = true;
             combinaisonImpossibleTroubadour.IsVisible = true;
             attributBonusVoleur.IsVisible = true;
         }
-        if (choixRaceDefinitif == "Nain")
+        if (DonneesTemporaires.choixRaceDefinitif == "Nain")
         {
             affiniteAlchimiste.IsVisible = true;
             combinaisonForteAlchimiste.IsVisible = true;
@@ -100,47 +59,46 @@ public partial class choixClasse : UserControl {
             combinaisonImpossibleVoleur.IsVisible = true;
             attributBonusAlchimiste.IsVisible = true;
         }
-        if (choixRaceDefinitif == "Gobelin")
+        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin")
         {
             affiniteTroubadour.IsVisible = true;
             combinaisonForteTroubadour.IsVisible = true;
             combinaisonImpossibleMage.IsVisible = true;
             attributBonusTroubadour.IsVisible = true;
         }
-        if (choixRaceDefinitif == "Fée")
+        if (DonneesTemporaires.choixRaceDefinitif == "Fée")
         {
             affiniteMage.IsVisible = true;
             combinaisonForteMage.IsVisible = true;
             combinaisonImpossibleAlchimiste.IsVisible = true;
             attributBonusMage.IsVisible = true;
         }
-        
     }
     
     private void onClasseClick(object? sender, RoutedEventArgs e) {
         var button = (Button)sender;
         
         if (button.Name == "choixGuerrier") {
-            choixClasseDefinitif = "Guerrier";
+            DonneesTemporaires.choixClasseDefinitif = "Guerrier";
         } else if (button.Name == "choixMage") {
-            choixClasseDefinitif = "Mage";
+            DonneesTemporaires.choixClasseDefinitif = "Mage";
         } else if (button.Name == "choixVoleur") {
-            choixClasseDefinitif = "Voleur";
+            DonneesTemporaires.choixClasseDefinitif = "Voleur";
         } else if (button.Name == "choixAlchimiste") {
-            choixClasseDefinitif = "Alchimiste";
+            DonneesTemporaires.choixClasseDefinitif = "Alchimiste";
         } else if (button.Name == "choixTroubadour") {
-            choixClasseDefinitif = "Troubadour";
+            DonneesTemporaires.choixClasseDefinitif = "Troubadour";
         }
         
         if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new donneesPersonnage(nomJoueur, choixRaceDefinitif, choixClasseDefinitif);
+            mainWindow.ecranTitre.Content = new donneesPersonnage();
         }
     }
 
     private void onRetourClick(object? sender, RoutedEventArgs e)
     {
         if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new choixRace(nomJoueur);
+            mainWindow.ecranTitre.Content = new choixRace();
         }
     }
 }

@@ -9,108 +9,84 @@ using System.IO;
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
 public partial class donneesPersonnage : UserControl {
-    
-    public string nomJoueur;
-    public string choixRaceDefinitif;
-    public string choixClasseDefinitif;
-    public string genre;
-    
+
     public donneesPersonnage() {
         InitializeComponent();
-    }
-
-    public donneesPersonnage(string _nomJoueur, string _choixRaceDefinitif, string _choixClasseDefinitif) {
-        InitializeComponent();
-        nomJoueur = _nomJoueur;
-        choixRaceDefinitif = _choixRaceDefinitif;
-        choixClasseDefinitif = _choixClasseDefinitif;
         affichageRace();
         affichageClasse();
-        txtNomJoueur.Text = nomJoueur;
+        txtNomJoueur.Text = DonneesTemporaires.nomJoueur;
     }
 
     public void determinerGenre() {
 
         if (Femme.IsChecked == true) {
-            genre = "Femme";
+            DonneesTemporaires.genre = "Femme";
         } else if (Homme.IsChecked == true) {
-            genre = "Male";
+            DonneesTemporaires.genre = "Male";
         } else if (Troll.IsChecked == true) {
-            genre = "Troll";
+            DonneesTemporaires.genre = "Troll";
         }
     }
     
     public void affichageRace() {
 
-        if (choixRaceDefinitif == "Humain") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/humain_v2.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Volonté de fer";
         }
-        if (choixRaceDefinitif == "Elfe") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/elfe_v2.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Vision Nocturne";
         }
-        if (choixRaceDefinitif == "Nain") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/nain_v2.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Forgeron";
         }
-        if (choixRaceDefinitif == "Gobelin") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/gobelin_v2.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Pillard";
         }
-        if (choixRaceDefinitif == "Fée") {
+        if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/fee_v3.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Providence Ailée";
         }
-        txtRaceNom.Text = choixRaceDefinitif;
+        txtRaceNom.Text = DonneesTemporaires.choixRaceDefinitif;
 
     }
 
     public void affichageClasse() {
 
-        if (choixClasseDefinitif == "Guerrier") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/guerrier_v1.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "Cri de guerre";
         }
-        if (choixClasseDefinitif == "Mage") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/mage_v2.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "Champs de force";
         }
-        if (choixClasseDefinitif == "Voleur") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/voleur_v2.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "Festin de l'ombre";
         }
-        if (choixClasseDefinitif == "Alchimiste") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/alchimiste_v1.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "La fiole de Schrödinger";
         }
-        if (choixClasseDefinitif == "Troubadour") {
+        if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/troubadour_v1.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "Concerto des Cieux";
         }
-        txtClasseNom.Text = choixClasseDefinitif;
-    }
-
-    public void onRetourClick(object? sender, RoutedEventArgs e) {
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new choixClasse(nomJoueur, choixRaceDefinitif);
-        }
-    }
-
-    public void onValiderClick(object? sender, RoutedEventArgs e) {
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new competences(nomJoueur, choixRaceDefinitif, choixClasseDefinitif, genre);
-        }
+        txtClasseNom.Text = DonneesTemporaires.choixClasseDefinitif;
     }
 
     public async void onImporterPpClick(object? sender, RoutedEventArgs e) {
@@ -125,15 +101,14 @@ public partial class donneesPersonnage : UserControl {
                 var bitmap = new Bitmap(stream);
                 var imgAvatar = this.FindControl<Image>("imgAvatarJoueur");
                 imgAvatar.Source = bitmap;
+                DonneesTemporaires.photoProfil = bitmap;
             }
         }
     }
 
-    public void OnAleatoireClick(object? sender, RoutedEventArgs e)
-    {
+    public void OnAleatoireClick(object? sender, RoutedEventArgs e) {
 
-        string[] titresHonorifiques =
-        {
+        string[] titresHonorifiques = {
             "Le Sherpa officiel à durée déterminée",
             "L'aimant à ennui",
             "Le fléau des pots de fleur",
@@ -152,5 +127,21 @@ public partial class donneesPersonnage : UserControl {
         int titreAleatoire = rng.Next(0, titresHonorifiques.Length);
         titreHonorifique.Text = titresHonorifiques[titreAleatoire];
         
+    }
+    
+    public void onRetourClick(object? sender, RoutedEventArgs e) {
+        if (VisualRoot is MainWindow mainWindow){
+            mainWindow.ecranTitre.Content = new choixClasse();
+        }
+    }
+    
+    public void onValiderClick(object? sender, RoutedEventArgs e) {
+        
+        determinerGenre();
+        DonneesTemporaires.titreHonorifique = titreHonorifique.Text;
+        
+        if (VisualRoot is MainWindow mainWindow){
+            mainWindow.ecranTitre.Content = new competences();
+        }
     }
 }

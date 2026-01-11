@@ -12,10 +12,10 @@ public partial class saisieNomJoueur : UserControl {
     }
 
     public void onConfirmerNomClick(object? sender, RoutedEventArgs e) {
-        string nomJoueurChoisi = inputNomJoueur.Text;
+        DonneesTemporaires.nomJoueur = inputNomJoueur.Text;
             
         if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new choixRace(nomJoueurChoisi);
+            mainWindow.ecranTitre.Content = new choixRace();
         }
     }
     public void verifierNom() {
