@@ -216,7 +216,9 @@ public partial class competences : UserControl {
         }
     }
     public void onValiderClick(object? sender, RoutedEventArgs e) {
-        throw new System.NotImplementedException();
+        if (VisualRoot is MainWindow mainWindow){
+            mainWindow.ecranTitre.Content = new inventaire();
+        }
     }
 
     public void onRetourClick(object? sender, RoutedEventArgs e) {

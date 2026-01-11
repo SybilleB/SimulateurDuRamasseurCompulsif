@@ -6,7 +6,7 @@
              x:Class="SimulateurDuRamasseurCompulsif.userControl.menuEcranTitre">
 
     <UserControl.Styles>
-        <Style Selector="Button.btnMenu">
+        <Style Selector="Button.boutonMenu">
             <Setter Property="Background" Value="Transparent"></Setter>
             <Setter Property="BorderBrush" Value="#444"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
@@ -37,13 +37,11 @@
                 </Transitions>
             </Setter>
         </Style>
-
-        <Style Selector="Button.btnMenu:pointerover /template/ Border#PART_Border">
-            <Setter Property="Background" Value="#22FFFFFF"></Setter>
-            <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
-        </Style>
-        <Style Selector="Button.btnMenu:pointerover">
-             <Setter Property="RenderTransform" Value="scale(1.02)"></Setter>
+        
+        <Style Selector="Button.boutonMenu:pointerover">
+            <Setter Property="Foreground" Value="#111"></Setter>
+            <Setter Property="Background" Value="#D4AF37"></Setter>
+            <Setter Property="RenderTransform" Value="scale(1.02)"></Setter>
         </Style>
     </UserControl.Styles>
 
@@ -93,15 +91,15 @@
                         </StackPanel>
 
                         <StackPanel Spacing="15" Width="250">
-                            <Button Classes="btnMenu" Name="boutonNouvellePartie" Click="OnNouvellePartieClick">
+                            <Button Classes="boutonMenu" Name="boutonNouvellePartie" Click="OnNouvellePartieClick">
                                 <TextBlock>NOUVELLE PARTIE</TextBlock>
                             </Button>
                             
-                            <Button Classes="btnMenu" Name="boutonCharger" Click="OnChargerClick">
+                            <Button Classes="boutonMenu" Name="boutonCharger" Click="OnChargerClick">
                                 <TextBlock>CHARGER</TextBlock>
                             </Button>
                             
-                            <Button Classes="btnMenu" Name="boutonQuitter" Click="OnQuitterClick">
+                            <Button Classes="boutonMenu" Name="boutonQuitter" Click="OnQuitterClick">
                                 <TextBlock>QUITTER</TextBlock>
                             </Button>
                         </StackPanel>

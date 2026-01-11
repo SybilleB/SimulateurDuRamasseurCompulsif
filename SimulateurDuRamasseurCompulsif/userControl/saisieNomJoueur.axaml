@@ -6,8 +6,48 @@
              x:Class="SimulateurDuRamasseurCompulsif.userControl.saisieNomJoueur">
     
     <UserControl.Styles>
-        <Style Selector="Button:pointerover">
-            <Setter Property="RenderTransform" Value="scale(1.1)"></Setter>
+        
+        <Style Selector="Button.boutonConfirmer">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="#D4AF37"></Setter>
+            <Setter Property="RenderTransform" Value="scale(1.02)"></Setter>
+            <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="Padding" Value="40 12"></Setter>
+            <Setter Property="Margin" Value="0 20 0 0"></Setter>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Cursor="{TemplateBinding Cursor}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"></TransformOperationsTransition>
+                </Transitions>
+            </Setter>
+            
+        </Style>
+        
+        <Style Selector="Button.boutonConfirmer:pointerover">
+            <Setter Property="Foreground" Value="#111"></Setter>
+            <Setter Property="Background" Value="#D4AF37"></Setter>
+            <Setter Property="RenderTransform" Value="scale(1.02)"></Setter>
+        </Style>
+        
+        <Style Selector="Button.boutonConfirmer:disabled">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="#333"></Setter>
+            <Setter Property="BorderBrush" Value="#333"></Setter>
         </Style>
         
         <Style Selector="TextBox">
@@ -60,17 +100,8 @@
                 
                 <TextBox Name="inputNomJoueur" Width= "300" Watermark="Entrez votre nom..." TextChanged="OnTextChanged" ></TextBox>
                 
-                <Button HorizontalAlignment="Center" FontFamily="{StaticResource Alice}" Cursor="Hand" 
-                        Background="Transparent" BorderBrush="#D4AF37" BorderThickness="1" Click="onConfirmerNomClick" 
-                        Name="ConfirmerBouton" CornerRadius="4" Padding="40 12" Margin="0 20 0 0">
-                    
-                    <Button.Transitions>
-                        <Transitions>
-                            <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" Easing="CubicEaseInOut"></TransformOperationsTransition>
-                        </Transitions>
-                    </Button.Transitions>
-                    
-                    <TextBlock FontFamily="{StaticResource Metamorphous}" Foreground="#D4AF37" LetterSpacing="1">
+                <Button HorizontalAlignment="Center" Click="onConfirmerNomClick" Classes="boutonConfirmer" Name="boutonConfirmer">
+                    <TextBlock FontFamily="{StaticResource Metamorphous}" LetterSpacing="1">
                         COMMENCER L'AVENTURE
                     </TextBlock>
                 </Button>

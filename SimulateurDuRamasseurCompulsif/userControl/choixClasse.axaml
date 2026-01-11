@@ -78,7 +78,7 @@
             <UniformGrid Rows="1" HorizontalAlignment="Stretch" Margin="20 0">
                 
                 <Border Width="240" Height="380" BorderThickness="1" CornerRadius="10" 
-                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True" Name="carteGuerrier" Tag="carte">
+                        Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True" Name="carteGuerrier">
                     
                     <Grid>
                         <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/guerrier_v1.png" Stretch="UniformToFill"></Image>

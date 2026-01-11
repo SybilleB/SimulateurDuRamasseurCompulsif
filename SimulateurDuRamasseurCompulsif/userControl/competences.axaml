@@ -8,6 +8,54 @@
     
     <UserControl.Styles>
         
+        <Style Selector="Button.boutonConfirmerStats">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="#D4AF37"></Setter>
+            <Setter Property="RenderTransform" Value="scale(1.02)"></Setter>
+            <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="Padding" Value="20 10"></Setter>
+            <Setter Property="Margin" Value="0 40 0 0"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Cursor="{TemplateBinding Cursor}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalAlignment}"></ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"></TransformOperationsTransition>
+                </Transitions>
+            </Setter>
+            
+        </Style>
+        
+        <Style Selector="Button.boutonConfirmerStats:pointerover">
+            <Setter Property="Foreground" Value="#111"></Setter>
+            <Setter Property="Background" Value="#D4AF37"></Setter>
+            <Setter Property="RenderTransform" Value="scale(1.02)"></Setter>
+        </Style>
+        
+        <Style Selector="Button.boutonConfirmerStats:disabled">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="#333"></Setter>
+            <Setter Property="BorderBrush" Value="#333"></Setter>
+        </Style>
+        
+        
         <Style Selector="Button.boutonStats">
             <Setter Property="Width" Value="30"></Setter>
             <Setter Property="Height" Value="30"></Setter>
@@ -106,6 +154,7 @@
                             </Border>
                         </StackPanel>
                     </Border>
+                    
                     <Grid RowSpacing="15">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -224,9 +273,8 @@
                         
                         <Button Grid.Row="5" Grid.Column="4" Classes="boutonStats" Click="onPlusChanceClick" Name="plusChance">+</Button>
                     </Grid>
-                    <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 40 0 0" Padding="20 10" Background="Transparent" 
-                            BorderBrush="#D4AF37" BorderThickness="1" CornerRadius="4" Cursor="Hand" Click="onValiderClick" Name="boutonConfirmerStats">
-                        <TextBlock FontFamily="{StaticResource Metamorphous}" Foreground="#D4AF37" LetterSpacing="1">CONFIRMER</TextBlock>
+                    <Button  Classes="boutonConfirmerStats" Click="onValiderClick" Name="boutonConfirmerStats">
+                        <TextBlock FontFamily="{StaticResource Metamorphous}" LetterSpacing="1">CONFIRMER</TextBlock>
                     </Button>
                 </StackPanel>
             </Grid>

@@ -179,7 +179,7 @@
                         </TextBlock>
                                     
                         <StackPanel HorizontalAlignment="Center" Spacing="10">
-                            <Border Width="100" Height="100" CornerRadius="50" ClipToBounds="True" BorderThickness="2" BoxShadow="0 0 20 0 #20D4AF37">
+                            <Border Width="100" Height="100" CornerRadius="50" ClipToBounds="True" BoxShadow="0 0 20 0 #20D4AF37">
                                 <Image Name="imgAvatarJoueur" Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/defaultPP.png" Stretch="UniformToFill"/>
                             </Border>
                         

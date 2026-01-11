@@ -20,10 +20,10 @@ public partial class saisieNomJoueur : UserControl {
     }
     public void verifierNom() {
         if (string.IsNullOrWhiteSpace(inputNomJoueur.Text)) {
-            ConfirmerBouton.IsEnabled = false;
+            boutonConfirmer.IsEnabled = false;
         }
         else {
-            ConfirmerBouton.IsEnabled = true;
+            boutonConfirmer.IsEnabled = true;
         }
     }
     public void OnTextChanged(object? sender, TextChangedEventArgs e) {
