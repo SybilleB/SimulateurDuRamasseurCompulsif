@@ -7,45 +7,45 @@ using System;
 namespace SimulateurDuRamasseurCompulsif.Classes;
 
 public class Personnage {
-    public string nomJoueur;
-    public Race race;
-    public HerosClasse hero;
-    public List<Item> Inventaire = new List<Item>();
+    public string nomJoueur { get; set; }
+    public Race race { get; set; }
+    public HerosClasse classe { get; set; }
+    public List<InventaireStuff> Inventaire { get; set; } = new List<InventaireStuff>();
     
     public int capaciteMax = 10;
     
-    public Personnage(Race _race, HerosClasse _hero) {
+    public Personnage(Race _race, HerosClasse _classe) {
         
-        if (!_race.classeAutorisee(_hero)) {
-            Console.WriteLine("Erreur, un " + _race.GetType().Name + "ne peut pas être un " + _hero.GetType().Name);
+        if (!_race.classeAutorisee(_classe)) {
+            Console.WriteLine("Erreur, un " + _race.GetType().Name + "ne peut pas être un " + _classe.GetType().Name);
             return; 
         }
         else {
             race = _race;
-            hero = _hero;
+            classe = _classe;
 
-            race.stats.ajouterStats(hero.bonusClasseStats);
+            race.stats.ajouterStats(classe.bonusClasseStats);
             affinités(); 
         }
-        if (_hero is Alchimiste) {
+        if (_classe is Alchimiste) {
             _race.pv += 25;
         }
     }
 
     public void affinités() {
-        if (race is Humain && hero is Guerrier) {
+        if (race is Humain && classe is Guerrier) {
             race.stats.force += 2;
         }
-        if (race is Elfe && hero is Voleur) {
+        if (race is Elfe && classe is Voleur) {
             race.stats.agilite += 2;
         }
-        if (race is Nain && hero is Alchimiste) {
+        if (race is Nain && classe is Alchimiste) {
             race.stats.vitalite += 2;
         }
-        if (race is Gobelin && hero is Troubadour) {
+        if (race is Gobelin && classe is Troubadour) {
             race.stats.chance += 2;
         }
-        if (race is Fee && hero is Mage) {
+        if (race is Fee && classe is Mage) {
             race.stats.intelligence += 2;
         }
     }
@@ -71,19 +71,19 @@ public class Personnage {
         }
     }
 
-    public void ajouterItem(Item item) {
+    public void ajouterItem(InventaireStuff inventaireStuff) {
         if (Inventaire.Count < capaciteMax) {
-            Inventaire.Add(item);
-            Console.WriteLine("Hop ! Emballé, c'est pesé. " + item.nomItem + " a bien été ajouté à l'inventaire");
+            Inventaire.Add(inventaireStuff);
+            Console.WriteLine("Hop ! Emballé, c'est pesé. " + inventaireStuff.nomItem + " a bien été ajouté à l'inventaire");
         }
         else {
             Console.WriteLine("Même en tassant avec le pied, ça ne rentre plus");
         }
     }
 
-    public void retirerItem(Item item) {
-        Inventaire.Remove(item);
-        Console.WriteLine("C'était encombrant, et honnêtement, un peu moche. " + item.nomItem + " a bien été retiré de l'inventaire");
+    public void retirerItem(InventaireStuff inventaireStuff) {
+        Inventaire.Remove(inventaireStuff);
+        Console.WriteLine("C'était encombrant, et honnêtement, un peu moche. " + inventaireStuff.nomItem + " a bien été retiré de l'inventaire");
     }
     
 }

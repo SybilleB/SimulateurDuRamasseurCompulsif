@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 public class Troubadour : HerosClasse {
     
-    public Troubadour() : base() {
+    public Troubadour() : base("Troubadour") {
         bonusClasseStats.force = -1;
         bonusClasseStats.charisme = 2;
         bonusClasseStats.agilite = -2;

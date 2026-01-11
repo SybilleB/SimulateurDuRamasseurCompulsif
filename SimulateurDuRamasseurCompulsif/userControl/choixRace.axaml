@@ -58,18 +58,27 @@
             <Setter Property="Opacity" Value="1"></Setter>
         </Style>
         
+        <Style Selector="Button.boutonChoisir">
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Background" Value="#CC000000"></Setter>
+            <Setter Property="Foreground" Value="#E9E7CA"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="Margin" Value="20,0,20,20"></Setter>
+            <Setter Property="CornerRadius" Value="5"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+        </Style>
     </UserControl.Styles>
     
-    <Grid Background="#2A2A2A">
+    <Grid Background="#121212">
         
-        <StackPanel>
-            <Button HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
-                    CornerRadius="20" Padding="30,10" Margin="30 30 0 0" 
-                    Background="#CC000000" Foreground="#E9E7CA" FontFamily="{StaticResource Alice}" 
-                    FontSize="15" Cursor="Hand" Click="onRetourClick">
-                Retour
-            </Button>
-        </StackPanel>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Padding="30,10" Margin="30 30 0 0" 
+                Background="Transparent" Cursor="Hand" Click="onRetourClick">
+            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
+                ❮ RETOUR
+            </TextBlock>
+        </Button>
         
         <StackPanel VerticalAlignment="Center" Spacing="50">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontFamily="{StaticResource Alice}" Foreground="#E9E7CA">
@@ -78,13 +87,13 @@
             
             <UniformGrid Rows="1" HorizontalAlignment="Stretch" Margin="20 0">
                 
-                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="15" 
                         Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
                     
                     <Grid>
                         <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/humain_v2.png" Stretch="UniformToFill"></Image>
                        
-                        <Border>
+                        <Border VerticalAlignment="Bottom" Height="250">
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
                                     <GradientStop Offset="0" Color="#00000000"></GradientStop>
@@ -121,21 +130,19 @@
                                 </Border>
                             </StackPanel>
                         </StackPanel>
-                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
-                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
-                                    FontFamily="{StaticResource Alice}" Name="choixHumain" Click="onRaceClick" Cursor="Hand">
-                                Choisir
+                            <Button Classes="boutonChoisir"  Name="choixHumain" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
                             </Button>
                     </Grid>
                 </Border>
                 
-                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="15" 
                         Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
                     
                     <Grid>
                         <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/elfe_v2.png" Stretch="UniformToFill"></Image>
                        
-                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                        <Border VerticalAlignment="Bottom" Height="250">
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
                                     <GradientStop Offset="0" Color="#00000000"></GradientStop>
@@ -175,21 +182,19 @@
                                 </Border>
                             </StackPanel>
                         </StackPanel>
-                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
-                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
-                                    FontFamily="{StaticResource Alice}" Name="choixElfe" Click="onRaceClick" Cursor="Hand">
-                                Choisir
+                            <Button Classes="boutonChoisir" Name="choixElfe" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
                             </Button>
                     </Grid>
                 </Border>
                 
-                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="15" 
                         Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
                     
                     <Grid>
                         <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/nain_v2.png" Stretch="UniformToFill"></Image>
                        
-                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                        <Border VerticalAlignment="Bottom" Height="250">
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
                                     <GradientStop Offset="0" Color="#00000000"></GradientStop>
@@ -229,21 +234,19 @@
                                 </Border>
                             </StackPanel>
                         </StackPanel>
-                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
-                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
-                                    FontFamily="{StaticResource Alice}" Name="choixNain" Click="onRaceClick" Cursor="Hand">
-                                Choisir
+                            <Button Classes="boutonChoisir" Name="choixNain" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
                             </Button>
                     </Grid>
                 </Border>
                 
-                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="15" 
                         Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
                     
                     <Grid>
                         <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/gobelin_v2.png" Stretch="UniformToFill"></Image>
                        
-                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                        <Border VerticalAlignment="Bottom" Height="250">
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
                                     <GradientStop Offset="0" Color="#00000000"></GradientStop>
@@ -284,21 +287,19 @@
                                 </Border>
                             </StackPanel>
                         </StackPanel>
-                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
-                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
-                                    FontFamily="{StaticResource Alice}" Name="choixGobelin" Click="onRaceClick" Cursor="Hand">
-                                Choisir
+                            <Button Classes="boutonChoisir" Name="choixGobelin" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
                             </Button>
                     </Grid>
                 </Border>
                 
-                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="30" 
+                <Border Width="240" Height="380" BorderThickness="1" CornerRadius="15" 
                         Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True">
                     
                     <Grid>
                         <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/fee_v3.png" Stretch="UniformToFill"></Image>
                        
-                        <Border VerticalAlignment="Bottom" Height="250"> <!--Retirer les propriétés-->
+                        <Border VerticalAlignment="Bottom" Height="250">
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
                                     <GradientStop Offset="0" Color="#00000000"></GradientStop>
@@ -339,10 +340,8 @@
                                 </Border>
                             </StackPanel>
                         </StackPanel>
-                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
-                                    Margin="20,0,20,20" Background="#CC000000" Foreground="#E9E7CA" CornerRadius="20" 
-                                    FontFamily="{StaticResource Alice}" Name="choixFee" Click="onRaceClick" Cursor="Hand">
-                                Choisir
+                            <Button Classes="boutonChoisir" Name="choixFee" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
                             </Button>
                     </Grid>
                 </Border>

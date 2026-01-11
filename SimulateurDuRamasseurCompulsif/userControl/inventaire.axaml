@@ -1,0 +1,101 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:SimulateurDuRamasseurCompulsif.Classes"
+             xmlns:items="clr-namespace:SimulateurDuRamasseurCompulsif.Classes.Items"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+             x:Class="SimulateurDuRamasseurCompulsif.userControl.inventaire"
+             x:DataType="local:Personnage">
+
+    <UserControl.Resources>
+        <items:RareteToColorConverter x:Key="RareteColorConverter"/>
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="ListBoxItem">
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0 0 0 5"/>
+            <Setter Property="Background" Value="#1E1E24"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="BorderBrush" Value="#333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#2A2A35"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid Background="#121212">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/> <ColumnDefinition Width="*"/>   </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="#161618" BorderBrush="#333" BorderThickness="0 0 1 0">
+            <StackPanel Margin="20" Spacing="20">
+                
+                <Border Width="150" Height="150" CornerRadius="75" BorderBrush="#D4AF37" BorderThickness="2" ClipToBounds="True">
+                   <Image Source="/assets/pictures/defaultPP.png" Stretch="UniformToFill"/>
+                </Border>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="{Binding nomJoueur}" FontFamily="{StaticResource Metamorphous}" FontSize="24" 
+                               Foreground="#D4AF37" HorizontalAlignment="Center" TextAlignment="Center"/>
+                    
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="5">
+                        <TextBlock Text="{Binding race.nomRace}" Foreground="#888" FontFamily="{StaticResource Alice}"/>
+                        <TextBlock Text="-" Foreground="#444"/>
+                        <TextBlock Text="{Binding classe.nomClasse}" Foreground="#888" FontFamily="{StaticResource Alice}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Separator Background="#333"/>
+
+                <StackPanel Spacing="10">
+                    <TextBlock Text="❤️  100 / 100" Foreground="#E0E0E0" FontFamily="{StaticResource Alice}" FontSize="16"/>
+                    <TextBlock Text="⚡  10 / 10" Foreground="#E0E0E0" FontFamily="{StaticResource Alice}" FontSize="16"/>
+                    <TextBlock Text="🪙  125 Or" Foreground="#FFD700" FontFamily="{StaticResource Alice}" FontSize="16"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Column="1" RowDefinitions="Auto, *" Margin="40">
+            
+            <StackPanel Grid.Row="0" Margin="0 0 0 20">
+                <TextBlock Text="SACOCHE" FontFamily="{StaticResource Metamorphous}" FontSize="32" Foreground="#D4AF37"/>
+                <TextBlock Text="Ce que vous avez ramassé (volé) en chemin." FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#666"/>
+            </StackPanel>
+
+            <ListBox Grid.Row="1" ItemsSource="{Binding Inventaire}" Background="Transparent">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="Auto, *, Auto">
+                            
+                            <Border Grid.Column="0" Width="40" Height="40" Background="#222" CornerRadius="4" Margin="0 0 15 0">
+                                <TextBlock Text="📦" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding nomItem}" 
+                                           FontFamily="{StaticResource Metamorphous}" 
+                                           FontSize="16"
+                                           Foreground="{Binding rareteItem, Converter={StaticResource RareteColorConverter}}"/>
+                                
+                                <TextBlock Text="{Binding descriptionItem}" 
+                                           FontFamily="{StaticResource Alice}" 
+                                           FontSize="12" 
+                                           Foreground="#888"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal" Spacing="5">
+                                <TextBlock Text="{Binding valeurOr}" Foreground="#FFD700" FontFamily="{StaticResource Alice}"/>
+                                <TextBlock Text="po" Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="10" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </Grid>
+    </Grid>
+</UserControl>

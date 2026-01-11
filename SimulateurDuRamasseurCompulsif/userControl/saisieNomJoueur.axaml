@@ -9,28 +9,72 @@
         <Style Selector="Button:pointerover">
             <Setter Property="RenderTransform" Value="scale(1.1)"></Setter>
         </Style>
+        
+        <Style Selector="TextBox">
+            <Setter Property="Foreground" Value="#D4AF37"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="CornerRadius" Value="0"></Setter>
+            <Setter Property="BorderBrush" Value="#444"></Setter>
+            <Setter Property="BorderThickness" Value="0 0 0 1"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="Padding" Value="10"></Setter>
+        </Style>
+        
+        <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+        
+        <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+            <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
+            <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+        
+        
     </UserControl.Styles>
     
-    <Grid Background="#2a2a2a">
-        <StackPanel VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource Alice}" FontSize= "25" Foreground="#E9E7CA">
-                Nom du Joueur
+    <Grid Background="#121212">
+        
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Padding="30,10" Margin="30 30 0 0" 
+                Background="Transparent" Cursor="Hand" Click="onRetourClick">
+            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
+                ❮ RETOUR
             </TextBlock>
-            
-            <TextBox HorizontalAlignment="Center" FontFamily="{StaticResource Alice}" Name="inputNomJoueur" 
-                     Width= "200" Watermark="Entrez votre nom..." Margin="0 10 0 10">
-            </TextBox>
+        </Button>
+        
+        <Border Width="500" Height="350" BorderBrush="#333" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
+                    <GradientStop Offset="1" Color="#161618"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+        
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30" Margin="40">
+                <StackPanel Spacing="5">
+                    <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="28" Foreground="#E0E0E0" TextAlignment="Center" LetterSpacing="3">IDENTITÉ</TextBlock>
+                    <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" FontStyle="Italic" Foreground="#888" >Comment l'histoire se souviendra-t-elle de vous ?</TextBlock>
+                </StackPanel>
                 
-            <Button HorizontalAlignment="Center" FontFamily="{StaticResource Alice}" Cursor="Hand" 
-                    Background="#CC000000" Foreground="#E9E7CA" Click="onConfirmerNomClick" Name="ConfirmerBouton">
+                <TextBox Name="inputNomJoueur" Width= "300" Watermark="Entrez votre nom..." TextChanged="OnTextChanged" ></TextBox>
                 
-                <Button.Transitions>
-                    <Transitions>
-                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"></TransformOperationsTransition>
-                    </Transitions>
-                </Button.Transitions>
-                Confirmer
-            </Button>
-        </StackPanel>
+                <Button HorizontalAlignment="Center" FontFamily="{StaticResource Alice}" Cursor="Hand" 
+                        Background="Transparent" BorderBrush="#D4AF37" BorderThickness="1" Click="onConfirmerNomClick" 
+                        Name="ConfirmerBouton" CornerRadius="4" Padding="40 12" Margin="0 20 0 0">
+                    
+                    <Button.Transitions>
+                        <Transitions>
+                            <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" Easing="CubicEaseInOut"></TransformOperationsTransition>
+                        </Transitions>
+                    </Button.Transitions>
+                    
+                    <TextBlock FontFamily="{StaticResource Metamorphous}" Foreground="#D4AF37" LetterSpacing="1">
+                        COMMENCER L'AVENTURE
+                    </TextBlock>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

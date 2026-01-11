@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 public class Mage : HerosClasse {
     
-    public Mage() : base() {
+    public Mage() : base("Mage") {
         bonusClasseStats.force = -2;
         bonusClasseStats.agilite = -2;
         bonusClasseStats.chance = 3;

@@ -4,7 +4,9 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
 public class Gobelin : Race {
     
-    public Gobelin(string _nom, string _genre) : base(_nom, _genre, new Stats()) {
+    public Gobelin(string _genre) : base("Gobelin", _genre, new Stats()) {
+        
+        
         stats.force -= 1;
         stats.charisme -= 2;
         stats.intelligence += 2;

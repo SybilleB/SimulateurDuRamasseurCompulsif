@@ -4,7 +4,9 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
 public class Nain:Race {
    
-    public Nain(string _nom, string _genre) : base(_nom, _genre, new Stats()) {
+    public Nain(string _genre) : base("Gobelin", _genre, new Stats())
+    {
+        
         stats.force += 1;
         stats.vitalite += 1;
         stats.intelligence -= 1;

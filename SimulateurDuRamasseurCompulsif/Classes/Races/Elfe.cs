@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
 public class Elfe : Race {
     
-    public Elfe(string _nom, string _genre) : base(_nom, _genre, new Stats()) {
+    public Elfe(string _genre) : base("Elfe", _genre, new Stats()) {
         stats.intelligence += 1;
         stats.agilite += 1;
         stats.chance += 1;

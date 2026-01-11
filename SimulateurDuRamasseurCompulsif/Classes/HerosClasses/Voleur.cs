@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 public class Voleur : HerosClasse {
     
-    public Voleur() : base() {
+    public Voleur() : base("Voleur") {
         bonusClasseStats.force = -3;
         bonusClasseStats.intelligence = 1;
         bonusClasseStats.agilite = 2;

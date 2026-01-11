@@ -15,14 +15,14 @@ public enum TypeItem {
     Potion
 }
 
-public class Item {
-    public string nomItem;
-    public string descriptionItem;
+public class InventaireStuff {
+    public string nomItem { get; set; }
+    public string descriptionItem { get; set; }
     public TypeItem typeItem;
-    public Rarete rareteItem;
-    public int valeurOr;
+    public Rarete rareteItem { get; set; }
+    public int valeurOr { get; set; }
 
-    public Item(string _nomItem, string _descriptionItem, TypeItem _typeItem, Rarete _rareteItem, int _valeurOr) {
+    public InventaireStuff(string _nomItem, string _descriptionItem, TypeItem _typeItem, Rarete _rareteItem, int _valeurOr) {
         nomItem = _nomItem;
         descriptionItem = _descriptionItem;
         typeItem = _typeItem;

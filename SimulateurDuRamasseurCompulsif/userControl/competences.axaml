@@ -5,88 +5,233 @@
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="SimulateurDuRamasseurCompulsif.userControl.competences">
 
+    
     <UserControl.Styles>
-        <Style Selector="Button.btnStat">
-            <Setter Property="Width" Value="30"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="CornerRadius" Value="15"/>
-            <Setter Property="Background" Value="#404A3B2A"/>
-            <Setter Property="Foreground" Value="#2F1B0C"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Cursor" Value="Hand"/>
+        
+        <Style Selector="Button.boutonStats">
+            <Setter Property="Width" Value="30"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="CornerRadius" Value="15"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="#66D4AF37"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
         </Style>
+        
+        <Style Selector="Button.boutonStats:pointerover">
+            <Setter Property="Background" Value="#20D4AF37"></Setter>
+            <Setter Property="BorderBrush" Value="#FFD4AF37"></Setter>
+            <Setter Property="Foreground" Value="#FFD4AF37"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.iconeStats">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Padding" Value="0 0 0 3"></Setter>
+        </Style>
+
+        
     </UserControl.Styles>
-
-    <Grid Background="#2A2A2A">
-        <Border Width="500" Height="650" VerticalAlignment="Center">
+    
+    <Grid Background="#121212">
+        
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top"
+                Padding="30,10" Margin="30 30 0 0" 
+                Background="Transparent" Cursor="Hand" Click="onRetourClick">
+            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
+                ❮ RETOUR
+            </TextBlock>
+        </Button>
+        
+        <Border Width="900" Height="500" BorderBrush="#444" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8">
+            
             <Border.Background>
-                <ImageBrush Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/parchemin_v2.png" Stretch="UniformToFill"/>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
+                    <GradientStop Offset="1" Color="#161618"></GradientStop>
+                </LinearGradientBrush>
             </Border.Background>
-
-            <Grid Margin="50 40">
-                <StackPanel>
-                    
-                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
-                               FontSize="28" Foreground="#4A3B2A" Margin="0 0 0 10">
-                        Destinée
+            
+            
+            <Grid Margin="40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0" VerticalAlignment="Center" Spacing="30">
+                    <TextBlock Foreground="#666" FontFamily="{StaticResource Metamorphous}" FontSize="14" LetterSpacing="2">
+                        COMPETENCES
                     </TextBlock>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20" Margin="0 0 0 10">
-                        <Border Width="50" Height="50" CornerRadius="10" Background="#F0EAD6" BorderBrush="#4A3B2A" BorderThickness="2">
-                            <TextBlock Name="txtDe1" Text="?" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontFamily="{StaticResource Metamorphous}" Foreground="#2F1B0C"/>
+                    <TextBlock FontFamily="{StaticResource Metamorphous}" Foreground="#E0E0E0" FontSize="32" TextWrapping="Wrap">
+                        FORGEZ VOTRE DESTIN
+                    </TextBlock>
+                    <StackPanel Spacing="5">
+                        <TextBlock FontFamily="{StaticResource Alice}" Foreground="#666" FontSize="14" TextWrapping="Wrap">
+                            Lancez les dés pour déterminer votre nombre de points à répartir.
+                        </TextBlock>
+                        <TextBlock FontFamily="{StaticResource Alice}" Foreground="#666" FontSize="14" TextWrapping="Wrap">
+                            Les statistiques ont déjà été modifiées par votre choix de race/classe.
+                        </TextBlock>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Spacing="20" Margin="0 5 0 0" HorizontalAlignment="Center">
+                        <Border BorderBrush="#D4AF37" BorderThickness="1" Width="80" Height="80" CornerRadius="5" Background="#101010">
+                            <TextBlock Foreground="#D4AF37" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="30" Name="de1">?</TextBlock>
                         </Border>
-                        <Border Width="50" Height="50" CornerRadius="10" Background="#F0EAD6" BorderBrush="#4A3B2A" BorderThickness="2">
-                            <TextBlock Name="txtDe2" Text="?" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontFamily="{StaticResource Metamorphous}" Foreground="#2F1B0C"/>
+                        <TextBlock FontFamily="{StaticResource Metamorphous}" Foreground="#666" FontSize="30" VerticalAlignment="Center">+</TextBlock>
+                        <Border BorderBrush="#D4AF37" BorderThickness="1" Width="80" Height="80" CornerRadius="5" Background="#101010">
+                            <TextBlock Foreground="#D4AF37" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="30" Name="de2">?</TextBlock>
                         </Border>
                     </StackPanel>
-
-                    <Button Content="🎲 Lancer les dés" HorizontalAlignment="Center" Margin="0 0 0 10"
-                            Background="#CC4A3B2A" Foreground="#E9E7CA" FontFamily="{StaticResource Alice}" CornerRadius="10"/>
-
-                    <TextBlock TextAlignment="Center" FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#4A3B2A" Margin="0 0 0 15">
-                        Points disponibles : <Run Name="runPointsRestants" FontWeight="Bold" FontSize="20">0</Run>
-                    </TextBlock>
-
-                    <Border BorderThickness="0 1 0 0" BorderBrush="#804A3B2A" Width="300" HorizontalAlignment="Center" Margin="0 0 0 15"/>
-
-                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="120, Auto, 40, Auto" HorizontalAlignment="Center">
+                    <Button Background="#D4AF37" Padding="20 10" Margin="0 3 0 0" CornerRadius="4" HorizontalAlignment="Center" Cursor="Hand" Click="onLancerDesClick" Name="boutonLancer">
+                        <TextBlock FontFamily="{StaticResource Metamorphous}" Foreground="#101010" LetterSpacing="1" FontWeight="Bold">Lancer les dés</TextBlock>
+                    </Button>
+                </StackPanel>
+                
+                <Border Grid.Column="1" Width="1" Background="#333" Margin="40 10"></Border>
+                
+                <StackPanel Grid.Column="2">
+                    <Border BorderBrush="#333" BorderThickness="0 0 0 1" Padding="0 0 0 20" Margin="0 0 0 20">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="15" VerticalAlignment="Bottom">
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#888" VerticalAlignment="Center">Points Disponibles</TextBlock>
+                            <Border Background="#252525" CornerRadius="5" Width="40" Height="35" >
+                                <TextBlock TextAlignment="Center" Foreground="#D4AF37" FontFamily="{StaticResource Alice}" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ptsRestants">0</TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <Grid RowSpacing="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
                         
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Force" VerticalAlignment="Center" FontFamily="{StaticResource Alice}" FontSize="18" Foreground="#4A3B2A"/>
-                        <Button Grid.Row="0" Grid.Column="1" Classes="btnStat" Content="-" />
-                        <TextBlock Grid.Row="0" Grid.Column="2" Name="txtValForce" Text="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="20" Foreground="#2F1B0C"/>
-                        <Button Grid.Row="0" Grid.Column="3" Classes="btnStat" Content="+"/>
-
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Agilité" Margin="0 10" VerticalAlignment="Center" FontFamily="{StaticResource Alice}" FontSize="18" Foreground="#4A3B2A"/>
-                        <Button Grid.Row="1" Grid.Column="1" Classes="btnStat" Content="-"/>
-                        <TextBlock Grid.Row="1" Grid.Column="2" Name="txtValAgilite" Text="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="20" Foreground="#2F1B0C"/>
-                        <Button Grid.Row="1" Grid.Column="3" Classes="btnStat" Content="+"/>
-
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Vitalité" Margin="0 10" VerticalAlignment="Center" FontFamily="{StaticResource Alice}" FontSize="18" Foreground="#4A3B2A"/>
-                        <Button Grid.Row="2" Grid.Column="1" Classes="btnStat" Content="-"/>
-                        <TextBlock Grid.Row="2" Grid.Column="2" Name="txtValVitalite" Text="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="20" Foreground="#2F1B0C"/>
-                        <Button Grid.Row="2" Grid.Column="3" Classes="btnStat" Content="+"/>
-
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Intelligence" Margin="0 10" VerticalAlignment="Center" FontFamily="{StaticResource Alice}" FontSize="18" Foreground="#4A3B2A"/>
-                        <Button Grid.Row="3" Grid.Column="1" Classes="btnStat" Content="-"/>
-                        <TextBlock Grid.Row="3" Grid.Column="2" Name="txtValIntel" Text="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="20" Foreground="#2F1B0C"/>
-                        <Button Grid.Row="3" Grid.Column="3" Classes="btnStat" Content="+"/>
-
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Charisme" Margin="0 10" VerticalAlignment="Center" FontFamily="{StaticResource Alice}" FontSize="18" Foreground="#4A3B2A"/>
-                        <Button Grid.Row="4" Grid.Column="1" Classes="btnStat" Content="-"/>
-                        <TextBlock Grid.Row="4" Grid.Column="2" Name="txtValCharisme" Text="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="20" Foreground="#2F1B0C"/>
-                        <Button Grid.Row="4" Grid.Column="3" Classes="btnStat" Content="+"/>
-
-                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Chance" Margin="0 10" VerticalAlignment="Center" FontFamily="{StaticResource Alice}" FontSize="18" Foreground="#4A3B2A"/>
-                        <Button Grid.Row="5" Grid.Column="1" Classes="btnStat" Content="-"/>
-                        <TextBlock Grid.Row="5" Grid.Column="2" Name="txtValChance" Text="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="20" Foreground="#2F1B0C"/>
-                        <Button Grid.Row="5" Grid.Column="3" Classes="btnStat" Content="+"/>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="iconeStats">⚔️</TextBlock>
+                        
+                        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="10 0">
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#E0E0E0">Force</TextBlock>
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#666">Dégâts physiques</TextBlock>
+                        </StackPanel>
+                        
+                        <Button Grid.Row="0" Grid.Column="2" Classes="boutonStats" Click="onMoinsForceClick" Name="moinsForce">-</Button>
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="3" FontFamily="{StaticResource Alice}" FontSize="20" FontWeight="Bold" 
+                                   Foreground="#D4AF37" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ptsForce">
+                            0
+                        </TextBlock>
+                        
+                        <Button Grid.Row="0" Grid.Column="4" Classes="boutonStats" Click="onPlusForceClick" Name="plusForce">+</Button>
+                        
+                        
+                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="iconeStats">🏹</TextBlock>
+                        
+                        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="10 0">
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#E0E0E0">Agilité</TextBlock>
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#666">Esquive</TextBlock>
+                        </StackPanel>
+                        
+                        <Button Grid.Row="1" Grid.Column="2" Classes="boutonStats" Click="onMoinsAgiliteClick" Name="moinsAgilite">-</Button>
+                        
+                        <TextBlock Grid.Row="1" Grid.Column="3" FontFamily="{StaticResource Alice}" FontSize="20" FontWeight="Bold" 
+                                   Foreground="#D4AF37" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ptsAgilite">
+                            0
+                        </TextBlock>
+                        
+                        <Button Grid.Row="1" Grid.Column="4" Classes="boutonStats" Click="onPlusAgiliteClick" Name="plusAgilite">+</Button>
+                        
+                        
+                        <TextBlock Grid.Row="2" Grid.Column="0" Classes="iconeStats">💖</TextBlock>
+                        
+                        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="10 0">
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#E0E0E0">Vitalité</TextBlock>
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#666">Points de vie</TextBlock>
+                        </StackPanel>
+                        
+                        <Button Grid.Row="2" Grid.Column="2" Classes="boutonStats" Click="onMoinsVitaliteClick" Name="moinsVitalite">-</Button>
+                        
+                        <TextBlock Grid.Row="2" Grid.Column="3" FontFamily="{StaticResource Alice}" FontSize="20" FontWeight="Bold" 
+                                   Foreground="#D4AF37" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ptsVitalite">
+                            0
+                        </TextBlock>
+                        
+                        <Button Grid.Row="2" Grid.Column="4" Classes="boutonStats" Click="onPlusVitaliteClick" Name="plusVitalite">+</Button>
+                        
+                        
+                        <TextBlock Grid.Row="3" Grid.Column="0" Classes="iconeStats">📖</TextBlock>
+                        
+                        <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="10 0">
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#E0E0E0">Intelligence</TextBlock>
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#666">Mana et Sorts</TextBlock>
+                        </StackPanel>
+                        
+                        <Button Grid.Row="3" Grid.Column="2" Classes="boutonStats" Click="onMoinsIntelligenceClick" Name="moinsIntelligence">-</Button>
+                        
+                        <TextBlock Grid.Row="3" Grid.Column="3" FontFamily="{StaticResource Alice}" FontSize="20" FontWeight="Bold" 
+                                   Foreground="#D4AF37" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ptsIntelligence">
+                            0
+                        </TextBlock>
+                        
+                        <Button Grid.Row="3" Grid.Column="4" Classes="boutonStats" Click="onPlusIntelligenceClick" Name="plusIntelligence">+</Button>
+                        
+                        
+                        <TextBlock Grid.Row="4" Grid.Column="0" Classes="iconeStats">👑️</TextBlock>
+                        
+                        <StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="10 0">
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#E0E0E0">Charisme</TextBlock>
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#666">Persuasion</TextBlock>
+                        </StackPanel>
+                        
+                        <Button Grid.Row="4" Grid.Column="2" Classes="boutonStats" Click="onMoinsCharismeClick" Name="moinsCharisme">-</Button>
+                        
+                        <TextBlock Grid.Row="4" Grid.Column="3" FontFamily="{StaticResource Alice}" FontSize="20" FontWeight="Bold" 
+                                   Foreground="#D4AF37" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ptsCharisme">
+                            0
+                        </TextBlock>
+                        
+                        <Button Grid.Row="4" Grid.Column="4" Classes="boutonStats" Click="onPlusCharismeClick" Name="plusCharisme">+</Button>
+                        
+                        
+                        <TextBlock Grid.Row="5" Grid.Column="0" Classes="iconeStats">🎲</TextBlock>
+                        
+                        <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="10 0">
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#E0E0E0">Chance</TextBlock>
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#666">Coups critiques</TextBlock>
+                        </StackPanel>
+                        
+                        <Button Grid.Row="5" Grid.Column="2" Classes="boutonStats" Click="onMoinsChanceClick" Name="moinsChance">-</Button>
+                        
+                        <TextBlock Grid.Row="5" Grid.Column="3" FontFamily="{StaticResource Alice}" FontSize="20" FontWeight="Bold" 
+                                   Foreground="#D4AF37" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ptsChance">
+                            0
+                        </TextBlock>
+                        
+                        <Button Grid.Row="5" Grid.Column="4" Classes="boutonStats" Click="onPlusChanceClick" Name="plusChance">+</Button>
                     </Grid>
-
+                    <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 40 0 0" Padding="20 10" Background="Transparent" 
+                            BorderBrush="#D4AF37" BorderThickness="1" CornerRadius="4" Cursor="Hand" Click="onValiderClick" Name="boutonConfirmerStats">
+                        <TextBlock FontFamily="{StaticResource Metamorphous}" Foreground="#D4AF37" LetterSpacing="1">CONFIRMER</TextBlock>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>
+        
     </Grid>
+    
 </UserControl>

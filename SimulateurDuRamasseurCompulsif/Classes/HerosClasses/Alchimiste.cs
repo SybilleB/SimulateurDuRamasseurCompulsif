@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 public class Alchimiste : HerosClasse {
     
-    public Alchimiste() : base() {
+    public Alchimiste() : base("Alchimiste") {
         bonusClasseStats.force = -2;
         bonusClasseStats.charisme = -1;
         bonusClasseStats.vitalite = 1;

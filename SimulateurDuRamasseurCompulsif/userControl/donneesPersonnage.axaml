@@ -6,56 +6,114 @@
              d:DesignHeight="720"
              x:Class="SimulateurDuRamasseurCompulsif.userControl.donneesPersonnage">
     
-    
-        <Grid Background="#2A2A2A">
-            
-            <StackPanel>
-                <Button HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
-                        CornerRadius="20" Padding="30,10" Margin="30 30 0 0" 
-                        Background="#CC000000" Foreground="#E9E7CA" FontFamily="{StaticResource Alice}" 
-                        FontSize="15" Cursor="Hand" Click="onRetourClick">
-                    Retour
-                </Button>
-            </StackPanel>
-            
-            <StackPanel VerticalAlignment="Center" Spacing="50" Margin="0 55 0 0">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontFamily="{StaticResource Alice}" Foreground="#E9E7CA">
-                    Votre identité
-                </TextBlock>
+    <UserControl.Styles>
+        <Style Selector="TextBox.ligneStyle">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="#444"></Setter>
+            <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+            <Setter Property="Foreground" Value="#D4AF37"></Setter>
+            <Setter Property="CornerRadius" Value="0"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
         
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="30">
-                    <Grid Width="240" Height="450">
-                        
-                        <Border Width="240" Height="210" BorderThickness="1" CornerRadius="30" 
-                                Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True" VerticalAlignment="Top">
+        <Style Selector="TextBox.ligneStyle:pointerover /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+        
+        <Style Selector="TextBox.ligneStyle:focus /template/ Border#PART_BorderElement">
+            <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
+            <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+        
+        <Style Selector="RadioButton.boutonRadio">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Padding" Value="2 1"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="#666"></Setter>
+            <Setter Property="BorderBrush" Value="#444"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter Content="{TemplateBinding Content}" 
+                                          Padding="{TemplateBinding Padding}"
+                                          Margin="{TemplateBinding Margin}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        
+        <Style Selector="RadioButton.boutonRadio:checked">
+            <Setter Property="Background" Value="#20D4AF37"></Setter>
+            <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
+            <Setter Property="Foreground" Value="#D4AF37"></Setter>
+        </Style>
+        <Style Selector="RadioButton.boutonRadio:pointerover">
+            <Setter Property="BorderBrush" Value="#888"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+        </Style>
+
+        
+    </UserControl.Styles>
+    
+    <Grid Background="#121212">
+            
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top"
+                Padding="30,10" Margin="30 30 0 0" 
+                Background="Transparent" Cursor="Hand" Click="onRetourClick">
+            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
+                ❮ RETOUR
+            </TextBlock>
+        </Button>
+            
+        <Button HorizontalAlignment="Right" VerticalAlignment="Top"
+                Padding="30,10" Margin="0 30 30 0" 
+                Background="Transparent" Cursor="Hand" Click="onValiderClick">
+            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
+                VALIDER ❯
+            </TextBlock>
+        </Button>
+            
+        <Border Width="900" Height="500" BorderBrush="#444" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8">
+            
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
+                    <GradientStop Offset="1" Color="#161618"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+                
+            <Grid Margin="30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="1"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                            
+                <StackPanel Grid.Column="0" Spacing="20" VerticalAlignment="Center" Margin="0 0 30 0">
+                    <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="12" LetterSpacing="2" Foreground="#666">
+                        ORIGINES
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" Spacing="20">
+                        <Border Width="200" Height="300" BorderBrush="#333" BorderThickness="1" CornerRadius="10" 
+                                Background="#000000" BoxShadow="0 4 10 0 #50000000" ClipToBounds="True">
                             <Grid>
                                 <Image Name="imgRace" Stretch="UniformToFill"></Image>
-                                   
-                                    <Border>
-                                        <Border.Background>
-                                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                                                <GradientStop Offset="0" Color="#00000000"></GradientStop>
-                                                <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
-                                                <GradientStop Offset="1" Color="#FF000000"></GradientStop>
-                                            </LinearGradientBrush>
-                                        </Border.Background>
-                                    </Border>
-                                        
-                                    <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
-                                        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
-                                                   FontSize="27" Foreground="#E9E7CA" Name="txtRaceNom">
-                                        </TextBlock>
-                                        <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E9E7CA" Name="txtRaceTalent">
-                                        </TextBlock>
-                                    </StackPanel>
-                            </Grid>
-                        </Border>
-                    
-                        <Border Width="240" Height="210" BorderThickness="1" CornerRadius="30" 
-                                Background="#FF000000" BoxShadow="0 10 20 0 #40000000" ClipToBounds="True" VerticalAlignment="Bottom">
-                            <Grid>
-                                <Image Name="imgClasse" Stretch="UniformToFill"></Image>
-                                   
+                                           
                                 <Border>
                                     <Border.Background>
                                         <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
@@ -65,101 +123,119 @@
                                         </LinearGradientBrush>
                                     </Border.Background>
                                 </Border>
-                                        
-                                <StackPanel VerticalAlignment="Bottom" Margin="15 0 15 70">
+                                                
+                                <StackPanel VerticalAlignment="Bottom" Margin="10 0 10 20">
+                                    <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#D4AF37" HorizontalAlignment="Center">RACE</TextBlock>
                                     <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
-                                            FontSize="27" Foreground="#E9E7CA" Name="txtClasseNom">
+                                               FontSize="27" Foreground="#E0E0E0" Name="txtRaceNom">
                                     </TextBlock>
-                                    <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E9E7CA" Name="txtClasseTalent">
+                                    <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E0E0E0" Name="txtRaceTalent">
                                     </TextBlock>
                                 </StackPanel>
                             </Grid>
                         </Border>
-                    </Grid>
-                    
-                    <Border Width="500" Height="500">
-                        <Border.Background>
-                            <ImageBrush Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/parchemin_v2.png" Stretch="UniformToFill"></ImageBrush>
-                        </Border.Background>
                         
-                        <Grid>
-                            <StackPanel VerticalAlignment="Center" Spacing="-5">
-                                <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
-                                           FontSize="38" Foreground="#2F1B0C" Margin="0 50 30 20" Name="txtNomJoueur">
-                                </TextBlock>
-                                
-                                <StackPanel Orientation="Horizontal" Margin="110 0" Spacing="30">
-                                    <StackPanel HorizontalAlignment="Center" Spacing="10">
-                                        <Border Width="100" Height="100" CornerRadius="50" ClipToBounds="True" BorderBrush="#CC000000" BorderThickness="2">
-                                            <Image Name="imgAvatarJoueur" Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/defaultPP.png" Stretch="UniformToFill"/>
-                                        </Border>
-                    
-                                        <Button Click="onImporterPPClick"
-                                                HorizontalAlignment="Center" FontSize="14" FontFamily="{StaticResource Alice}"
-                                                Background="#30000000" CornerRadius="10" Cursor="Hand">Importer photo</Button>
-                                    </StackPanel>
-                                    
-                                    <StackPanel Spacing="20">
-                                        
-                                        <StackPanel>
-                                            <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="12" Foreground="#4A3B2A" TextWrapping="Wrap">
-                                                Titre honorifique :  
-                                            </TextBlock>
-                                            <TextBox Height="40" Width="140" TextWrapping="Wrap" TextAlignment="Center" FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#2F1B0C" Watermark="Le pouilleux"
-                                                    Background="Transparent" BorderBrush="#4A3B2A" BorderThickness="0,0,0,1" CornerRadius="0" HorizontalContentAlignment="Center" Name="titreHonorifique"></TextBox>
-                                            <Button HorizontalAlignment="Center" Margin="0 5" Padding="0" Background="Transparent" Click="OnAleatoireClick">🎲</Button>
-                                        </StackPanel>
-                                        
-                                        <StackPanel>
-                                            <TextBlock Margin="0 -20  0 0" FontFamily="{StaticResource Metamorphous}" FontSize="14" Foreground="#4A3B2A">Genre : </TextBlock>
-                                            <StackPanel Orientation="Vertical" Spacing="-5">
-                                                <StackPanel.Styles>
-                                                    <Style Selector="RadioButton">
-                                                        <Setter Property="RenderTransform" Value="scale(0.7)"/>
-                                                        <Setter Property="RenderTransformOrigin" Value="0%,50%"/>
-                                                    </Style>
-                                                </StackPanel.Styles>
-                                            
-                                                <RadioButton FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#4A3B2A" Name="Femme">Femme</RadioButton>
-                                                <RadioButton FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#4A3B2A" Name="Homme">Homme</RadioButton>
-                                                <RadioButton FontFamily="{StaticResource Alice}" FontSize="16" Foreground="#4A3B2A" Name="Troll">Troll</RadioButton>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </StackPanel>
+                        <Border Width="200" Height="300" BorderBrush="#333" BorderThickness="1" CornerRadius="10" 
+                                Background="#000000" BoxShadow="0 4 10 0 #50000000" ClipToBounds="True">
+                            <Grid>
+                                <Image Name="imgClasse" Stretch="UniformToFill"></Image>
+                                               
+                                <Border>
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                            <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                                            <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                                            <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                                    
+                                <StackPanel VerticalAlignment="Bottom" Margin="10 0 10 20">
+                                    <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#D4AF37" HorizontalAlignment="Center">CLASSE</TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                               FontSize="27" Foreground="#E0E0E0" Name="txtClasseNom">
+                                    </TextBlock>
+                                    <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E0E0E0" Name="txtClasseTalent">
+                                    </TextBlock>
                                 </StackPanel>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+                            
+                <Border Grid.Column="1" Background="#333" Width="1" Margin="0 20"></Border>
+                            
+                <Grid Grid.Column="2" Margin="40 10 0 0">
                                 
-                                <StackPanel Margin="110 10 0 40" Spacing="10">
-                                    <StackPanel Orientation="Horizontal" Spacing="5">
-                                        <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="14" Foreground="#4A3B2A" TextWrapping="Wrap">
-                                            PV : 
-                                        </TextBlock>
-                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#2F1B0C" TextWrapping="Wrap">
-                                            100 hp
-                                        </TextBlock>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Spacing="5">
-                                        <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="14" Foreground="#4A3B2A" TextWrapping="Wrap">
-                                            Or : 
-                                        </TextBlock>
-                                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#2F1B0C" TextWrapping="Wrap">
-                                            100 pièces
-                                        </TextBlock>
-                                    </StackPanel>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                                
+                    <StackPanel Grid.Row="0" Spacing="20">
+                        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                   FontSize="36" Foreground="#D4AF37" Name="txtNomJoueur">
+                        </TextBlock>
+                                    
+                        <StackPanel HorizontalAlignment="Center" Spacing="10">
+                            <Border Width="100" Height="100" CornerRadius="50" ClipToBounds="True" BorderThickness="2" BoxShadow="0 0 20 0 #20D4AF37">
+                                <Image Name="imgAvatarJoueur" Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/defaultPP.png" Stretch="UniformToFill"/>
+                            </Border>
+                        
+                            <Button Click="onImporterPpClick"
+                                    HorizontalAlignment="Center" FontSize="14" FontFamily="{StaticResource Alice}"
+                                    Background="Transparent" Cursor="Hand">
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#888" TextDecorations="Underline" HorizontalAlignment="Center">Modifier la photo</TextBlock>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                        
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="15" Margin="0 30 0 20">
+                        <StackPanel Spacing="10">
+                            <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="12" Foreground="#666" HorizontalAlignment="Center">
+                                TITRE HONORIFIQUE
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" Margin="50 0 0 0">
+                                <TextBox Classes="ligneStyle" Width="220" Watermark="Ex : Le pouilleux" TextWrapping="Wrap" TextAlignment="Center" Name="titreHonorifique"></TextBox>
+                                <Button Padding="5" Background="Transparent" Cursor="Hand" Click="OnAleatoireClick" VerticalAlignment="Bottom">
+                                    <TextBlock FontSize="18">🎲</TextBlock>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                            
+                            
+                        <StackPanel Spacing="10">
+                            <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#666">GENRE</TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="5">
+                                <RadioButton Classes="boutonRadio" Name="Femme">Femme</RadioButton>
+                                <RadioButton Classes="boutonRadio" Name="Homme">Homme</RadioButton>
+                                <RadioButton Classes="boutonRadio" Name="Troll">Troll</RadioButton>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <Border Grid.Row="2" BorderBrush="#333" BorderThickness="0 1 0 0" Margin="20 0" Padding="0 20 0 0" VerticalAlignment="Bottom">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="40">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock FontSize="20">❤️</TextBlock>
+                                <StackPanel>
+                                    <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#666">PV INITIAUX</TextBlock>
+                                    <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" FontWeight="Bold" Foreground="#E0E0E0">100 HP</TextBlock>
                                 </StackPanel>
                             </StackPanel>
-                        </Grid>
+                            
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock FontSize="20">🪙</TextBlock>
+                                <StackPanel>
+                                    <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#666">BOURSE INITIALE</TextBlock>
+                                    <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" FontWeight="Bold" Foreground="#E0E0E0">100 Or</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
                     </Border>
-                </StackPanel>
-            </StackPanel>
-            
-            <StackPanel>
-                <Button HorizontalAlignment="Right" HorizontalContentAlignment="Center"
-                        CornerRadius="20" Padding="30,10" Margin="0 30 30 0" 
-                        Background="#CC000000" Foreground="#E9E7CA" FontFamily="{StaticResource Alice}" 
-                        FontSize="15" Cursor="Hand" Click="onValiderClick">
-                    Valider
-                </Button>
-            </StackPanel>
-        </Grid>
-    
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
 </UserControl>
