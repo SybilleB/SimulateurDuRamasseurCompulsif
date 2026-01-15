@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using SimulateurDuRamasseurCompulsif.Classes;
 
 namespace SimulateurDuRamasseurCompulsif;
 
@@ -15,6 +16,12 @@ public static class DonneesTemporaires {
     
     public static Bitmap photoProfil { get; set; }
     
-    public static Stats statsPerso { get; set; }
+    public static int bonusForce { get; set; }
+    public static int bonusAgilite { get; set; }
+    public static int bonusVitalite { get; set; }
+    public static int bonusIntelligence { get; set; }
+    public static int bonusCharisme { get; set; }
+    public static int bonusChance { get; set; }
     
+    public static Personnage personnageFinal {get; set;}
 }

@@ -5,11 +5,11 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 public abstract class HerosClasse {
     
     public string nomClasse { get; set; }
-    public Stats bonusClasseStats;
+    public Stats statsClasse;
 
     public HerosClasse(string _nomClasse) {
         nomClasse = _nomClasse;
-        bonusClasseStats = new Stats();
+        statsClasse = new Stats();
     }
 
     private Random lancerDe = new Random();

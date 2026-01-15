@@ -5,10 +5,10 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 public class Guerrier : HerosClasse { 
     
     public Guerrier() : base("Guerrier") {
-        bonusClasseStats.force = 2;
-        bonusClasseStats.charisme = 1;
-        bonusClasseStats.intelligence = -1;
-        bonusClasseStats.agilite = -2;
+        statsClasse.force = 2;
+        statsClasse.charisme = 1;
+        statsClasse.intelligence = -1;
+        statsClasse.agilite = -2;
     }
 
     private Random lancerDe = new Random();
@@ -17,7 +17,7 @@ public class Guerrier : HerosClasse {
         //Cri de guerre, jet de dés avant chaque tour, si 5 ou + alors +20 dégats
 
         int resultatDe = lancerDe.Next(1, 7);
-        int attaque = personnage.race.stats.force;
+        int attaque = personnage.race.statsRace.force;
         
         if (resultatDe >= 5) { 
             attaque += 20;

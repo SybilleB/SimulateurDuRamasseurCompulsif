@@ -10,54 +10,43 @@ public class Personnage {
     public string nomJoueur { get; set; }
     public Race race { get; set; }
     public HerosClasse classe { get; set; }
+    public Stats statsPerso { get; set; }
+    
     public List<InventaireStuff> Inventaire { get; set; } = new List<InventaireStuff>();
     
     public int capaciteMax = 10;
     
-    public Personnage(Race _race, HerosClasse _classe) {
+    public Personnage(string _nomJoueur, Race _race, HerosClasse _classe, Stats _statsChoix) {
         
-        if (!_race.classeAutorisee(_classe)) {
-            Console.WriteLine("Erreur, un " + _race.GetType().Name + "ne peut pas être un " + _classe.GetType().Name);
-            return; 
-        }
-        else {
-            race = _race;
-            classe = _classe;
-
-            race.stats.ajouterStats(classe.bonusClasseStats);
-            affinités(); 
-        }
-        if (_classe is Alchimiste) {
-            _race.pv += 25;
-        }
+        nomJoueur = _nomJoueur;
+        race = _race;
+        classe = _classe;
+        statsPerso = new Stats();
+        
+        statsPerso.ajouterStats(race.statsRace);
+        statsPerso.ajouterStats(classe.statsClasse);
+        statsPerso.ajouterStats(_statsChoix);
+        
+        affinités(); 
     }
-
+    
     public void affinités() {
         if (race is Humain && classe is Guerrier) {
-            race.stats.force += 2;
+            statsPerso.force += 2;
         }
         if (race is Elfe && classe is Voleur) {
-            race.stats.agilite += 2;
+            statsPerso.agilite += 2;
         }
         if (race is Nain && classe is Alchimiste) {
-            race.stats.vitalite += 2;
+            statsPerso.vitalite += 2;
         }
         if (race is Gobelin && classe is Troubadour) {
-            race.stats.chance += 2;
+            statsPerso.chance += 2;
         }
         if (race is Fee && classe is Mage) {
-            race.stats.intelligence += 2;
+            statsPerso.intelligence += 2;
         }
     }
-
-    private Random lancerDe = new Random();
-    /*public void repartirPoints() {
-        int resultatDe = lancerDe.Next(1, 7) + lancerDe.Next(1, 7);
-
-        while (resultatDe > 0) {
-            
-        }
-    }*/
 
     public void afficherInventaire() {
         foreach (var item in Inventaire) {

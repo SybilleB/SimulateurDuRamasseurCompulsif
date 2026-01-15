@@ -5,9 +5,9 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 public class Mage : HerosClasse {
     
     public Mage() : base("Mage") {
-        bonusClasseStats.force = -2;
-        bonusClasseStats.agilite = -2;
-        bonusClasseStats.chance = 3;
+        statsClasse.force = -2;
+        statsClasse.agilite = -2;
+        statsClasse.chance = 3;
     }
     
     private Random lancerDe = new Random();
@@ -18,12 +18,12 @@ public class Mage : HerosClasse {
         int resultatDe = lancerDe.Next(1, 7);
         int defense;
         if (resultatDe <= 3) {
-            defense = personnage.race.stats.agilite + (personnage.race.stats.agilite * 15 / 100);
+            defense = personnage.race.statsRace.agilite + (personnage.race.statsRace.agilite * 15 / 100);
             Console.WriteLine("Le champs de force est en place. C'est moche mais ça protège");
             
         }
         else {
-            defense = personnage.race.stats.agilite;
+            defense = personnage.race.statsRace.agilite;
             Console.WriteLine("Erreur 404, talent non trouvé");
         }
         return defense;

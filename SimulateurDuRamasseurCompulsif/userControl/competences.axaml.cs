@@ -1,9 +1,6 @@
 using System;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using Microsoft.VisualBasic;
 using SimulateurDuRamasseurCompulsif.Classes;
 using SimulateurDuRamasseurCompulsif.Classes.Races;
 using SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
@@ -14,53 +11,62 @@ namespace SimulateurDuRamasseurCompulsif.userControl;
 public partial class competences : UserControl {
 
     public bool deslances = false;
+    public int pointsDispos = 0;
+    
+    public Stats statsBase;
+    public Stats statsActualisees;
     
     public competences() {
         InitializeComponent();
-        verifierBoutonConfirmer();
-        desactiverBoutonsMoins();
-        desactiverBoutonsPlus();
+        desactiverBoutons();
+        initialiserPoints();
     }
 
-    public void creationPersonnage() {
-
-        Race racePersonnage = null;
-        HerosClasse classePersonnage = null;
+    public void initialiserPoints() {
+        
+        Race raceTemporaire = null;
+        HerosClasse classeTemporaire = null;
         
         if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
-            racePersonnage = new Humain();
+            raceTemporaire = new Humain();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
-            racePersonnage = new Elfe();
+            raceTemporaire = new Elfe();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
-            racePersonnage = new Nain();
+            raceTemporaire = new Nain();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
-            racePersonnage = new Gobelin();
+            raceTemporaire = new Gobelin();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
-            racePersonnage = new Fee();
+            raceTemporaire = new Fee();
         }
 
         if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {
-            classePersonnage = new Guerrier();
+            classeTemporaire = new Guerrier();
         }
         if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
-            classePersonnage = new Mage();
+            classeTemporaire = new Mage();
         }
         if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
-            classePersonnage = new Voleur();
+            classeTemporaire = new Voleur();
         }
         if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
-            classePersonnage = new Alchimiste();
+            classeTemporaire = new Alchimiste();
         }
         if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
-            classePersonnage = new Troubadour();
+            classeTemporaire = new Troubadour();
         }
+        
+        statsBase = new Stats();
+        statsBase.ajouterStats(raceTemporaire.statsRace);
+        statsBase.ajouterStats(classeTemporaire.statsClasse);
 
-        Personnage p = new Personnage(racePersonnage, classePersonnage);
-
+        statsActualisees = new Stats();
+        statsActualisees.ajouterStats(statsBase);
+        
+        actualiserAffichage();
     }
     
     public void onLancerDesClick(object? sender, RoutedEventArgs e) {
@@ -70,50 +76,41 @@ public partial class competences : UserControl {
         
         de1.Text = lancer1.ToString();
         de2.Text = lancer2.ToString();
-        int nbPointsDispo = lancer1 + lancer2;
-        ptsRestants.Text = nbPointsDispo.ToString();
+        
+        pointsDispos = lancer1 + lancer2;
         
         boutonLancer.IsEnabled = false;
-        desactiverBoutonsPlus();
         deslances = true;
+        
+        actualiserAffichage();
     }
 
-    public void desactiverBoutonsMoins() {
-        if (ptsForce.Text == "0") {
-            moinsForce.IsEnabled = false;
-        }else {
-            moinsForce.IsEnabled = true; 
-        }
-        if (ptsAgilite.Text == "0") {
-            moinsAgilite.IsEnabled = false;
-        }else {
-            moinsAgilite.IsEnabled = true; 
-        }
-        if (ptsVitalite.Text == "0") {
-            moinsVitalite.IsEnabled = false;
-        }else {
-            moinsVitalite.IsEnabled = true; 
-        }
-        if (ptsIntelligence.Text == "0") {
-            moinsIntelligence.IsEnabled = false;
-        }else {
-            moinsIntelligence.IsEnabled = true; 
-        }
-        if (ptsCharisme.Text == "0") {
-            moinsCharisme.IsEnabled = false;
-        }else {
-            moinsCharisme.IsEnabled = true; 
-        }
-        if (ptsChance.Text == "0") {
-            moinsChance.IsEnabled = false;
-        }else {
-            moinsChance.IsEnabled = true; 
-        }
-    }
+    public void actualiserAffichage() {
+        ptsForce.Text = statsActualisees.force.ToString();
+        ptsAgilite.Text = statsActualisees.agilite.ToString();
+        ptsVitalite.Text = statsActualisees.vitalite.ToString();
+        ptsIntelligence.Text = statsActualisees.intelligence.ToString();
+        ptsCharisme.Text = statsActualisees.charisme.ToString();
+        ptsChance.Text = statsActualisees.chance.ToString();
 
-    public void desactiverBoutonsPlus() {
-        int ptsDispos = int.Parse(ptsRestants.Text);
-        if (ptsDispos <= 0) {
+        ptsRestants.Text = pointsDispos.ToString();
+
+        if (deslances == true) {
+            moinsForce.IsEnabled = statsActualisees.force > statsBase.force;
+            moinsAgilite.IsEnabled = statsActualisees.agilite > statsBase.agilite;
+            moinsVitalite.IsEnabled = statsActualisees.vitalite > statsBase.vitalite;
+            moinsIntelligence.IsEnabled = statsActualisees.intelligence > statsBase.intelligence;
+            moinsCharisme.IsEnabled = statsActualisees.charisme > statsBase.charisme;
+            moinsChance.IsEnabled = statsActualisees.chance > statsBase.chance;
+        }
+
+        if (deslances == true && pointsDispos == 0) {
+            boutonConfirmerStats.IsEnabled = true;
+        } else {
+            boutonConfirmerStats.IsEnabled = false;
+        } 
+        
+        if (pointsDispos <= 0) {
             plusForce.IsEnabled = false;
             plusAgilite.IsEnabled = false;
             plusVitalite.IsEnabled = false;
@@ -130,28 +127,45 @@ public partial class competences : UserControl {
         }
     }
     
+    public void desactiverBoutons() {
+        plusForce.IsEnabled = false;
+        plusAgilite.IsEnabled = false;
+        plusVitalite.IsEnabled = false;
+        plusIntelligence.IsEnabled = false;
+        plusCharisme.IsEnabled = false;
+        plusChance.IsEnabled = false;
+        
+        moinsForce.IsEnabled = false;
+        moinsAgilite.IsEnabled = false;
+        moinsVitalite.IsEnabled = false;
+        moinsIntelligence.IsEnabled = false;
+        moinsCharisme.IsEnabled = false;
+        moinsChance.IsEnabled = false;
+    }
+    
     public void modifierStats(TextBlock nomStat, int modificateur) {
+
+        if (nomStat == ptsForce) {
+            statsActualisees.force += modificateur;
+        }
+        if (nomStat == ptsAgilite) {
+            statsActualisees.agilite += modificateur;
+        }
+        if (nomStat == ptsVitalite) {
+            statsActualisees.vitalite += modificateur;
+        }
+        if (nomStat == ptsIntelligence) {
+            statsActualisees.intelligence += modificateur;
+        } 
+        if (nomStat == ptsCharisme) {
+            statsActualisees.charisme += modificateur;
+        } 
+        if (nomStat == ptsChance) {
+            statsActualisees.chance += modificateur;
+        }
         
-        int forceActuelle = int.Parse(ptsForce.Text);
-        int agiliteActuelle = int.Parse(ptsAgilite.Text);
-        int intelligenceActuelle = int.Parse(ptsIntelligence.Text);
-        int charismeActuelle = int.Parse(ptsCharisme.Text);
-        int chanceActuelle = int.Parse(ptsChance.Text);
-        
-        int ptsDispos = int.Parse(ptsRestants.Text);
-        
-        
-        int stat = int.Parse(nomStat.Text);
-        desactiverBoutonsPlus();
-        
-        stat += modificateur;
-        nomStat.Text = stat.ToString();
-        ptsDispos -= modificateur;
-        ptsRestants.Text = ptsDispos.ToString();
-        
-        desactiverBoutonsPlus();
-        desactiverBoutonsMoins();
-        verifierBoutonConfirmer();
+        pointsDispos -= modificateur;
+        actualiserAffichage();
     }
     
     public void onMoinsForceClick(object? sender, RoutedEventArgs e) {
@@ -190,15 +204,7 @@ public partial class competences : UserControl {
     public void onPlusChanceClick(object? sender, RoutedEventArgs e) {
         modifierStats(ptsChance,1);
     }
-
-
-    public void verifierBoutonConfirmer() {
-        if (deslances == true && ptsRestants.Text == "0") {
-            boutonConfirmerStats.IsEnabled = true;
-        }else {
-            boutonConfirmerStats.IsEnabled = false;
-        }
-    }
+    
     
     public void onValiderClick(object? sender, RoutedEventArgs e) {
         if (VisualRoot is MainWindow mainWindow){

@@ -5,10 +5,10 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 public class Troubadour : HerosClasse {
     
     public Troubadour() : base("Troubadour") {
-        bonusClasseStats.force = -1;
-        bonusClasseStats.charisme = 2;
-        bonusClasseStats.agilite = -2;
-        bonusClasseStats.chance = 3;
+        statsClasse.force = -1;
+        statsClasse.charisme = 2;
+        statsClasse.agilite = -2;
+        statsClasse.chance = 3;
     }
     
     private Random lancerDe = new Random();
@@ -17,10 +17,10 @@ public class Troubadour : HerosClasse {
         //Concerto des Cieux, lancer de dés, si 5 ou plus alors +30% d'esquive (charisme)
         
         int resultatDe = lancerDe.Next(1, 7);
-        int esquive = personnage.race.stats.charisme;
+        int esquive = personnage.race.statsRace.charisme;
         
         if (resultatDe >= 5) {
-            esquive += (personnage.race.stats.charisme * 30 / 100);
+            esquive += (personnage.race.statsRace.charisme * 30 / 100);
             Console.WriteLine("Quelle standing ovation du public !");
         }
         else {

@@ -5,10 +5,10 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 public class Alchimiste : HerosClasse {
     
     public Alchimiste() : base("Alchimiste") {
-        bonusClasseStats.force = -2;
-        bonusClasseStats.charisme = -1;
-        bonusClasseStats.vitalite = 1;
-        bonusClasseStats.chance = 2;
+        statsClasse.force = -2;
+        statsClasse.charisme = -1;
+        statsClasse.vitalite = 1;
+        statsClasse.chance = 2;
     }
     
     private Random lancerDe = new Random();
@@ -18,14 +18,14 @@ public class Alchimiste : HerosClasse {
         //si impaire alors -15% defense
         
         int resultatDe = lancerDe.Next(1, 7);
-        int defense = personnage.race.stats.agilite;
+        int defense = personnage.race.statsRace.agilite;
         
         if (resultatDe %2 == 0) {
-            defense += (personnage.race.stats.agilite * 15 / 100);
+            defense += (personnage.race.statsRace.agilite * 15 / 100);
             Console.WriteLine("Youpi, le chat est vivant et a un bouclier !");
         }
         else {
-            defense -= (personnage.race.stats.force * 15 / 100);
+            defense -= (personnage.race.statsRace.force * 15 / 100);
             Console.WriteLine("Mauvaise pioche, le chat est mort et l'armure s'effrite...");
         }
         return defense;
