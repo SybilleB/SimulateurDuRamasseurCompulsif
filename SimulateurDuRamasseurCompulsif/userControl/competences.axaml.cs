@@ -28,19 +28,19 @@ public partial class competences : UserControl {
         HerosClasse classePersonnage = null;
         
         if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
-            racePersonnage = new Humain(DonneesTemporaires.genre);
+            racePersonnage = new Humain();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
-            racePersonnage = new Elfe(DonneesTemporaires.genre);
+            racePersonnage = new Elfe();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
-            racePersonnage = new Nain(DonneesTemporaires.genre);
+            racePersonnage = new Nain();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
-            racePersonnage = new Gobelin(DonneesTemporaires.genre);
+            racePersonnage = new Gobelin();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
-            racePersonnage = new Fee(DonneesTemporaires.genre);
+            racePersonnage = new Fee();
         }
 
         if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {

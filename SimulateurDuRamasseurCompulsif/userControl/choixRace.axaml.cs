@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using SimulateurDuRamasseurCompulsif.Classes.Races;
 
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
@@ -11,6 +12,10 @@ public partial class choixRace : UserControl {
         InitializeComponent();
     }
 
+    public void afficherInfos()
+    {
+        //titreTalentHumain.Text = Humain.talent;
+    }
     public void onRaceClick(object? sender, RoutedEventArgs routedEventArgs) {
         var button = (Button)sender;
         

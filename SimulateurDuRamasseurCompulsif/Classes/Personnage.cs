@@ -58,16 +58,10 @@ public class Personnage {
             
         }
     }*/
-    public void afficherInfosTotales() {
-        Console.WriteLine("===============================");
-        Console.WriteLine("Nom du joueur : " +  nomJoueur + "\n");
-        race.afficherInfos();
-        Console.WriteLine("===============================");
-    }
 
     public void afficherInventaire() {
         foreach (var item in Inventaire) {
-            Console.WriteLine(item.nomItem + item.descriptionItem + item.rareteItem + item.valeurOr);
+            Console.WriteLine(item.nomItem + item.descriptionItem + item.rareteItem);
         }
     }
 

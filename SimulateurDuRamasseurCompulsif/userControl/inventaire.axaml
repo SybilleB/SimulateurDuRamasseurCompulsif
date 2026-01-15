@@ -14,6 +14,13 @@
             </TextBlock>
         </Button>
         
+        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Padding="30,10" Margin="0 30 30 0" 
+                Background="Transparent" Cursor="Hand" Click="onCreationPersonnageClick">
+            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
+                CREER LE PERSONNAGE ❯
+            </TextBlock>
+        </Button>
+        
         <Border Width="900" Height="500" BorderBrush="#333" BorderThickness="1" CornerRadius="8" BoxShadow="0 10 30 0 #000000">
             
             
@@ -95,11 +102,71 @@
                 <Border Grid.Column="1" Width="1" Background="#333"></Border>
                 
                 <StackPanel Grid.Column="2">
-                    
                     <StackPanel Margin="30" Spacing="5">
                         <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="30" Foreground="#D4AF37">SACOCHE</TextBlock>
                         <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#888">Ce que vous avez ramassé (ou volé) en chemin.</TextBlock>
                     </StackPanel>
+                    
+                    <Grid Margin="40" ColumnSpacing="40" RowSpacing="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
+                                <TextBlock>Item 1</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="1" Grid.Row="0">
+                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
+                                <TextBlock>Item 1</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="2" Grid.Row="0">
+                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
+                                <TextBlock>Item 1</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="3" Grid.Row="0">
+                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
+                                <TextBlock>Item 1</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="4" Grid.Row="0">
+                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
+                                <TextBlock>Item 1</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="0" Grid.Row="1">
+                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
+                                <TextBlock>Item 1</TextBlock>
+                            </Border>
+                            <TextBlock Foreground="AliceBlue">Description Item</TextBlock>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="0" Grid.Row="2">
+                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
+                                <TextBlock>Item 1</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        
+                    </Grid>
                     
                 </StackPanel>
                 

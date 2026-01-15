@@ -8,11 +8,11 @@ public enum Rarete {
 }
 
 public enum TypeItem {
-    Arme,
     Armure,
     Livre, 
     Bijou,
-    Potion
+    Potion,
+    Instruments
 }
 
 public class InventaireStuff {
@@ -20,14 +20,12 @@ public class InventaireStuff {
     public string descriptionItem { get; set; }
     public TypeItem typeItem;
     public Rarete rareteItem { get; set; }
-    public int valeurOr { get; set; }
 
-    public InventaireStuff(string _nomItem, string _descriptionItem, TypeItem _typeItem, Rarete _rareteItem, int _valeurOr) {
+    public InventaireStuff(string _nomItem, string _descriptionItem, TypeItem _typeItem, Rarete _rareteItem) {
         nomItem = _nomItem;
         descriptionItem = _descriptionItem;
         typeItem = _typeItem;
         rareteItem = _rareteItem;
-        valeurOr = _valeurOr;
     }
     
 }

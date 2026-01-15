@@ -26,35 +26,23 @@ public class Stats { //Attributs, utiles pour les méthodes virtuelles à overri
         vitalite += nouvelleStat.vitalite;
         chance += nouvelleStat.chance;
     }
-
-    public void afficherStats() {
-        Console.Write("\nForce : " + force + "\nCharisme : " + charisme + "\nIntelligence : " + intelligence + 
-                      "\nAgilité : " + agilite + "\nVitalité : " + vitalite + "\nChance : " + chance + "\n");
-    }
 }
 
 public class Race {
     public string nomRace { get; set; }
-    public string genre { get; set; }
     public int or;
     public int pv;
     public Stats stats;
     public string talent;
+    public string descriptionTalent;
 
-    public Race(string _nomRace, string _genre, Stats _stats) {
+    public Race(string _nomRace, string _talent, string _descriptionTalent, Stats _stats) {
         nomRace = _nomRace;
-        genre = _genre;
         or = 100;
         pv = 100;
         stats = _stats;
-        talent = "";
-    }
-
-    public void afficherInfos() {
-        
-        Console.Write("Nom du personnage : " + nomRace + "\nGenre : " + genre + 
-                      " kg" + "\nPoints de vie : " + pv + "\n");
-        stats.afficherStats();
+        talent = _talent;
+        descriptionTalent = _descriptionTalent;
     }
 
     public virtual bool classeAutorisee(HerosClasse classe) {

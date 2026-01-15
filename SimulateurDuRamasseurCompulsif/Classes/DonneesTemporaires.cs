@@ -15,5 +15,6 @@ public static class DonneesTemporaires {
     
     public static Bitmap photoProfil { get; set; }
     
+    public static Stats statsPerso { get; set; }
     
 }

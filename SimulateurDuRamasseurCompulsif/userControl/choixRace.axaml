@@ -25,7 +25,6 @@
         
         <Style Selector="Border.borderCarte:pointerover">
             <Setter Property="RenderTransform" Value="scale(1.1)"></Setter>
-            <Setter Property="ZIndex" Value="1"></Setter>
         </Style>
         
         <Style Selector="Border.borderCarte Image">
@@ -199,10 +198,10 @@
                                 
                                 <Border Classes="borderTalent">
                                     <StackPanel>
-                                        <TextBlock Classes="titreTalent">
+                                        <TextBlock Classes="titreTalent" Name="titreTalentHumain">
                                             Volonté de fer
                                         </TextBlock>
-                                        <TextBlock Classes="description">
+                                        <TextBlock Classes="description" Name="descriptionTalentHumain">
                                              Garde 1 PV au lieu de mourir, par pure obstination.
                                         </TextBlock>
                                     </StackPanel>
@@ -238,10 +237,10 @@
                                 </TextBlock>
                                 <Border Classes="borderTalent">
                                     <StackPanel>
-                                        <TextBlock Classes="titreTalent">
+                                        <TextBlock Classes="titreTalent" Name="titreTalentElfe">
                                             Vision Nocturne
                                         </TextBlock>
-                                        <TextBlock Classes="description">
+                                        <TextBlock Classes="description" Name="descriptionTalentElfe">
                                              Repère les pièges assez tôt pour ne pas abimer ses cheveux.
                                         </TextBlock>
                                     </StackPanel>
@@ -276,10 +275,10 @@
                                 
                                 <Border Classes="borderTalent">
                                     <StackPanel>
-                                        <TextBlock Classes="titreTalent">
+                                        <TextBlock Classes="titreTalent" Name="titreTalentNain">
                                             Forgeron
                                         </TextBlock>
-                                        <TextBlock Classes="description">
+                                        <TextBlock Classes="description" Name="descriptionTalentNain">
                                              Considère que porter une armure "Commune" est une insulte à ses ancêtres.
                                         </TextBlock>
                                     </StackPanel>
@@ -316,10 +315,10 @@
                                 
                                 <Border Classes="borderTalent">
                                     <StackPanel>
-                                        <TextBlock Classes="titreTalent">
+                                        <TextBlock Classes="titreTalent" Name="titreTalentGobelin">
                                             Pillard
                                         </TextBlock>
-                                        <TextBlock Classes="description">
+                                        <TextBlock Classes="description" Name="descriptionTalentGobelin">
                                              Gagne 10% d'or bonus grâce à son talent pour secouer les cadavres encore chauds.
                                         </TextBlock>
                                     </StackPanel>
@@ -358,10 +357,10 @@
                                 
                                 <Border Classes="borderTalent">
                                     <StackPanel>
-                                        <TextBlock Classes="titreTalent">
+                                        <TextBlock Classes="titreTalent" Name="titreTalentFee">
                                             Providence Ailée
                                         </TextBlock>
-                                        <TextBlock Classes="description">
+                                        <TextBlock Classes="description" Name="descriptionTalentFee">
                                              Améliore le butin trouvé parce qu'elle a des goûts de luxe et peu de patience.
                                         </TextBlock>
                                     </StackPanel>

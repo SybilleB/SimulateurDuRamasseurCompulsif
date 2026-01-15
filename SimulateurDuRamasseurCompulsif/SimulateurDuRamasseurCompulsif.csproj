@@ -20,8 +20,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <AvaloniaResource Include="assets/**">
-
-        </AvaloniaResource>
+        <AvaloniaResource Include="assets/**"></AvaloniaResource>
     </ItemGroup>
 </Project>

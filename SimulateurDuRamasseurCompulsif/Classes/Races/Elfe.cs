@@ -2,14 +2,17 @@ using SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
-public class Elfe : Race {
+public class Elfe : Race
+{
+
+    public string talent;
+    public string _descriptionTalent;
     
-    public Elfe(string _genre) : base("Elfe", _genre, new Stats()) {
+    public Elfe() : base("Elfe", "Vision Nocturne", "Repère les pièges assez tôt pour ne pas abimer ses cheveux.", new Stats()) {
         stats.intelligence += 1;
         stats.agilite += 1;
         stats.chance += 1;
         stats.vitalite -= 3;
-        talent = "Vision Nocturne";
     }
 
     public override bool classeAutorisee(HerosClasse classe) {

@@ -7,12 +7,6 @@ using SimulateurDuRamasseurCompulsif.Classes;
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
 public partial class inventaire : UserControl {
-    
-    public string nomJoueur;
-    public string choixRaceDefinitif;
-    public string choixClasseDefinitif;
-    public string genre;
-    
     public inventaire() {
         InitializeComponent();
         imgAvatarJoueur.Source = DonneesTemporaires.photoProfil;
@@ -24,5 +18,9 @@ public partial class inventaire : UserControl {
         if (VisualRoot is MainWindow mainWindow){
             mainWindow.ecranTitre.Content = new competences();
         }
+    }
+
+    private void onCreationPersonnageClick(object? sender, RoutedEventArgs e) {
+        
     }
 }

@@ -4,14 +4,11 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
 public class Nain:Race {
    
-    public Nain(string _genre) : base("Gobelin", _genre, new Stats())
-    {
-        
+    public Nain() : base("Gobelin","Forgeron", "Considère que porter une armure \"Commune\" est une insulte à ses ancêtres.", new Stats()) {
         stats.force += 1;
         stats.vitalite += 1;
         stats.intelligence -= 1;
         stats.agilite -= 1;
-        talent = "Forgeron";
     }
     
     public override bool classeAutorisee(HerosClasse classe) {

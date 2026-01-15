@@ -4,14 +4,11 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
 public class Gobelin : Race {
     
-    public Gobelin(string _genre) : base("Gobelin", _genre, new Stats()) {
-        
-        
+    public Gobelin() : base("Gobelin", "Pillard", "Gagne 10% d'or bonus grâce à son talent pour secouer les cadavres encore chauds.", new Stats()) {
         stats.force -= 1;
         stats.charisme -= 2;
         stats.intelligence += 2;
         stats.agilite += 1;
-        talent = "Pillard";
     }
     
     public override bool classeAutorisee(HerosClasse classe) {
