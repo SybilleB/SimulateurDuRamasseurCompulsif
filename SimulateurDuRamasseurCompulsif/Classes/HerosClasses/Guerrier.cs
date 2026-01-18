@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 public class Guerrier : HerosClasse { 
     
-    public Guerrier() : base("Guerrier") {
+    public Guerrier() : base("Guerrier", "Frappe fort et sans peur, pour être sûr de pouvoir raconter ses exploits à la taverne.","Cri de guerre", "Inflige +20 dégats si le résultat du jet de dé est supérieur à 4.") {
         statsClasse.force = 2;
         statsClasse.charisme = 1;
         statsClasse.intelligence = -1;

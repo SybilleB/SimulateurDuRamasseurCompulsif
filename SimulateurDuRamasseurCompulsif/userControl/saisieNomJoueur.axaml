@@ -95,10 +95,10 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30" Margin="40">
                 <StackPanel Spacing="5">
                     <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="28" Foreground="#E0E0E0" TextAlignment="Center" LetterSpacing="3">IDENTITÉ</TextBlock>
-                    <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" FontStyle="Italic" Foreground="#888" >Comment l'histoire se souviendra-t-elle de vous ?</TextBlock>
+                    <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#666" >Comment l'histoire se souviendra-t-elle de vous ?</TextBlock>
                 </StackPanel>
                 
-                <TextBox Name="inputNomJoueur" Width= "300" Watermark="Entrez votre nom..." TextChanged="OnTextChanged" ></TextBox>
+                <TextBox Name="inputNomJoueur" Width= "300" MaxLength="15" Watermark="Entrez votre nom..." TextChanged="OnTextChanged" ></TextBox>
                 
                 <Button HorizontalAlignment="Center" Click="onConfirmerNomClick" Classes="boutonConfirmer" Name="boutonConfirmer">
                     <TextBlock FontFamily="{StaticResource Metamorphous}" LetterSpacing="1">

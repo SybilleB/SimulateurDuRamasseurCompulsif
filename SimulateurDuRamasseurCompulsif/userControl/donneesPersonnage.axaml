@@ -7,15 +7,87 @@
              x:Class="SimulateurDuRamasseurCompulsif.userControl.donneesPersonnage">
     
     <UserControl.Styles>
+        
+        <Style Selector="TextBlock.texteRetourValider">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="Foreground" Value="#888"></Setter>
+        </Style>
+        
+        <Style Selector="Button.boutonRetourValider">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            <Setter Property="Padding" Value="30 10"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+        </Style>
+        
+        <Style Selector="Border.borderCarte">
+            <Setter Property="Width" Value="200"></Setter>
+            <Setter Property="Height" Value="300"></Setter>
+            <Setter Property="BorderBrush" Value="#333"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="10"></Setter>
+            <Setter Property="Background" Value="#000000"></Setter>
+            <Setter Property="BoxShadow" Value="0 4 10 0 #50000000"></Setter>
+            <Setter Property="ClipToBounds" Value="True"></Setter>
+        </Style>
+        
+        <Style Selector="Border.overlayDegrade">
+            <Setter Property="Background">
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                    <GradientStop Offset="0" Color="#00000000"></GradientStop>
+                    <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
+                    <GradientStop Offset="1" Color="#FF000000"></GradientStop>
+                </LinearGradientBrush>
+            </Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.titre">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="10"></Setter>
+            <Setter Property="Foreground" Value="#D4AF37"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+        
+        <Style Selector="StackPanel.infosOrigine">
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+            <Setter Property="Margin" Value="10 0 10 20"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.nom">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="27"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.talent">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="13"></Setter>
+            <Setter Property="Foreground" Value="#999"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+        
         <Style Selector="TextBox.ligneStyle">
             <Setter Property="Background" Value="Transparent"></Setter>
             <Setter Property="BorderBrush" Value="#444"></Setter>
             <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
             <Setter Property="Foreground" Value="#D4AF37"></Setter>
             <Setter Property="CornerRadius" Value="0"></Setter>
-            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
             <Setter Property="FontSize" Value="16"></Setter>
+            
+            <Setter Property="Width" Value="220"></Setter>
+            <Setter Property="MinHeight" Value="50"></Setter>
+            <Setter Property="MaxLength" Value="40"></Setter>
+
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
         </Style>
         
         <Style Selector="TextBox.ligneStyle:pointerover /template/ Border#PART_BorderElement">
@@ -62,34 +134,53 @@
             <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
             <Setter Property="Foreground" Value="#D4AF37"></Setter>
         </Style>
+        
         <Style Selector="RadioButton.boutonRadio:pointerover">
             <Setter Property="BorderBrush" Value="#888"></Setter>
             <Setter Property="Foreground" Value="#E0E0E0"></Setter>
         </Style>
 
+        <Style Selector="StackPanel.stackpanelInventaire">
+            <Setter Property="Orientation" Value="Horizontal"></Setter>
+            <Setter Property="Spacing" Value="10"></Setter>
+        </Style>
         
+        <Style Selector="TextBlock.iconeInventaire">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Margin" Value="0 3 0 0"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.descriptionInventaire">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="10"></Setter>
+            <Setter Property="Foreground" Value="#666"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.inventaire">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+        </Style>
+
     </UserControl.Styles>
     
     <Grid Background="#121212">
             
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top"
-                Padding="30,10" Margin="30 30 0 0" 
-                Background="Transparent" Cursor="Hand" Click="onRetourClick">
-            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
+        <Button Classes="boutonRetourValider" HorizontalAlignment="Left" Margin="30 30 0 0" Click="onRetourClick">
+            <TextBlock Classes="texteRetourValider">
                 ❮ RETOUR
             </TextBlock>
         </Button>
             
-        <Button HorizontalAlignment="Right" VerticalAlignment="Top"
-                Padding="30,10" Margin="0 30 30 0" 
-                Background="Transparent" Cursor="Hand" Click="onValiderClick">
-            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
+        <Button Classes="boutonRetourValider" HorizontalAlignment="Right" Margin="0 30 30 0" Click="onValiderClick" Name="confirmerIdentite">
+            <TextBlock Classes="texteRetourValider">
                 VALIDER ❯
             </TextBlock>
         </Button>
             
         <Border Width="900" Height="500" BorderBrush="#444" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8">
-            
             <Border.Background>
                 <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
                     <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
@@ -109,54 +200,30 @@
                         ORIGINES
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" Spacing="20">
-                        <Border Width="200" Height="300" BorderBrush="#333" BorderThickness="1" CornerRadius="10" 
-                                Background="#000000" BoxShadow="0 4 10 0 #50000000" ClipToBounds="True">
+                        <Border Classes="borderCarte">
                             <Grid>
                                 <Image Name="imgRace" Stretch="UniformToFill"></Image>
                                            
-                                <Border>
-                                    <Border.Background>
-                                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                                            <GradientStop Offset="0" Color="#00000000"></GradientStop>
-                                            <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
-                                            <GradientStop Offset="1" Color="#FF000000"></GradientStop>
-                                        </LinearGradientBrush>
-                                    </Border.Background>
-                                </Border>
+                                <Border Classes="overlayDegrade"></Border>
                                                 
-                                <StackPanel VerticalAlignment="Bottom" Margin="10 0 10 20">
-                                    <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#D4AF37" HorizontalAlignment="Center">RACE</TextBlock>
-                                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
-                                               FontSize="27" Foreground="#E0E0E0" Name="txtRaceNom">
-                                    </TextBlock>
-                                    <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E0E0E0" Name="txtRaceTalent">
-                                    </TextBlock>
+                                <StackPanel Classes="infosOrigine">
+                                    <TextBlock Classes="titre">RACE</TextBlock>
+                                    <TextBlock Classes="nom" Name="txtRaceNom"></TextBlock>
+                                    <TextBlock Classes="talent" Name="txtRaceTalent"></TextBlock>
                                 </StackPanel>
                             </Grid>
                         </Border>
                         
-                        <Border Width="200" Height="300" BorderBrush="#333" BorderThickness="1" CornerRadius="10" 
-                                Background="#000000" BoxShadow="0 4 10 0 #50000000" ClipToBounds="True">
+                        <Border Classes="borderCarte">
                             <Grid>
                                 <Image Name="imgClasse" Stretch="UniformToFill"></Image>
                                                
-                                <Border>
-                                    <Border.Background>
-                                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                                            <GradientStop Offset="0" Color="#00000000"></GradientStop>
-                                            <GradientStop Offset="0.4" Color="#CC000000"></GradientStop>
-                                            <GradientStop Offset="1" Color="#FF000000"></GradientStop>
-                                        </LinearGradientBrush>
-                                    </Border.Background>
-                                </Border>
+                                <Border Classes="overlayDegrade"></Border>
                                                     
-                                <StackPanel VerticalAlignment="Bottom" Margin="10 0 10 20">
-                                    <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#D4AF37" HorizontalAlignment="Center">CLASSE</TextBlock>
-                                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
-                                               FontSize="27" Foreground="#E0E0E0" Name="txtClasseNom">
-                                    </TextBlock>
-                                    <TextBlock TextAlignment="Center" Margin="5" FontFamily="{StaticResource Metamorphous}" FontSize="13" Foreground="#E0E0E0" Name="txtClasseTalent">
-                                    </TextBlock>
+                                <StackPanel Classes="infosOrigine">
+                                    <TextBlock Classes="titre">CLASSE</TextBlock>
+                                    <TextBlock Classes="nom" Name="txtClasseNom"></TextBlock>
+                                    <TextBlock Classes="talent" Name="txtClasseTalent"></TextBlock>
                                 </StackPanel>
                             </Grid>
                         </Border>
@@ -180,7 +247,7 @@
                                     
                         <StackPanel HorizontalAlignment="Center" Spacing="10">
                             <Border Width="100" Height="100" CornerRadius="50" ClipToBounds="True" BoxShadow="0 0 20 0 #20D4AF37">
-                                <Image Name="imgAvatarJoueur" Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/defaultPP.png" Stretch="UniformToFill"/>
+                                <Image Name="imgAvatarJoueur" Stretch="UniformToFill"/>
                             </Border>
                         
                             <Button Click="onImporterPpClick"
@@ -197,7 +264,7 @@
                                 TITRE HONORIFIQUE
                             </TextBlock>
                             <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" Margin="50 0 0 0">
-                                <TextBox Classes="ligneStyle" Width="220" Watermark="Ex : Le pouilleux" TextWrapping="Wrap" TextAlignment="Center" Name="titreHonorifique"></TextBox>
+                                <TextBox Classes="ligneStyle" Watermark="Ex : Le pouilleux" Name="titreHonorifique" KeyUp="verifierConditions_KeyUp"></TextBox>
                                 <Button Padding="5" Background="Transparent" Cursor="Hand" Click="OnAleatoireClick" VerticalAlignment="Bottom">
                                     <TextBlock FontSize="18">🎲</TextBlock>
                                 </Button>
@@ -208,28 +275,28 @@
                         <StackPanel Spacing="10">
                             <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#666">GENRE</TextBlock>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="5">
-                                <RadioButton Classes="boutonRadio" Name="Femme">Femme</RadioButton>
-                                <RadioButton Classes="boutonRadio" Name="Homme">Homme</RadioButton>
-                                <RadioButton Classes="boutonRadio" Name="Troll">Troll</RadioButton>
+                                <RadioButton Classes="boutonRadio" Name="Femme" IsCheckedChanged="verifierConditions_Event">Femme</RadioButton>
+                                <RadioButton Classes="boutonRadio" Name="Homme" IsCheckedChanged="verifierConditions_Event">Homme</RadioButton>
+                                <RadioButton Classes="boutonRadio" Name="Troll" IsCheckedChanged="verifierConditions_Event">Troll</RadioButton>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                     
                     <Border Grid.Row="2" BorderBrush="#333" BorderThickness="0 1 0 0" Margin="20 0" Padding="0 20 0 0" VerticalAlignment="Bottom">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="40">
-                            <StackPanel Orientation="Horizontal" Spacing="10">
-                                <TextBlock FontSize="20">❤️</TextBlock>
+                            <StackPanel Classes="stackpanelInventaire">
+                                <TextBlock Classes="iconeInventaire">❤️</TextBlock>
                                 <StackPanel>
-                                    <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#666">PV INITIAUX</TextBlock>
-                                    <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" FontWeight="Bold" Foreground="#E0E0E0">100 HP</TextBlock>
+                                    <TextBlock Classes="descriptionInventaire">PV INITIAUX</TextBlock>
+                                    <TextBlock Classes="inventaire">100 HP</TextBlock>
                                 </StackPanel>
                             </StackPanel>
                             
-                            <StackPanel Orientation="Horizontal" Spacing="10">
-                                <TextBlock FontSize="20">🪙</TextBlock>
+                            <StackPanel Classes="stackpanelInventaire">
+                                <TextBlock Classes="iconeInventaire">🪙</TextBlock>
                                 <StackPanel>
-                                    <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#666">BOURSE INITIALE</TextBlock>
-                                    <TextBlock FontFamily="{StaticResource Alice}" FontSize="16" FontWeight="Bold" Foreground="#E0E0E0">100 Or</TextBlock>
+                                    <TextBlock Classes="descriptionInventaire">BOURSE INITIALE</TextBlock>
+                                    <TextBlock Classes="inventaire">100 Or</TextBlock>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>

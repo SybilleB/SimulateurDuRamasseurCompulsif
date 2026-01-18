@@ -3,49 +3,31 @@ using SimulateurDuRamasseurCompulsif.Classes.Races;
 using SimulateurDuRamasseurCompulsif.Classes.Items;
 using System.Collections.Generic;
 using System;
+using Avalonia.Media.Imaging;
 
 namespace SimulateurDuRamasseurCompulsif.Classes;
 
-public class Personnage {
-    public string nomJoueur { get; set; }
-    public Race race { get; set; }
-    public HerosClasse classe { get; set; }
-    public Stats statsPerso { get; set; }
-    
-    public List<InventaireStuff> Inventaire { get; set; } = new List<InventaireStuff>();
-    
+public class Personnage
+{
+    public string nomJoueur;
+    public string titreHonorifique;
+    public Bitmap photoProfil;
+    public string genre;
+    public Race race;
+    public HerosClasse classe;
+    public Stats statsPerso;
+    public List<InventaireStuff> Inventaire = new List<InventaireStuff>();
     public int capaciteMax = 10;
     
-    public Personnage(string _nomJoueur, Race _race, HerosClasse _classe, Stats _statsChoix) {
+    public Personnage(string _nomJoueur, string _titreHonorifique, Bitmap _photoProfil, string _genre, Race _race, HerosClasse _classe, Stats _stats) {
         
         nomJoueur = _nomJoueur;
+        titreHonorifique = _titreHonorifique;
+        photoProfil = _photoProfil;
+        genre = _genre;
         race = _race;
         classe = _classe;
-        statsPerso = new Stats();
-        
-        statsPerso.ajouterStats(race.statsRace);
-        statsPerso.ajouterStats(classe.statsClasse);
-        statsPerso.ajouterStats(_statsChoix);
-        
-        affinités(); 
-    }
-    
-    public void affinités() {
-        if (race is Humain && classe is Guerrier) {
-            statsPerso.force += 2;
-        }
-        if (race is Elfe && classe is Voleur) {
-            statsPerso.agilite += 2;
-        }
-        if (race is Nain && classe is Alchimiste) {
-            statsPerso.vitalite += 2;
-        }
-        if (race is Gobelin && classe is Troubadour) {
-            statsPerso.chance += 2;
-        }
-        if (race is Fee && classe is Mage) {
-            statsPerso.intelligence += 2;
-        }
+        statsPerso = _stats;
     }
 
     public void afficherInventaire() {

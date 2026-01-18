@@ -9,9 +9,22 @@ namespace SimulateurDuRamasseurCompulsif.userControl;
 public partial class inventaire : UserControl {
     public inventaire() {
         InitializeComponent();
-        imgAvatarJoueur.Source = DonneesTemporaires.photoProfil;
-        txtNomJoueur.Text = DonneesTemporaires.nomJoueur;
-        titreHonorifique.Text = DonneesTemporaires.titreHonorifique;
+        afficherInfosPerso();
+    }
+
+    public void afficherInfosPerso() {
+
+        Personnage perso = DonneesTemporaires.personnageFinal;
+        imgAvatarJoueur.Source = perso.photoProfil;
+        txtNomJoueur.Text = perso.nomJoueur;
+        titreHonorifique.Text = perso.titreHonorifique;
+        
+        forceInventaire.Text = $"⚔️ Force : {perso.statsPerso.force} pts";
+        agiliteInventaire.Text = $"🏹 Agilité : {perso.statsPerso.agilite} pts";
+        vitaliteInventaire.Text = $"💖 Vitalité : {perso.statsPerso.vitalite} pts";
+        intelligenceInventaire.Text = $"📖 Intelligence : {perso.statsPerso.intelligence} pts";
+        charismeInventaire.Text = $"👑️ Charisme : {perso.statsPerso.charisme} pts";
+        chanceInventaire.Text = $"🎲 Chance : {perso.statsPerso.chance} pts";
     }
     
     public void onRetourClick(object? sender, RoutedEventArgs e) {

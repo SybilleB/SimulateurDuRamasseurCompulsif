@@ -4,7 +4,8 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 public class Alchimiste : HerosClasse {
     
-    public Alchimiste() : base("Alchimiste") {
+    public Alchimiste() : base("Alchimiste", "Mélange des trucs avec d'autres trucs pour créer des miracles ou des explosions. Généralement les deux en même temps.", 
+        "La fiole de Schrödinger", "Si le résultat du jet de dé est pair, alors sa défense augmente de 15%. Si c'est impair, elle diminue de 15%.") {
         statsClasse.force = -2;
         statsClasse.charisme = -1;
         statsClasse.vitalite = 1;

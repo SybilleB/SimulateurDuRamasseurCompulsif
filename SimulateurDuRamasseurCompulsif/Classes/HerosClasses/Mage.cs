@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 public class Mage : HerosClasse {
     
-    public Mage() : base("Mage") {
+    public Mage() : base("Mage", "Lance des sorts complexes, en espérant ne pas se crâmer les sourcils.", "Champs de force", "Augmente sa défense de 15% si le résultat du jet de dé est inférieur à 4.") {
         statsClasse.force = -2;
         statsClasse.agilite = -2;
         statsClasse.chance = 3;

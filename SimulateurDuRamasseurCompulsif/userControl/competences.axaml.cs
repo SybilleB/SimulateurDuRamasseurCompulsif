@@ -13,6 +13,9 @@ public partial class competences : UserControl {
     public bool deslances = false;
     public int pointsDispos = 0;
     
+    public Race raceDefinitive = null;
+    public HerosClasse classeDefinitive = null;
+    
     public Stats statsBase;
     public Stats statsActualisees;
     
@@ -24,49 +27,65 @@ public partial class competences : UserControl {
 
     public void initialiserPoints() {
         
-        Race raceTemporaire = null;
-        HerosClasse classeTemporaire = null;
-        
         if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
-            raceTemporaire = new Humain();
+            raceDefinitive = new Humain();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
-            raceTemporaire = new Elfe();
+            raceDefinitive = new Elfe();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
-            raceTemporaire = new Nain();
+            raceDefinitive = new Nain();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
-            raceTemporaire = new Gobelin();
+            raceDefinitive = new Gobelin();
         }
         if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
-            raceTemporaire = new Fee();
+            raceDefinitive = new Fee();
         }
 
         if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {
-            classeTemporaire = new Guerrier();
+            classeDefinitive = new Guerrier();
         }
         if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
-            classeTemporaire = new Mage();
+            classeDefinitive = new Mage();
         }
         if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
-            classeTemporaire = new Voleur();
+            classeDefinitive = new Voleur();
         }
         if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
-            classeTemporaire = new Alchimiste();
+            classeDefinitive = new Alchimiste();
         }
         if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
-            classeTemporaire = new Troubadour();
+            classeDefinitive = new Troubadour();
         }
         
         statsBase = new Stats();
-        statsBase.ajouterStats(raceTemporaire.statsRace);
-        statsBase.ajouterStats(classeTemporaire.statsClasse);
+        statsBase.ajouterStats(raceDefinitive.statsRace);
+        statsBase.ajouterStats(classeDefinitive.statsClasse);
 
         statsActualisees = new Stats();
         statsActualisees.ajouterStats(statsBase);
         
+        pointsAffinites();
         actualiserAffichage();
+    }
+    
+    public void pointsAffinites() {
+        if (DonneesTemporaires.choixRaceDefinitif == "Humain" && DonneesTemporaires.choixClasseDefinitif == "Guerrier"){
+            statsActualisees.force += 2;
+        }
+        if (DonneesTemporaires.choixRaceDefinitif == "Elfe" && DonneesTemporaires.choixClasseDefinitif == "Voleur") {
+            statsActualisees.agilite += 2;
+        }
+        if (DonneesTemporaires.choixRaceDefinitif == "Nain" && DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
+            statsActualisees.vitalite += 2;
+        }
+        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin" && DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
+            statsActualisees.chance += 2;
+        }
+        if (DonneesTemporaires.choixRaceDefinitif == "Fée" && DonneesTemporaires.choixClasseDefinitif == "Mage") {
+            statsActualisees.intelligence += 2;
+        }
     }
     
     public void onLancerDesClick(object? sender, RoutedEventArgs e) {
@@ -77,7 +96,12 @@ public partial class competences : UserControl {
         de1.Text = lancer1.ToString();
         de2.Text = lancer2.ToString();
         
-        pointsDispos = lancer1 + lancer2;
+        if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
+            pointsDispos = lancer1 + lancer2 + 3;
+
+        } else {
+            pointsDispos = lancer1 + lancer2;
+        }
         
         boutonLancer.IsEnabled = false;
         deslances = true;
@@ -94,6 +118,10 @@ public partial class competences : UserControl {
         ptsChance.Text = statsActualisees.chance.ToString();
 
         ptsRestants.Text = pointsDispos.ToString();
+
+        if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
+            bonusHumain.IsVisible = true;
+        }
 
         if (deslances == true) {
             moinsForce.IsEnabled = statsActualisees.force > statsBase.force;
@@ -207,11 +235,16 @@ public partial class competences : UserControl {
     
     
     public void onValiderClick(object? sender, RoutedEventArgs e) {
+        
+        Personnage personnage = new Personnage(DonneesTemporaires.nomJoueur, DonneesTemporaires.titreHonorifique, 
+            DonneesTemporaires.photoProfil, DonneesTemporaires.genre, raceDefinitive, classeDefinitive, statsActualisees);
+        
+        DonneesTemporaires.personnageFinal = personnage;
+        
         if (VisualRoot is MainWindow mainWindow){
             mainWindow.ecranTitre.Content = new inventaire();
         }
     }
-
     public void onRetourClick(object? sender, RoutedEventArgs e) {
         if (VisualRoot is MainWindow mainWindow){
             mainWindow.ecranTitre.Content = new donneesPersonnage();

@@ -4,10 +4,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
         x:Class="SimulateurDuRamasseurCompulsif.MainWindow"
-        Icon="assets/pictures/defaultPP.png"
-        Title="SimulateurDuRamasseurCompulsif"
-        Width="1280"
-        Height="720">
+        Icon="assets/pictures/icone_jeu.png"
+        Title="Le Simulateur Du Ramasseur Compulsif"
+        Width="1600"
+        Height="900">
     
     <ContentControl Name="ecranTitre"></ContentControl>
     

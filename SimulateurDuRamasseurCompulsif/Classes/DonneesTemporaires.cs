@@ -8,20 +8,13 @@ namespace SimulateurDuRamasseurCompulsif;
 
 public static class DonneesTemporaires {
 
-    public static string nomJoueur { get; set; }
-    public static string titreHonorifique { get; set; }
-    public static string genre { get; set; }
-    public static string choixRaceDefinitif { get; set; }
-    public static string choixClasseDefinitif { get; set; }
+    public static string nomJoueur;
+    public static string titreHonorifique;
+    public static Bitmap photoProfil;
+    public static string genre;
+    public static string choixRaceDefinitif;
+    public static string choixClasseDefinitif;
+
     
-    public static Bitmap photoProfil { get; set; }
-    
-    public static int bonusForce { get; set; }
-    public static int bonusAgilite { get; set; }
-    public static int bonusVitalite { get; set; }
-    public static int bonusIntelligence { get; set; }
-    public static int bonusCharisme { get; set; }
-    public static int bonusChance { get; set; }
-    
-    public static Personnage personnageFinal {get; set;}
+    public static Personnage personnageFinal;
 }

@@ -2,13 +2,20 @@ using System;
 
 namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
-public abstract class HerosClasse {
-    
-    public string nomClasse { get; set; }
+public abstract class HerosClasse
+{
+
+    public string nomClasse;
+    public string description;
+    public string talent;
+    public string descriptionTalent;
     public Stats statsClasse;
 
-    public HerosClasse(string _nomClasse) {
+    public HerosClasse(string _nomClasse, string _description, string _talent, string _descriptionTalent) {
         nomClasse = _nomClasse;
+        description = _description;
+        talent = _talent;
+        descriptionTalent = _descriptionTalent;
         statsClasse = new Stats();
     }
 

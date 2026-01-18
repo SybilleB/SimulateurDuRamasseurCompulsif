@@ -5,6 +5,53 @@
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="SimulateurDuRamasseurCompulsif.userControl.inventaire">
 
+    <UserControl.Styles>
+        
+        <Style Selector="TextBlock.ptsCompetence">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+        </Style>
+        
+        <Style Selector="Border.items">
+            <Setter Property="Width" Value="90"></Setter>
+            <Setter Property="Height" Value="90"></Setter>
+            <Setter Property="Background" Value="#252525"></Setter>
+            <Setter Property="BorderBrush" Value="#444"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="Margin" Value="8"></Setter>
+            <Setter Property="BoxShadow" Value="0 2 5 0 #20000000"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        
+        <Style Selector="Border.items:pointerover">
+            <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
+            <Setter Property="Background" Value="#353535"></Setter>
+            <Setter Property="RenderTransform" Value="scale(1.05)"></Setter>
+            <Setter Property="BoxShadow" Value="0 0 10 0 #40D4AF37"></Setter>
+            <Setter Property="ZIndex" Value="10"></Setter> </Style>
+        
+        <Style Selector="Border.items TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="Foreground" Value="#666"></Setter>
+            <Setter Property="FontSize" Value="11"></Setter>
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style>
+        
+    </UserControl.Styles>
+    
+    
     <Grid Background="#121212">
         
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Padding="30,10" Margin="30 30 0 0" 
@@ -59,33 +106,19 @@
                                        FontSize="26" Foreground="#D4AF37" Name="txtNomJoueur">
                             </TextBlock>
                                 
-                            <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="12" Foreground="#666" HorizontalAlignment="Center" Name="titreHonorifique">
-                                TITRE HONORIFIQUE
-                            </TextBlock>
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#666" TextWrapping="Wrap" HorizontalAlignment="Center" Name="titreHonorifique"></TextBlock>
                         </StackPanel>
                             
                         <Border Grid.Row="1" Width="250" BorderBrush="#333" BorderThickness="0 0 0 1"></Border>
                             
                         <StackPanel Grid.Row="2" Margin="40 20 0 0" Spacing="30">
                             <StackPanel Spacing="10">
-                                <TextBlock Foreground="#E0E0E0" FontFamily="{StaticResource Alice}" FontSize="14">
-                                    ⚔️ Force : 
-                                </TextBlock>
-                                <TextBlock Foreground="#E0E0E0" FontFamily="{StaticResource Alice}" FontSize="14">
-                                    🏹 Agilité : 
-                                </TextBlock>
-                                <TextBlock Foreground="#E0E0E0" FontFamily="{StaticResource Alice}" FontSize="14">
-                                    💖 Vitalité : 
-                                </TextBlock>
-                                <TextBlock Foreground="#E0E0E0" FontFamily="{StaticResource Alice}" FontSize="14">
-                                    📖 Intelligence : 
-                                </TextBlock>
-                                <TextBlock Foreground="#E0E0E0" FontFamily="{StaticResource Alice}" FontSize="14">
-                                    👑️ Charisme : 
-                                </TextBlock>
-                                <TextBlock Foreground="#E0E0E0" FontFamily="{StaticResource Alice}" FontSize="14">
-                                    🎲 Chance : 
-                                </TextBlock>
+                                <TextBlock Classes="ptsCompetence" Name="forceInventaire"></TextBlock>
+                                <TextBlock Classes="ptsCompetence" Name="agiliteInventaire"></TextBlock>
+                                <TextBlock Classes="ptsCompetence" Name="vitaliteInventaire"></TextBlock>
+                                <TextBlock Classes="ptsCompetence" Name="intelligenceInventaire"></TextBlock>
+                                <TextBlock Classes="ptsCompetence" Name="charismeInventaire"></TextBlock>
+                                <TextBlock Classes="ptsCompetence" Name="chanceInventaire"></TextBlock>
                             </StackPanel>
                             
                             <StackPanel Orientation="Horizontal" Spacing="25">
@@ -99,6 +132,7 @@
                         </StackPanel>
                     </Grid>
                 </Border>
+                
                 <Border Grid.Column="1" Width="1" Background="#333"></Border>
                 
                 <StackPanel Grid.Column="2">
@@ -107,73 +141,30 @@
                         <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#888">Ce que vous avez ramassé (ou volé) en chemin.</TextBlock>
                     </StackPanel>
                     
-                    <Grid Margin="40" ColumnSpacing="40" RowSpacing="40">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
+                    <UniformGrid Rows="4" Columns="5" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top">
+
+                        <Border Classes="items" Name="item1"><Image Source="../assets/pictures/map.png"></Image></Border>
+                        <Border Classes="items" Name="item2"><Image Source="../assets/pictures/pain.png"></Image></Border>
+                        <Border Classes="items" Name="item3"><TextBlock>Carte</TextBlock></Border>
+                        <Border Classes="items" Name="item4"><TextBlock>Pain</TextBlock></Border>
                         
-                        <StackPanel Grid.Column="0" Grid.Row="0">
-                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
-                                <TextBlock>Item 1</TextBlock>
-                            </Border>
-                        </StackPanel>
+
+                        <Border Classes="items"></Border>
+                        <Border Classes="items"></Border>
+                        <Border Classes="items"></Border>
+                        <Border Classes="items"></Border>
                         
-                        <StackPanel Grid.Column="1" Grid.Row="0">
-                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
-                                <TextBlock>Item 1</TextBlock>
-                            </Border>
-                        </StackPanel>
+
+                        <Border Classes="items"></Border>
+                        <Border Classes="items"></Border>
+                        <Border Classes="items"></Border>
+                        <Border Classes="items"></Border>
                         
-                        <StackPanel Grid.Column="2" Grid.Row="0">
-                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
-                                <TextBlock>Item 1</TextBlock>
-                            </Border>
-                        </StackPanel>
+
                         
-                        <StackPanel Grid.Column="3" Grid.Row="0">
-                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
-                                <TextBlock>Item 1</TextBlock>
-                            </Border>
-                        </StackPanel>
-                        
-                        <StackPanel Grid.Column="4" Grid.Row="0">
-                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
-                                <TextBlock>Item 1</TextBlock>
-                            </Border>
-                        </StackPanel>
-                        
-                        <StackPanel Grid.Column="0" Grid.Row="1">
-                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
-                                <TextBlock>Item 1</TextBlock>
-                            </Border>
-                            <TextBlock Foreground="AliceBlue">Description Item</TextBlock>
-                        </StackPanel>
-                        
-                        <StackPanel Grid.Column="0" Grid.Row="2">
-                            <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="4">
-                                <TextBlock>Item 1</TextBlock>
-                            </Border>
-                        </StackPanel>
-                        
-                    </Grid>
-                    
+                    </UniformGrid>
                 </StackPanel>
-                
             </Grid>
-            
-            
         </Border>
-        
     </Grid>
 </UserControl>

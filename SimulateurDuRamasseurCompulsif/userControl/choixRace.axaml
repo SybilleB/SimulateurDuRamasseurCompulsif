@@ -98,7 +98,7 @@
         <Style Selector="TextBlock.description">
             <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
             <Setter Property="FontSize" Value="12"></Setter>
-            <Setter Property="Foreground" Value="#888"></Setter>
+            <Setter Property="Foreground" Value="#999"></Setter>
             <Setter Property="TextWrapping" Value="Wrap"></Setter>
         </Style>
         
@@ -164,7 +164,6 @@
     </UserControl.Styles>
     
     <Grid Background="#121212">
-        
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Padding="30,10" Margin="30 30 0 0" 
                 Background="Transparent" Cursor="Hand" Click="onRetourClick">
             <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
@@ -172,207 +171,183 @@
             </TextBlock>
         </Button>
         
-        <StackPanel VerticalAlignment="Center" Spacing="50">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="28" FontFamily="{StaticResource Metamorphous}" Foreground="#E0E0E0" LetterSpacing="2">
-                CHOISISSEZ VOTRE ORIGINE
-            </TextBlock>
+        
+        <Border BorderBrush="#333" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="0 40" Margin="20 0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
+                    <GradientStop Offset="1" Color="#161618"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
             
-            <UniformGrid Rows="1" HorizontalAlignment="Stretch" Margin="20 0">
-                <Border Classes="borderCarte">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/humain_v2.png"></Image>
-                        <Border Classes="overlay"></Border>
-                        <StackPanel Classes="blocDescription">
-                            <TextBlock Classes="titreRace">
-                                Humain
-                            </TextBlock>
-                            
-                            <StackPanel Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Polyvalent et ambitieux, l'humain s'adapte à toutes les situations.
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description">
-                                    +3 points de compétences à répartir
-                                </TextBlock>
-                                
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent" Name="titreTalentHumain">
-                                            Volonté de fer
-                                        </TextBlock>
-                                        <TextBlock Classes="description" Name="descriptionTalentHumain">
-                                             Garde 1 PV au lieu de mourir, par pure obstination.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixHumain" Click="onRaceClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
+            <StackPanel VerticalAlignment="Center" Spacing="50">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="28" FontFamily="{StaticResource Metamorphous}" Foreground="#E0E0E0" LetterSpacing="2">
+                    CHOISISSEZ VOTRE ORIGINE
+                </TextBlock>
                 
-                <Border Classes="borderCarte">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/elfe_v2.png"></Image>
-                        <Border Classes="overlay"></Border>
-                        <StackPanel Classes="blocDescription">
-                            <TextBlock Classes="titreRace">
-                                Elfe
-                            </TextBlock>
-                            
-                            <StackPanel Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Etre gracieux et agile, maître de l'arc et de la magie naturelle.
+                <UniformGrid Rows="1" HorizontalAlignment="Stretch" Margin="20 0">
+                    <Border Classes="borderCarte">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/humain_v2.png"></Image>
+                            <Border Classes="overlay"></Border>
+                            <StackPanel Classes="blocDescription">
+                                <TextBlock Classes="titreRace" Name="titreRaceHumain">
+                                    
                                 </TextBlock>
                                 
-                                <TextBlock Classes="description">
-                                    +1 charisme, +1 intelligence, +1 agilité
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description">
-                                    -2 vitalité
-                                </TextBlock>
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent" Name="titreTalentElfe">
-                                            Vision Nocturne
-                                        </TextBlock>
-                                        <TextBlock Classes="description" Name="descriptionTalentElfe">
-                                             Repère les pièges assez tôt pour ne pas abimer ses cheveux.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
+                                <StackPanel Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionHumain"></TextBlock>
+                                    
+                                    <TextBlock Classes="description" Name="competencesHumain">
+                                        +3 points de compétences à répartir en plus
+                                    </TextBlock>
+                                    
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentHumain"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentHumain"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixElfe" Click="onRaceClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
-                
-                <Border Classes="borderCarte">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/nain_v2.png"></Image>
-                        <Border Classes="overlay"></Border>
-                        <StackPanel  Classes="blocDescription">
-                            <TextBlock  Classes="titreRace">
-                                Nain
-                            </TextBlock>
-                            
-                            <StackPanel  Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Combattant robuste et obstiné, expert des profondeurs et de la forge.
-                                </TextBlock>
-                                <TextBlock Classes="description">
-                                    +1 force, +1 vitalité
-                                </TextBlock>
-                                <TextBlock Classes="description">
-                                    -1 intelligence, -1 agilité
+                            <Button Classes="boutonChoisir" Name="choixHumain" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="borderCarte">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/elfe_v2.png"></Image>
+                            <Border Classes="overlay"></Border>
+                            <StackPanel Classes="blocDescription">
+                                <TextBlock Classes="titreRace" Name="titreRaceElfe">
+                                    
                                 </TextBlock>
                                 
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent" Name="titreTalentNain">
-                                            Forgeron
-                                        </TextBlock>
-                                        <TextBlock Classes="description" Name="descriptionTalentNain">
-                                             Considère que porter une armure "Commune" est une insulte à ses ancêtres.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
+                                <StackPanel Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionElfe"></TextBlock>
+                                    
+                                    <TextBlock Classes="description" Name="competencesElfePlus">
+                                        +1 charisme, +1 intelligence, +1 agilité
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description" Name="competencesElfeMoins">
+                                        -2 vitalité
+                                    </TextBlock>
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentElfe"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentElfe"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixNain" Click="onRaceClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
-                
-                <Border Classes="borderCarte">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/gobelin_v2.png"></Image>
-                        <Border Classes="overlay"></Border>
-                        <StackPanel  Classes="blocDescription">
-                            <TextBlock  Classes="titreRace">
-                                Gobelin
-                            </TextBlock>
-                            
-                            <StackPanel  Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Créature rusée et agile, compensant sa petite taille par sa malice et sa cupidité.
-                                </TextBlock>
+                            <Button Classes="boutonChoisir" Name="choixElfe" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="borderCarte">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/nain_v2.png"></Image>
+                            <Border Classes="overlay"></Border>
+                            <StackPanel  Classes="blocDescription">
+                                <TextBlock  Classes="titreRace" Name="titreRaceNain"></TextBlock>
                                 
-                                <TextBlock Classes="description">
-                                    +2 intelligence, +1 agilité
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description">
-                                    -2 charisme, -1 force
-                                </TextBlock>
-                                
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent" Name="titreTalentGobelin">
-                                            Pillard
-                                        </TextBlock>
-                                        <TextBlock Classes="description" Name="descriptionTalentGobelin">
-                                             Gagne 10% d'or bonus grâce à son talent pour secouer les cadavres encore chauds.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
+                                <StackPanel  Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionNain"></TextBlock>
+                                    <TextBlock Classes="description" Name="competencesNainPlus">
+                                        +1 force, +1 vitalité
+                                    </TextBlock>
+                                    <TextBlock Classes="description" Name="competencesNainMoins">
+                                        -1 intelligence, -1 agilité
+                                    </TextBlock>
+                                    
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentNain"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentNain"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixGobelin" Click="onRaceClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
-                
-                <Border Classes="borderCarte">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/fee_v3.png"></Image>
-                       
-                        <Border Classes="overlay"></Border>
-                        
-                        <StackPanel  Classes="blocDescription">
-                            <TextBlock  Classes="titreRace">
-                                Fée
-                            </TextBlock>
-                            
-                            <StackPanel  Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Minuscule et insaisissable, elle manie la magie ancienne et voltige avec grâce.
-                                </TextBlock>
+                            <Button Classes="boutonChoisir" Name="choixNain" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="borderCarte">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/gobelin_v2.png"></Image>
+                            <Border Classes="overlay"></Border>
+                            <StackPanel  Classes="blocDescription">
+                                <TextBlock  Classes="titreRace" Name="titreRaceGobelin"></TextBlock>
                                 
-                                <TextBlock Classes="description">
-                                    +1 agilité, +1 chance
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description">
-                                    -2 force
-                                </TextBlock>
-                                
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent" Name="titreTalentFee">
-                                            Providence Ailée
-                                        </TextBlock>
-                                        <TextBlock Classes="description" Name="descriptionTalentFee">
-                                             Améliore le butin trouvé parce qu'elle a des goûts de luxe et peu de patience.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
+                                <StackPanel  Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionGobelin">
+                                        
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description" Name="competencesGobelinPlus">
+                                        +2 intelligence, +1 agilité
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description" Name="competencesGobelinMoins">
+                                        -2 charisme, -1 force
+                                    </TextBlock>
+                                    
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentGobelin"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentGobelin"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixFee" Click="onRaceClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
-            </UniformGrid> 
-        </StackPanel>
+                            <Button Classes="boutonChoisir" Name="choixGobelin" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="borderCarte">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/fee_v3.png"></Image>
+                           
+                            <Border Classes="overlay"></Border>
+                            
+                            <StackPanel  Classes="blocDescription">
+                                <TextBlock  Classes="titreRace" Name="titreRaceFee"></TextBlock>
+                                
+                                <StackPanel  Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionFee"></TextBlock>
+                                    
+                                    <TextBlock Classes="description" Name="competencesFeePlus">
+                                        +1 agilité, +1 chance
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description" Name="competencesFeeMoins">
+                                        -2 force
+                                    </TextBlock>
+                                    
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentFee"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentFee"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button Classes="boutonChoisir" Name="choixFee" Click="onRaceClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </UniformGrid> 
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

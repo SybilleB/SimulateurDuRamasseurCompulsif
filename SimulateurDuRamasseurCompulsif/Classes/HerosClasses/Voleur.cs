@@ -4,7 +4,8 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 public class Voleur : HerosClasse {
     
-    public Voleur() : base("Voleur") {
+    public Voleur() : base("Voleur", "Considère que la propriété privée est un concept très relatif, surtout quand le propriétaire ne regarde pas.",
+        "Festin de l'ombre", "Vole 20PV de l'ennemi au début du combat si le résultat du jet de dé est supérieur à 4.") {
         statsClasse.force = -3;
         statsClasse.intelligence = 1;
         statsClasse.agilite = 2;

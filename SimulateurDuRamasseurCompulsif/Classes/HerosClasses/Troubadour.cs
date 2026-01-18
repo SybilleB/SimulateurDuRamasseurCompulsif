@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
 public class Troubadour : HerosClasse {
     
-    public Troubadour() : base("Troubadour") {
+    public Troubadour() : base("Troubadour", "Convaincu que le monde a besoin d'un fond sonore pour ses exploits, même si personne ne lui a rien demandé.", "Concerto des Cieux", "Augmente son esquive de 30% si le résultat du jet de dé est supérieur à 5.") {
         statsClasse.force = -1;
         statsClasse.charisme = 2;
         statsClasse.agilite = -2;

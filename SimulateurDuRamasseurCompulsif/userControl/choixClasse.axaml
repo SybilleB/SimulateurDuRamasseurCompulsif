@@ -191,7 +191,6 @@
     </UserControl.Styles>
     
     <Grid Background="#121212">
-        
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Padding="30,10" Margin="30 30 0 0" 
                 Background="Transparent" Cursor="Hand" Click="onRetourClick">
             <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
@@ -199,293 +198,263 @@
             </TextBlock>
         </Button>
         
-        <StackPanel VerticalAlignment="Center" Spacing="50">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="28" FontFamily="{StaticResource Metamorphous}" Foreground="#E0E0E0" LetterSpacing="2">
-                CHOISISSEZ VOTRE CLASSE
-            </TextBlock>
+        
+        <Border BorderBrush="#333" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="0 40" Margin="20 0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
+                    <GradientStop Offset="1" Color="#161618"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
             
-            <UniformGrid Rows="1" HorizontalAlignment="Stretch" Margin="20 0">
-                <Border Classes="borderCarte" Name="carteGuerrier">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/guerrier_v1.png"></Image>
-                        
-                        <Border Classes="overlayOr" Name ="affiniteGuerrier"></Border>
-                        
-                        <Border Classes="overlay"></Border>
-                        
-                        <StackPanel>
-                            <TextBlock Classes="combinaison" Name ="combinaisonForteGuerrier">
-                                Combinaison forte
-                            </TextBlock>
-                            <TextBlock Classes="combinaison" Name ="combinaisonImpossibleGuerrier">
-                                Combinaison impossible
-                            </TextBlock>
-                        </StackPanel>
-                        
-                        <StackPanel Classes="blocDescription">
+            <StackPanel VerticalAlignment="Center" Spacing="50">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="28" FontFamily="{StaticResource Metamorphous}" Foreground="#E0E0E0" LetterSpacing="2">
+                    CHOISISSEZ VOTRE CLASSE
+                </TextBlock>
+                
+                <UniformGrid Rows="1" HorizontalAlignment="Stretch" Margin="20 0">
+                    <Border Classes="borderCarte" Name="carteGuerrier">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/guerrier_v1.png"></Image>
                             
+                            <Border Classes="overlayOr" Name ="affiniteGuerrier"></Border>
+                            
+                            <Border Classes="overlay"></Border>
+                            
+                            <StackPanel>
+                                <TextBlock Classes="combinaison" Name ="combinaisonForteGuerrier">
+                                    Combinaison forte
+                                </TextBlock>
+                                <TextBlock Classes="combinaison" Name ="combinaisonImpossibleGuerrier">
+                                    Combinaison impossible
+                                </TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel Classes="blocDescription">
+                                
 
-                            <TextBlock Classes=" titreClasse">
-                                Guerrier
-                            </TextBlock>
-                            
-                            <StackPanel Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Frappe fort et sans peur, pour être sûr de pouvoir raconter ses exploits à la taverne.
-                                </TextBlock>
+                                <TextBlock Classes=" titreClasse" Name="titreClasseGuerrier"></TextBlock>
                                 
-                                <TextBlock Classes="description">
-                                    +2 force, +1 charisme
-                                </TextBlock>
-                                <TextBlock Classes="description">
-                                    -2 agilité, -1 intelligence
-                                </TextBlock>
-                                <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name ="attributBonusGuerrier">
-                                    Bonus de combinaison : +2 force
-                                </TextBlock>
-                                
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent">
-                                            Cri de guerre
-                                        </TextBlock>
-                                        <TextBlock Classes="description">
-                                            Inflige +20 dégats si le résultat du jet de dé est supérieur à 4.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
+                                <StackPanel Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionGuerrier"></TextBlock>
+                                    
+                                    <TextBlock Classes="description">
+                                        +2 force, +1 charisme
+                                    </TextBlock>
+                                    <TextBlock Classes="description">
+                                        -2 agilité, -1 intelligence
+                                    </TextBlock>
+                                    <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name ="attributBonusGuerrier">
+                                        Bonus de combinaison : +2 force
+                                    </TextBlock>
+                                    
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentGuerrier"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentGuerrier"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixGuerrier" Click="onClasseClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
-                
-                <Border Classes="borderCarte" Name="carteMage">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/mage_v1.png"></Image>
-                        
-                        <Border Classes="overlayOr" Name = "affiniteMage"></Border>
-                        
-                        <Border Classes="overlay"></Border>
-                        
-                        <StackPanel>
-                            <TextBlock Classes="combinaison" Name ="combinaisonForteMage">
-                                Combinaison forte
-                            </TextBlock>
-                            <TextBlock Classes="combinaison" Name ="combinaisonImpossibleMage">
-                                Combinaison impossible
-                            </TextBlock>
-                        </StackPanel>
-                        
-                        <StackPanel Classes="blocDescription">
-                            <TextBlock Classes=" titreClasse">
-                                Mage
-                            </TextBlock>
+                            <Button Classes="boutonChoisir" Name="choixGuerrier" Click="onClasseClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="borderCarte" Name="carteMage">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/mage_v1.png"></Image>
                             
-                            <StackPanel Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Lance des sorts complexes, en espérant ne pas se crâmer les sourcils.
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description">
-                                    +3 chance
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description">
-                                    -2 force, -2 agilité
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusMage">
-                                    Bonus de combinaison : +2 intelligence 
-                                </TextBlock>
-                                
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent">
-                                            Champs de force
-                                        </TextBlock>
-                                        <TextBlock Classes="description">
-                                            Augmente sa défense de 15% si le résultat du jet de dé est inférieur à 4.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixMage" Click="onClasseClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
-                
-                <Border Classes="borderCarte" Name="carteVoleur">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/voleur_v2.png"></Image>
-                        
-                        <Border Classes="overlayOr" Name ="affiniteVoleur"></Border>
-                        
-                        <Border Classes="overlay"></Border>
-                        
-                        <StackPanel>
-                            <TextBlock Classes="combinaison" Name ="combinaisonForteVoleur">
-                                Combinaison forte
-                            </TextBlock>
-                            <TextBlock Classes="combinaison" Name ="combinaisonImpossibleVoleur">
-                                Combinaison impossible
-                            </TextBlock>
-                        </StackPanel>
-                        
-                        <StackPanel  Classes="blocDescription">
-                            <TextBlock  Classes=" titreClasse">
-                                Voleur
-                            </TextBlock>
+                            <Border Classes="overlayOr" Name = "affiniteMage"></Border>
                             
-                            <StackPanel  Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Considère que la propriété privée est un concept très relatif, surtout quand le propriétaire ne regarde pas.
-                                </TextBlock>
-                                <TextBlock Classes="description">
-                                    +1 intelligence, +2 agilité
-                                </TextBlock>
-                                <TextBlock Classes="description">
-                                    -3 force
-                                </TextBlock>
-                                <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusVoleur">
-                                    Bonus de combinaison : +2 agilité 
-                                </TextBlock>
-                                
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent">
-                                            Festin de l'ombre
-                                        </TextBlock>
-                                        <TextBlock Classes="description">
-                                            Vole 20PV de l'ennemi au début du combat si le résultat du jet de dé est supérieur à 4.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixVoleur" Click="onClasseClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
-                
-                <Border Classes="borderCarte" Name="carteAlchimiste">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/alchimiste_v1.png"></Image>
-                        
-                        <Border Classes="overlayOr" Name ="affiniteAlchimiste"></Border>
-                        
-                        <Border Classes="overlay"></Border>
-                        
-                        <StackPanel>
-                            <TextBlock Classes="combinaison" Name ="combinaisonForteAlchimiste">
-                                Combinaison forte
-                            </TextBlock>
-                            <TextBlock Classes="combinaison" Name ="combinaisonImpossibleAlchimiste">
-                                Combinaison impossible
-                            </TextBlock>
-                        </StackPanel>
-                        <StackPanel  Classes="blocDescription">
-                            <TextBlock  Classes=" titreClasse">
-                                Alchimiste
-                            </TextBlock>
+                            <Border Classes="overlay"></Border>
                             
-                            <StackPanel  Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Mélange des trucs avec d'autres trucs pour créer des miracles ou des explosions. Généralement les deux en même temps.
+                            <StackPanel>
+                                <TextBlock Classes="combinaison" Name ="combinaisonForteMage">
+                                    Combinaison forte
                                 </TextBlock>
-                                
-                                <TextBlock Classes="description">
-                                    +2 chance, +1 vitalité
+                                <TextBlock Classes="combinaison" Name ="combinaisonImpossibleMage">
+                                    Combinaison impossible
                                 </TextBlock>
-                                
-                                <TextBlock Classes="description">
-                                    -2 force, -1 charisme
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusAlchimiste">
-                                    Bonus de combinaison : +2 vitalité 
-                                </TextBlock>
-                                
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent">
-                                            La fiole de Schrödinger
-                                        </TextBlock>
-                                        <TextBlock Classes="description">
-                                            Si le résultat du jet de dé est pair, alors sa défense augmente de 15%. Si c'est impair, elle diminue de 15%.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
                             </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixAlchimiste" Click="onClasseClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
-                
-                <Border Classes="borderCarte" Name="carteTroubadour">
-                    <Grid>
-                        <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/troubadour_v1.png"></Image>
-                       
-                        <Border Classes="overlayOr" Name ="affiniteTroubadour"></Border>
-                        
-                        <Border Classes="overlay"></Border>
-                        
-                        <StackPanel>
-                            <TextBlock Classes="combinaison" Name ="combinaisonForteTroubadour">
-                                Combinaison forte
-                            </TextBlock>
-                            <TextBlock Classes="combinaison" Name ="combinaisonImpossibleTroubadour">
-                                Combinaison impossible
-                            </TextBlock>
-                        </StackPanel>
-                        
-                        <StackPanel  Classes="blocDescription">
-                            <TextBlock  Classes=" titreClasse">
-                                Troubadour
-                            </TextBlock>
                             
-                            <StackPanel  Classes="descriptions">
-                                <TextBlock Classes="description">
-                                    Convaincu que le monde a besoin d'un fond sonore pour ses exploits, même si personne ne lui a rien demandé.
-                                </TextBlock>
+                            <StackPanel Classes="blocDescription">
+                                <TextBlock Classes=" titreClasse" Name="titreClasseMage"></TextBlock>
                                 
-                                <TextBlock Classes="description">
-                                    +2 charisme, +3 chance
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description">
-                                    -1 force, -2 agilité
-                                </TextBlock>
-                                
-                                <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusTroubadour">
-                                    Bonus de combinaison : +2 chance 
-                                </TextBlock>
-                                
-                                <Border Classes="borderTalent">
-                                    <StackPanel>
-                                        <TextBlock Classes="titreTalent">
-                                            Concerto des Cieux
-                                        </TextBlock>
-                                        <TextBlock Classes="description">
-                                            Augmente son esquive de 30% si le résultat du jet de dé est supérieur à 5.
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
+                                <StackPanel Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionMage"></TextBlock>
+                                    
+                                    <TextBlock Classes="description">
+                                        +3 chance
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description">
+                                        -2 force, -2 agilité
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusMage">
+                                        Bonus de combinaison : +2 intelligence 
+                                    </TextBlock>
+                                    
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentMage"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentMage"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                        <Button Classes="boutonChoisir" Name="choixTroubadour" Click="onClasseClick">
-                            <TextBlock>Choisir</TextBlock>
-                        </Button>
-                    </Grid>
-                </Border>
-            </UniformGrid> 
-        </StackPanel>
+                            <Button Classes="boutonChoisir" Name="choixMage" Click="onClasseClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="borderCarte" Name="carteVoleur">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/voleur_v2.png"></Image>
+                            
+                            <Border Classes="overlayOr" Name ="affiniteVoleur"></Border>
+                            
+                            <Border Classes="overlay"></Border>
+                            
+                            <StackPanel>
+                                <TextBlock Classes="combinaison" Name ="combinaisonForteVoleur">
+                                    Combinaison forte
+                                </TextBlock>
+                                <TextBlock Classes="combinaison" Name ="combinaisonImpossibleVoleur">
+                                    Combinaison impossible
+                                </TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel  Classes="blocDescription">
+                                <TextBlock  Classes=" titreClasse" Name="titreClasseVoleur"></TextBlock>
+                                
+                                <StackPanel  Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionVoleur"></TextBlock>
+                                    <TextBlock Classes="description">
+                                        +1 intelligence, +2 agilité
+                                    </TextBlock>
+                                    <TextBlock Classes="description">
+                                        -3 force
+                                    </TextBlock>
+                                    <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusVoleur">
+                                        Bonus de combinaison : +2 agilité 
+                                    </TextBlock>
+                                    
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentVoleur"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentVoleur"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button Classes="boutonChoisir" Name="choixVoleur" Click="onClasseClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="borderCarte" Name="carteAlchimiste">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/alchimiste_v1.png"></Image>
+                            
+                            <Border Classes="overlayOr" Name ="affiniteAlchimiste"></Border>
+                            
+                            <Border Classes="overlay"></Border>
+                            
+                            <StackPanel>
+                                <TextBlock Classes="combinaison" Name ="combinaisonForteAlchimiste">
+                                    Combinaison forte
+                                </TextBlock>
+                                <TextBlock Classes="combinaison" Name ="combinaisonImpossibleAlchimiste">
+                                    Combinaison impossible
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel  Classes="blocDescription">
+                                <TextBlock  Classes=" titreClasse" Name="titreClasseAlchimiste"></TextBlock>
+                                
+                                <StackPanel  Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionAlchimiste"></TextBlock>
+                                    
+                                    <TextBlock Classes="description">
+                                        +2 chance, +1 vitalité
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description">
+                                        -2 force, -1 charisme
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusAlchimiste">
+                                        Bonus de combinaison : +2 vitalité 
+                                    </TextBlock>
+                                    
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentAlchimiste"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentAlchimiste"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button Classes="boutonChoisir" Name="choixAlchimiste" Click="onClasseClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="borderCarte" Name="carteTroubadour">
+                        <Grid>
+                            <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/troubadour_v1.png"></Image>
+                           
+                            <Border Classes="overlayOr" Name ="affiniteTroubadour"></Border>
+                            
+                            <Border Classes="overlay"></Border>
+                            
+                            <StackPanel>
+                                <TextBlock Classes="combinaison" Name ="combinaisonForteTroubadour">
+                                    Combinaison forte
+                                </TextBlock>
+                                <TextBlock Classes="combinaison" Name ="combinaisonImpossibleTroubadour">
+                                    Combinaison impossible
+                                </TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel  Classes="blocDescription">
+                                <TextBlock  Classes=" titreClasse" Name="titreClasseTroubadour"></TextBlock>
+                                
+                                <StackPanel  Classes="descriptions">
+                                    <TextBlock Classes="description" Name="descriptionTroubadour"></TextBlock>
+                                    
+                                    <TextBlock Classes="description">
+                                        +2 charisme, +3 chance
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description">
+                                        -1 force, -2 agilité
+                                    </TextBlock>
+                                    
+                                    <TextBlock Classes="description" IsVisible="False" IsHitTestVisible="False" Name = "attributBonusTroubadour">
+                                        Bonus de combinaison : +2 chance 
+                                    </TextBlock>
+                                    
+                                    <Border Classes="borderTalent">
+                                        <StackPanel>
+                                            <TextBlock Classes="titreTalent" Name="titreTalentTroubadour"></TextBlock>
+                                            <TextBlock Classes="description" Name="descriptionTalentTroubadour"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button Classes="boutonChoisir" Name="choixTroubadour" Click="onClasseClick">
+                                <TextBlock>Choisir</TextBlock>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </UniformGrid> 
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>
