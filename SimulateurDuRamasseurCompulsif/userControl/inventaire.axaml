@@ -13,33 +13,34 @@
             <Setter Property="Foreground" Value="#E0E0E0"></Setter>
         </Style>
         
-        <Style Selector="Border.items">
-            <Setter Property="Width" Value="90"></Setter>
-            <Setter Property="Height" Value="90"></Setter>
+        <Style Selector="Border.itemsCarte">
+            <Setter Property="Width" Value="80"></Setter>
+            <Setter Property="Height" Value="80"></Setter>
             <Setter Property="Background" Value="#252525"></Setter>
             <Setter Property="BorderBrush" Value="#444"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="ClipToBounds" Value="True"></Setter>
             <Setter Property="Margin" Value="8"></Setter>
+            <Setter Property="Padding" Value="1"></Setter>
             <Setter Property="BoxShadow" Value="0 2 5 0 #20000000"></Setter>
             <Setter Property="Cursor" Value="Hand"></Setter>
             <Setter Property="Transitions">
                 <Transitions>
                     <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
-                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
                     <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"/>
                 </Transitions>
             </Setter>
         </Style>
         
-        <Style Selector="Border.items:pointerover">
+        <Style Selector="Border.itemsCarte:pointerover">
             <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
             <Setter Property="Background" Value="#353535"></Setter>
             <Setter Property="RenderTransform" Value="scale(1.05)"></Setter>
             <Setter Property="BoxShadow" Value="0 0 10 0 #40D4AF37"></Setter>
             <Setter Property="ZIndex" Value="10"></Setter> </Style>
         
-        <Style Selector="Border.items TextBlock">
+        <Style Selector="Border.itemsCarte TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
@@ -47,6 +48,29 @@
             <Setter Property="FontSize" Value="11"></Setter>
             <Setter Property="TextWrapping" Value="Wrap"></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.itemTitre">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="Foreground" Value="#999"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            <Setter Property="MaxWidth" Value="95"></Setter>
+            <Setter Property="Margin" Value="0 0 0 10"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.itemDescription">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="10"></Setter>
+            <Setter Property="Foreground" Value="#999"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            <Setter Property="MaxWidth" Value="95"></Setter>
+            <Setter Property="Margin" Value="0 0 0 10"></Setter>
+            
         </Style>
         
     </UserControl.Styles>
@@ -135,35 +159,80 @@
                 
                 <Border Grid.Column="1" Width="1" Background="#333"></Border>
                 
-                <StackPanel Grid.Column="2">
-                    <StackPanel Margin="30" Spacing="5">
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0" Margin="30" Spacing="5">
                         <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="30" Foreground="#D4AF37">SACOCHE</TextBlock>
                         <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#888">Ce que vous avez ramassé (ou volé) en chemin.</TextBlock>
+                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#666">Sélectionnez un objet pour voir les détails.</TextBlock>
                     </StackPanel>
                     
-                    <UniformGrid Rows="4" Columns="5" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top">
-
-                        <Border Classes="items" Name="item1"><Image Source="../assets/pictures/map.png"></Image></Border>
-                        <Border Classes="items" Name="item2"><Image Source="../assets/pictures/pain.png"></Image></Border>
-                        <Border Classes="items" Name="item3"><TextBlock>Carte</TextBlock></Border>
-                        <Border Classes="items" Name="item4"><TextBlock>Pain</TextBlock></Border>
+                    <UniformGrid Grid.Row="1" Rows="2" Columns="4" Margin="30 10" HorizontalAlignment="Center" VerticalAlignment="Top">
                         
-
-                        <Border Classes="items"></Border>
-                        <Border Classes="items"></Border>
-                        <Border Classes="items"></Border>
-                        <Border Classes="items"></Border>
+                        <Border Classes="itemsCarte" PointerPressed="OnItemClick" Name="item1">
+                            <Image Name="imgItem1" Stretch="UniformToFill"></Image>
+                        </Border>
                         
-
-                        <Border Classes="items"></Border>
-                        <Border Classes="items"></Border>
-                        <Border Classes="items"></Border>
-                        <Border Classes="items"></Border>
+                        <Border Classes="itemsCarte" PointerPressed="OnItemClick" Name="item2">
+                            <Image Name="imgItem2"></Image>
+                        </Border>
                         
-
+                        <Border Classes="itemsCarte" PointerPressed="OnItemClick" Name="item3">
+                            <Image Name="imgItem3"></Image>
+                        </Border>
                         
+                        <Border Classes="itemsCarte" PointerPressed="OnItemClick" Name="item4">
+                            <Image Name="imgItem4"></Image>
+                        </Border>
+                        
+                        <Border Classes="itemsCarte" PointerPressed="OnItemClick" Name="item5">
+                            <Image Name="imgItem5"></Image>
+                        </Border>
+                        
+                        <Border Classes="itemsCarte" PointerPressed="OnItemClick" Name="item6">
+                            <Image Name="imgItem6"></Image>
+                        </Border>
+                        
+                        <Border Classes="itemsCarte" PointerPressed="OnItemClick" Name="item7">
+                            <Image Name="imgItem7"></Image>
+                        </Border>
+                        
+                        <Border Classes="itemsCarte" PointerPressed="OnItemClick" Name="item8">
+                            <Image Name="imgItem8"></Image>
+                        </Border>
                     </UniformGrid>
-                </StackPanel>
+                    
+                    <Border Grid.Row="2" Background="#1A1A1A" BorderBrush="#D4AF37" BorderThickness="1" 
+                            Padding="15" Margin="30 10 30 30" CornerRadius="4" BoxShadow="0 5 15 0 #50000000" Name="test" IsVisible="False">
+                        
+                        <Grid ColumnSpacing="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Border Grid.Column="0" BorderBrush="#333" BorderThickness="1" CornerRadius="4" Width="80" Height="80" ClipToBounds="True" Padding="-1">
+                                <Image Name="imgItemDetail"></Image>
+                            </Border>
+                            <StackPanel Grid.Column="1" Spacing="5" VerticalAlignment="Center">
+                                
+                                <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                                    <TextBlock Name="titreItemDetail" FontFamily="{StaticResource Alice}" FontSize="18" FontWeight="Bold" Foreground="#D4AF37"></TextBlock>
+                                    <Border Background="#333" CornerRadius="3" Padding="5 1" VerticalAlignment="Center" IsVisible="False" Name="borderTypeItem">
+                                        <TextBlock Name="typeItemDetail" FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#999"></TextBlock>
+                                    </Border>
+                                </StackPanel>
+                                
+                                <TextBlock Name="descriptionItemDetail" FontFamily="{StaticResource Alice}" FontSize="13" FontStyle="Italic" Foreground="#999" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
             </Grid>
         </Border>
     </Grid>

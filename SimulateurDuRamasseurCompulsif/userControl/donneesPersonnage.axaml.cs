@@ -24,12 +24,13 @@ public partial class donneesPersonnage : UserControl {
         
         bool genreChecked = false;
         bool titreRempli = false;
+        string contenuTitre = titreHonorifique.Text;
         
         if (Femme.IsChecked == true || Homme.IsChecked == true || Troll.IsChecked == true) {
             genreChecked = true;
         }
 
-        if (titreHonorifique.Text != "") {
+        if (!string.IsNullOrWhiteSpace(contenuTitre)) {
             titreRempli = true;
         }
 
@@ -154,7 +155,7 @@ public partial class donneesPersonnage : UserControl {
         Random rng = new Random();
         int titreAleatoire = rng.Next(0, titresHonorifiques.Length);
         titreHonorifique.Text = titresHonorifiques[titreAleatoire];
-        
+        gererBoutonConfirmer();
     }
     
     private void verifierConditions_Event(object? sender, RoutedEventArgs e) {

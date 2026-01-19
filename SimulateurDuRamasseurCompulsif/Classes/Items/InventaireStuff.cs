@@ -8,23 +8,28 @@ public enum Rarete {
     Commune,
     Rare,
     Epique,
-    Legendaire
+    Legendaire,
+    Autre
 }
 
 public enum TypeItem {
+    Arme,
     Armure,
     Livre, 
     Bijou,
     Potion,
-    Instrument
+    Instrument,
+    ObjetQuete,
+    Consommable
 }
 
-public class InventaireStuff {
-    public string nomItem { get; set; }
-    public string descriptionItem { get; set; }
+public class InventaireStuff
+{
+    public string nomItem;
+    public string descriptionItem;
     public TypeItem typeItem;
-    public Rarete rareteItem { get; set; }
-    public Bitmap fichierImage { get; set; }
+    public Rarete rareteItem;
+    public Bitmap fichierImage;
 
     public InventaireStuff(string _nomItem, string _descriptionItem, TypeItem _typeItem, Rarete _rareteItem, string _fichierImage) {
         nomItem = _nomItem;
