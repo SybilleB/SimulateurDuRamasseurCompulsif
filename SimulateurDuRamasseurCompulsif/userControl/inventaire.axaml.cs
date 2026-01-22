@@ -30,6 +30,9 @@
             txtNomJoueur.Text = perso.nomJoueur;
             titreHonorifique.Text = perso.titreHonorifique;
             
+            txtRace.Text = DonneesTemporaires.choixRaceDefinitif;
+            txtClasse.Text = DonneesTemporaires.choixClasseDefinitif;
+            
             forceInventaire.Text = $"⚔️ Force : {perso.statsPerso.force} pts";
             agiliteInventaire.Text = $"🏹 Agilité : {perso.statsPerso.agilite} pts";
             vitaliteInventaire.Text = $"💖 Vitalité : {perso.statsPerso.vitalite} pts";
@@ -43,7 +46,7 @@
             Dictionary<string, InventaireStuff> listeItems = new Dictionary<string, InventaireStuff>();
             listeItems.Add("armureCommune", new InventaireStuff("T-shirt \"J'aime ma maman\"",
                 "Offre un soutien émotionnel, mais aucune protection physique", TypeItem.Armure, 
-                Rarete.Commune, "armure_commune.png"));
+                Rarete.Commune, "armure_commun.png"));
             listeItems.Add("armureRare", new InventaireStuff("Plastron de cuir renforcé",
                 "Du cuir bouilli avec quelques plaques de métal aux endroits vitaux.", TypeItem.Armure, 
                 Rarete.Rare, "armure_rare.png"));
@@ -82,7 +85,7 @@
             
             listeItems.Add("potionCommune", new InventaireStuff("Jus d'Orange (Périmé)",
                 "Rend quelques PV, mais donne mal au ventre.", TypeItem.Potion, 
-                Rarete.Commune, "potion_commune.png"));
+                Rarete.Commune, "potion_commun.png"));
             listeItems.Add("potionRare", new InventaireStuff("Potion de Soin Majeure",
                 "Un liquide rouge vif au goût de cerise chimique.", TypeItem.Potion, 
                 Rarete.Rare, "potion_rare.png"));
@@ -115,9 +118,9 @@
             if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
                 rng = random.Next(1, 4);
             } else {
-                rng = random.Next(3, 4);
+                rng = random.Next(0, 4);
             }
-            //modifier et remettre Next(0,4)
+
             if (rng == 0) {
                 rarete = Rarete.Commune;
                 
@@ -221,6 +224,7 @@
                 InventaireStuff objetRecupere = sacoche[borderClick.Name];
                 imgItemDetail.Source = objetRecupere.fichierImage;
                 titreItemDetail.Text = objetRecupere.nomItem;
+                
                 if (objetRecupere.typeItem == TypeItem.ObjetQuete)
                 {
                     typeItemDetail.Text  = "Objet de quête";
@@ -242,8 +246,7 @@
                 } else if (objetRecupere.rareteItem == Rarete.Legendaire) {
                     borderRareteItem.BorderBrush =  SolidColorBrush.Parse("#FFD700");
                     borderRareteItem.Background = SolidColorBrush.Parse("#0F0F0F");
-                }
-                else {
+                } else {
                     borderRareteItem.BorderBrush =  SolidColorBrush.Parse("#333");
                     borderRareteItem.Background =  SolidColorBrush.Parse("#333");
                 }
@@ -267,5 +270,10 @@
             if (VisualRoot is MainWindow mainWindow) {
                 mainWindow.ecranTitre.Content = new validerCreation();
             }
+        }
+
+        private void OnExporterClick(object? sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }

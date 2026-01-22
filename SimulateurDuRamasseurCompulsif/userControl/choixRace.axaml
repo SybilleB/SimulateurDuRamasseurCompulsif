@@ -39,7 +39,7 @@
         
         <Style Selector="Border.overlay">
             <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
-            <Setter Property="Height" Value="250"></Setter>
+            <Setter Property="Height" Value="350"></Setter>
             <Setter Property="Margin" Value="-2,0,-2,-2"></Setter>
             <Setter Property="CornerRadius" Value="0 0 15 15"></Setter>
             <Setter Property="Background">
@@ -49,7 +49,7 @@
                     <GradientStop Offset="1" Color="#FF000000"></GradientStop>
                 </LinearGradientBrush>
             </Setter>
-            <Setter Property="Opacity" Value="0.4"></Setter>
+            <Setter Property="Opacity" Value="0.35"></Setter>
             <Setter Property="Transitions">
                 <Transitions>
                     <DoubleTransition Property="Opacity" Duration="0:0:0.2"></DoubleTransition>
@@ -58,7 +58,7 @@
         </Style>
         
         <Style Selector="Border.borderCarte:pointerover Border.overlay">
-            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="Opacity" Value="0.9"></Setter>
         </Style>
         
         <Style Selector="StackPanel.descriptions">
@@ -86,7 +86,7 @@
         <Style Selector="TextBlock.titreRace">
             <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
             <Setter Property="FontSize" Value="27"></Setter>
-            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+            <Setter Property="Foreground" Value="#D4AF34"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
         </Style>

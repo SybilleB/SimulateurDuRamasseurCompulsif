@@ -7,10 +7,17 @@
 
     <UserControl.Styles>
         
+        <Style Selector="TextBlock.raceClasse">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+        </Style>
+        
         <Style Selector="TextBlock.ptsCompetence">
             <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
             <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+            <Setter Property="LetterSpacing" Value="1"></Setter>
         </Style>
         
         <Style Selector="Border.itemsCarte">
@@ -85,14 +92,7 @@
             </TextBlock>
         </Button>
         
-        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Padding="30,10" Margin="0 30 30 0" 
-                Background="Transparent" Cursor="Hand" Click="onCreationPersonnageClick">
-            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
-                CREER LE PERSONNAGE ❯
-            </TextBlock>
-        </Button>
-        
-        <Border Width="900" Height="500" BorderBrush="#333" BorderThickness="1" CornerRadius="8" BoxShadow="0 10 30 0 #000000">
+        <Border Width="1000" Height="600" BorderBrush="#333" BorderThickness="1" CornerRadius="8" BoxShadow="0 10 30 0 #000000">
             
             
             <Grid>
@@ -103,7 +103,7 @@
                 </Grid.ColumnDefinitions>
                 
                 
-                <Border Grid.Column="0" CornerRadius="9 0 0 0">
+                <Border Grid.Column="0" CornerRadius="9 0 0 9">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
                             <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
@@ -129,14 +129,21 @@
                             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
                                        FontSize="26" Foreground="#D4AF37" Name="txtNomJoueur">
                             </TextBlock>
+                            
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
+                                <TextBlock Name="txtRace" Classes="raceClasse"></TextBlock>
+                                <TextBlock Text="|" FontFamily="{StaticResource Alice}" FontSize="13" Foreground="#444"></TextBlock>
+                                <TextBlock Name="txtClasse" Classes="raceClasse"></TextBlock>
+                            </StackPanel>
                                 
-                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#666" TextWrapping="Wrap" HorizontalAlignment="Center" Name="titreHonorifique"></TextBlock>
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#888" TextWrapping="Wrap" HorizontalAlignment="Center" Name="titreHonorifique"></TextBlock>
                         </StackPanel>
                             
                         <Border Grid.Row="1" Width="250" BorderBrush="#333" BorderThickness="0 0 0 1"></Border>
                             
-                        <StackPanel Grid.Row="2" Margin="40 20 0 0" Spacing="30">
-                            <StackPanel Spacing="10">
+                        <StackPanel Grid.Row="2" Spacing="15" Margin="0 20 0 0">
+                            <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="16" LetterSpacing="1" Foreground="#999" HorizontalAlignment="Center">COMPETENCES</TextBlock>
+                            <StackPanel Margin="40 20 0 0" Spacing="10">
                                 <TextBlock Classes="ptsCompetence" Name="forceInventaire"></TextBlock>
                                 <TextBlock Classes="ptsCompetence" Name="agiliteInventaire"></TextBlock>
                                 <TextBlock Classes="ptsCompetence" Name="vitaliteInventaire"></TextBlock>
@@ -145,7 +152,7 @@
                                 <TextBlock Classes="ptsCompetence" Name="chanceInventaire"></TextBlock>
                             </StackPanel>
                             
-                            <StackPanel Orientation="Horizontal" Spacing="25">
+                            <StackPanel Orientation="Horizontal" Margin="40 20 0 0" Spacing="25">
                                 <TextBlock Foreground="#E0E0E0" FontFamily="{StaticResource Alice}" FontSize="16">
                                     ❤️ 100 HP
                                 </TextBlock>
@@ -162,8 +169,9 @@
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     
                     <StackPanel Grid.Row="0" Margin="30" Spacing="5">
@@ -219,11 +227,11 @@
                             <Border Grid.Column="0" BorderBrush="#333" BorderThickness="1" CornerRadius="4" Width="80" Height="80" ClipToBounds="True" Padding="-1" Name="borderImgDetail">
                                 <Image Name="imgItemDetail"></Image>
                             </Border>
-                            <StackPanel Grid.Column="1" Spacing="5" VerticalAlignment="Center">
+                            <StackPanel Grid.Column="1" Spacing="5" VerticalAlignment="Top">
                                 
                                 <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
                                     <TextBlock Name="titreItemDetail" FontFamily="{StaticResource Alice}" FontSize="18" FontWeight="Bold" Foreground="#D4AF37"></TextBlock>
-                                    <Border Background="#333" CornerRadius="3" Padding="5 1" VerticalAlignment="Center" IsVisible="False" Name="borderTypeItem">
+                                    <Border BorderThickness="1" BorderBrush="#333" Background="#333" CornerRadius="3" Padding="5 1" VerticalAlignment="Center" IsVisible="False" Name="borderTypeItem">
                                         <TextBlock Name="typeItemDetail" FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#999"></TextBlock>
                                     </Border>
                                     <Border CornerRadius="3" Padding="5 1" VerticalAlignment="Center" IsVisible="False" Name="borderRareteItem">
@@ -235,6 +243,22 @@
                             </StackPanel>
                         </Grid>
                     </Border>
+                    
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="15" HorizontalAlignment="Right" Margin="0 0 30 30">
+                        
+                        <Button Background="#333" Foreground="#E0E0E0" CornerRadius="5" Padding="15 8" Cursor="Hand" Click="OnExporterClick">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock FontFamily="{StaticResource Alice}">EXPORTER LA FICHE PERSONNAGE</TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Background="Transparent" BorderBrush="#D4AF37" BorderThickness="1" 
+                                Foreground="#D4AF37" CornerRadius="5" Padding="20 8" Cursor="Hand" 
+                                Click="onCreationPersonnageClick">
+                            <TextBlock FontFamily="{StaticResource Alice}" FontWeight="Bold">SAUVEGARDER LE PERSONNAGE</TextBlock>
+                        </Button>
+                    </StackPanel>
+                    
                 </Grid>
             </Grid>
         </Border>

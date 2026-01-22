@@ -17,7 +17,6 @@
         <Style Selector="TextBlock.texteValider">
             <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
             <Setter Property="FontSize" Value="15"></Setter>
-            <Setter Property="Foreground" Value="#FF000000"></Setter>
         </Style>
         
         <Style Selector="Button.boutonRetour">
@@ -28,20 +27,49 @@
         </Style>
         
         <Style Selector="Button.boutonValider">
-            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
             <Setter Property="Padding" Value="30 10"></Setter>
             <Setter Property="Cursor" Value="Hand"></Setter>
             <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="CornerRadius" Value="4"></Setter>
-            <Setter Property="Background" Value="#D4AF37"></Setter>
-            <Setter Property="Foreground" Value="#CC000000"></Setter>
-            <Setter Property="Opacity" Value="0.8"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="#D4AF37"></Setter>
+            <Setter Property="Margin" Value="0 30 30 0"></Setter>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Cursor="{TemplateBinding Cursor}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}" 
+                                          Foreground="{TemplateBinding Foreground}">
+                            
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
         </Style>
+        
+        <Style Selector="Button.boutonValider:pointerover">
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="Background" Value="#D4AF37"></Setter>
+            <Setter Property="Foreground" Value="#111"></Setter>
+        </Style>
+        
+        <Style Selector="Button.boutonValider:disabled">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="#333"></Setter>
+            <Setter Property="BorderBrush" Value="#333"></Setter>
+        </Style>
+        
         
         <Style Selector="Border.borderCarte">
             <Setter Property="Width" Value="200"></Setter>
-            <Setter Property="Height" Value="250"></Setter>
+            <Setter Property="Height" Value="280"></Setter>
             <Setter Property="BorderBrush" Value="#333"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -53,7 +81,7 @@
         <Style Selector="TextBlock.titreCategorie">
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
-            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
             <Setter Property="Foreground" Value="#666"></Setter>
             <Setter Property="LetterSpacing" Value="2"></Setter>
         </Style>
@@ -98,8 +126,8 @@
         </Style>
         
         <Style Selector="Border.itemBorder">
-            <Setter Property="Width" Value="60"></Setter>
-            <Setter Property="Height" Value="60"></Setter>
+            <Setter Property="Width" Value="80"></Setter>
+            <Setter Property="Height" Value="80"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="CornerRadius" Value="4"></Setter>
         </Style>
@@ -207,13 +235,7 @@
             </TextBlock>
         </Button>
             
-        <Button Classes="boutonValider" HorizontalAlignment="Right" Margin="0 30 30 0" Click="onValiderClick" Name="confirmerIdentite">
-            <TextBlock Classes="texteValider">
-                VALIDER ❯
-            </TextBlock>
-        </Button>
-            
-        <Border Width="900" Height="500" BorderBrush="#444" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8">
+        <Border Width="1000" Height="600" BorderBrush="#444" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
                     <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
@@ -228,43 +250,45 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                             
-                <StackPanel Grid.Column="0" Spacing="20" VerticalAlignment="Center" Margin="0 0 30 0">
-                    <TextBlock Classes="titreCategorie">
-                        ORIGINES
-                    </TextBlock>
-                    <StackPanel Orientation="Horizontal" Spacing="20">
-                        <Border Classes="borderCarte">
-                            <Grid>
-                                <Image Name="imgRace" Stretch="UniformToFill"></Image>
-                                           
-                                <Border Classes="overlayDegrade"></Border>
-                                                
-                                <StackPanel Classes="infosOrigine">
-                                    <TextBlock Classes="titre">RACE</TextBlock>
-                                    <TextBlock Classes="nom" Name="txtRaceNom"></TextBlock>
-                                    <TextBlock Classes="talent" Name="txtRaceTalent"></TextBlock>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
-                        
-                        <Border Classes="borderCarte">
-                            <Grid>
-                                <Image Name="imgClasse" Stretch="UniformToFill"></Image>
+                <StackPanel Grid.Column="0" Spacing="40" VerticalAlignment="Center" Margin="0 0 30 0">
+                    <StackPanel Spacing="25">
+                        <TextBlock Classes="titreCategorie">
+                            ORIGINES
+                        </TextBlock>
+                        <StackPanel Orientation="Horizontal" Spacing="20">
+                            <Border Classes="borderCarte">
+                                <Grid>
+                                    <Image Name="imgRace" Stretch="UniformToFill"></Image>
                                                
-                                <Border Classes="overlayDegrade"></Border>
+                                    <Border Classes="overlayDegrade"></Border>
                                                     
-                                <StackPanel Classes="infosOrigine">
-                                    <TextBlock Classes="titre">CLASSE</TextBlock>
-                                    <TextBlock Classes="nom" Name="txtClasseNom"></TextBlock>
-                                    <TextBlock Classes="talent" Name="txtClasseTalent"></TextBlock>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
+                                    <StackPanel Classes="infosOrigine">
+                                        <TextBlock Classes="titre">RACE</TextBlock>
+                                        <TextBlock Classes="nom" Name="txtRaceNom"></TextBlock>
+                                        <TextBlock Classes="talent" Name="txtRaceTalent"></TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                            
+                            <Border Classes="borderCarte">
+                                <Grid>
+                                    <Image Name="imgClasse" Stretch="UniformToFill"></Image>
+                                                   
+                                    <Border Classes="overlayDegrade"></Border>
+                                                        
+                                    <StackPanel Classes="infosOrigine">
+                                        <TextBlock Classes="titre">CLASSE</TextBlock>
+                                        <TextBlock Classes="nom" Name="txtClasseNom"></TextBlock>
+                                        <TextBlock Classes="talent" Name="txtClasseTalent"></TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
                     </StackPanel>
                     
-                    <StackPanel Spacing="10">
-                        <TextBlock Classes="titreCategorie">ITEMS POSSIBLES</TextBlock>
-                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#666" TextAlignment="Center">Un de ces items sera généré aléatoirement dans votre inventaire</TextBlock>
+                    <StackPanel Spacing="15">
+                        <TextBlock Classes="titreCategorie" Name="itemsPossibles"></TextBlock>
+                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#999" TextAlignment="Center">Un de ces items sera généré aléatoirement dans votre inventaire</TextBlock>
                         <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
                             <Border Classes="itemBorder" BorderBrush="#3498DB">
                                 <Image Name="imgItemCommun"></Image>
@@ -290,6 +314,7 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                                 
                     <StackPanel Grid.Row="0" Spacing="20">
@@ -305,7 +330,7 @@
                             <Button Click="onImporterPpClick"
                                     HorizontalAlignment="Center" FontSize="14" FontFamily="{StaticResource Alice}"
                                     Background="Transparent" Cursor="Hand">
-                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#888" TextDecorations="Underline" HorizontalAlignment="Center">Modifier la photo</TextBlock>
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#888" TextDecorations="Underline" HorizontalAlignment="Center">Modifier la photo</TextBlock>
                             </Button>
                         </StackPanel>
                     </StackPanel>
@@ -322,10 +347,9 @@
                                 </Button>
                             </StackPanel>
                         </StackPanel>
-                            
-                            
+                        
                         <StackPanel Spacing="10">
-                            <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="10" Foreground="#666">GENRE</TextBlock>
+                            <TextBlock Classes="titreCategorie">GENRE</TextBlock>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="5">
                                 <RadioButton Classes="boutonRadio" Name="Femme" IsCheckedChanged="verifierConditions_Event">Femme</RadioButton>
                                 <RadioButton Classes="boutonRadio" Name="Homme" IsCheckedChanged="verifierConditions_Event">Homme</RadioButton>
@@ -353,6 +377,12 @@
                             </StackPanel>
                         </StackPanel>
                     </Border>
+                    
+                    <Button Grid.Row="3" Classes="boutonValider" Click="onValiderClick" Name="confirmerIdentite">
+                        <TextBlock Classes="texteValider">
+                            VALIDER
+                        </TextBlock>
+                    </Button>
                 </Grid>
             </Grid>
         </Border>
