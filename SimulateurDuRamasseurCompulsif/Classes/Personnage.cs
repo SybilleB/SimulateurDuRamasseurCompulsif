@@ -7,8 +7,7 @@ using Avalonia.Media.Imaging;
 
 namespace SimulateurDuRamasseurCompulsif.Classes;
 
-public class Personnage
-{
+public class Personnage {
     public string nomJoueur;
     public string titreHonorifique;
     public Bitmap photoProfil;

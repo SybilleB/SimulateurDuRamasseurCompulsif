@@ -12,6 +12,8 @@ public static class DonneesTemporaires {
     public static string titreHonorifique;
     public static Bitmap photoProfil;
     public static string genre;
+    public static int hp;
+    public static int or;
     public static string choixRaceDefinitif;
     public static string choixClasseDefinitif;
 

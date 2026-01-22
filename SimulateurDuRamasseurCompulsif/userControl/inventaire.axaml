@@ -207,8 +207,8 @@
                         </Border>
                     </UniformGrid>
                     
-                    <Border Grid.Row="2" Background="#1A1A1A" BorderBrush="#D4AF37" BorderThickness="1" 
-                            Padding="15" Margin="30 10 30 30" CornerRadius="4" BoxShadow="0 5 15 0 #50000000" Name="test" IsVisible="False">
+                    <Border Grid.Row="2" Background="#1A1A1A" BorderBrush="#333" BorderThickness="1" 
+                            Padding="15" Margin="30 10 30 30" CornerRadius="4" BoxShadow="0 5 15 0 #50000000" Name="borderDetail" IsVisible="False">
                         
                         <Grid ColumnSpacing="15">
                             <Grid.ColumnDefinitions>
@@ -216,7 +216,7 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             
-                            <Border Grid.Column="0" BorderBrush="#333" BorderThickness="1" CornerRadius="4" Width="80" Height="80" ClipToBounds="True" Padding="-1">
+                            <Border Grid.Column="0" BorderBrush="#333" BorderThickness="1" CornerRadius="4" Width="80" Height="80" ClipToBounds="True" Padding="-1" Name="borderImgDetail">
                                 <Image Name="imgItemDetail"></Image>
                             </Border>
                             <StackPanel Grid.Column="1" Spacing="5" VerticalAlignment="Center">
@@ -225,6 +225,9 @@
                                     <TextBlock Name="titreItemDetail" FontFamily="{StaticResource Alice}" FontSize="18" FontWeight="Bold" Foreground="#D4AF37"></TextBlock>
                                     <Border Background="#333" CornerRadius="3" Padding="5 1" VerticalAlignment="Center" IsVisible="False" Name="borderTypeItem">
                                         <TextBlock Name="typeItemDetail" FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#999"></TextBlock>
+                                    </Border>
+                                    <Border CornerRadius="3" Padding="5 1" VerticalAlignment="Center" IsVisible="False" Name="borderRareteItem">
+                                        <TextBlock Name="rareteItemDetail" FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#999"></TextBlock>
                                     </Border>
                                 </StackPanel>
                                 

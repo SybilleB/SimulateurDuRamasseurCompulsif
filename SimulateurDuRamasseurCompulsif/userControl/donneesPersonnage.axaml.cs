@@ -16,6 +16,9 @@ public partial class donneesPersonnage : UserControl {
         gererBoutonConfirmer();
         affichageRace();
         affichageClasse();
+        nbHP.Text = $"{DonneesTemporaires.hp} HP";
+        nbOr.Text = $"{DonneesTemporaires.or} Or";
+        
         txtNomJoueur.Text = DonneesTemporaires.nomJoueur;
         photoProfilDefaut();
     }

@@ -110,6 +110,8 @@ public partial class choixClasse : UserControl {
     
     private void onClasseClick(object? sender, RoutedEventArgs e) {
         var button = (Button)sender;
+        DonneesTemporaires.hp = 100;
+        DonneesTemporaires.or = 100;
         
         if (button.Name == "choixGuerrier") {
             DonneesTemporaires.choixClasseDefinitif = "Guerrier";
