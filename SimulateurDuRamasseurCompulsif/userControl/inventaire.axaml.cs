@@ -264,6 +264,8 @@
         }
 
         private void onCreationPersonnageClick(object? sender, RoutedEventArgs e) {
-            
+            if (VisualRoot is MainWindow mainWindow) {
+                mainWindow.ecranTitre.Content = new validerCreation();
+            }
         }
     }

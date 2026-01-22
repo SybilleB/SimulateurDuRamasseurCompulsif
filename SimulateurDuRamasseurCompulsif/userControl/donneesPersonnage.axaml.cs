@@ -16,6 +16,7 @@ public partial class donneesPersonnage : UserControl {
         gererBoutonConfirmer();
         affichageRace();
         affichageClasse();
+        afficherItems();
         nbHP.Text = $"{DonneesTemporaires.hp} HP";
         nbOr.Text = $"{DonneesTemporaires.or} Or";
         
@@ -116,6 +117,73 @@ public partial class donneesPersonnage : UserControl {
         txtClasseNom.Text = DonneesTemporaires.choixClasseDefinitif;
     }
 
+    public void afficherItems() {
+
+        if (DonneesTemporaires.choixClasseDefinitif == "Guerrier")
+        {
+            var uri1 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/armure_commune.png");
+            imgItemCommun.Source = new Bitmap(AssetLoader.Open(uri1));
+            
+            var uri2 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/armure_rare.png");
+            imgItemRare.Source = new Bitmap(AssetLoader.Open(uri2));
+            
+            var uri3 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/armure_epique.png");
+            imgItemEpique.Source = new Bitmap(AssetLoader.Open(uri3));
+            
+            var uri4 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/armure_legendaire.png");
+            imgItemLegendaire.Source = new Bitmap(AssetLoader.Open(uri4));
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
+            var uri1 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/livre_commun.png");
+            imgItemCommun.Source = new Bitmap(AssetLoader.Open(uri1));
+            
+            var uri2 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/livre_rare.png");
+            imgItemRare.Source = new Bitmap(AssetLoader.Open(uri2));
+            
+            var uri3 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/livre_epique.png");
+            imgItemEpique.Source = new Bitmap(AssetLoader.Open(uri3));
+            
+            var uri4 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/livre_legendaire.png");
+            imgItemLegendaire.Source = new Bitmap(AssetLoader.Open(uri4));
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
+            var uri1 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/bijou_commun.png");
+            imgItemCommun.Source = new Bitmap(AssetLoader.Open(uri1));
+            
+            var uri2 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/bijou_rare.png");
+            imgItemRare.Source = new Bitmap(AssetLoader.Open(uri2));
+            
+            var uri3 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/bijou_epique.png");
+            imgItemEpique.Source = new Bitmap(AssetLoader.Open(uri3));
+            
+            var uri4 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/bijou_legendaire.png");
+            imgItemLegendaire.Source = new Bitmap(AssetLoader.Open(uri4));
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
+            var uri1 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/potion_commune.png");
+            imgItemCommun.Source = new Bitmap(AssetLoader.Open(uri1));
+            
+            var uri2 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/potion_rare.png");
+            imgItemRare.Source = new Bitmap(AssetLoader.Open(uri2));
+            
+            var uri3 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/potion_epique.png");
+            imgItemEpique.Source = new Bitmap(AssetLoader.Open(uri3));
+            
+            var uri4 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/potion_legendaire.png");
+            imgItemLegendaire.Source = new Bitmap(AssetLoader.Open(uri4));
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
+            var uri1 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/instrument_commun.png");
+            imgItemCommun.Source = new Bitmap(AssetLoader.Open(uri1));
+            
+            var uri2 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/instrument_rare.png");
+            imgItemRare.Source = new Bitmap(AssetLoader.Open(uri2));
+            
+            var uri3 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/instrument_epique.png");
+            imgItemEpique.Source = new Bitmap(AssetLoader.Open(uri3));
+            
+            var uri4 = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/instrument_legendaire.png");
+            imgItemLegendaire.Source = new Bitmap(AssetLoader.Open(uri4));
+        }
+        
+    }
+    
     public void photoProfilDefaut() {
         var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/defaultPP.png");
         var bitmap = new Bitmap(AssetLoader.Open(uri));

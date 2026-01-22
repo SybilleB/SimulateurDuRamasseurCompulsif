@@ -41,13 +41,21 @@
         
         <Style Selector="Border.borderCarte">
             <Setter Property="Width" Value="200"></Setter>
-            <Setter Property="Height" Value="300"></Setter>
+            <Setter Property="Height" Value="250"></Setter>
             <Setter Property="BorderBrush" Value="#333"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="CornerRadius" Value="10"></Setter>
             <Setter Property="Background" Value="#000000"></Setter>
             <Setter Property="BoxShadow" Value="0 4 10 0 #50000000"></Setter>
             <Setter Property="ClipToBounds" Value="True"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.titreCategorie">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="Foreground" Value="#666"></Setter>
+            <Setter Property="LetterSpacing" Value="2"></Setter>
         </Style>
         
         <Style Selector="Border.overlayDegrade">
@@ -87,6 +95,13 @@
             <Setter Property="Foreground" Value="#999"></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+        
+        <Style Selector="Border.itemBorder">
+            <Setter Property="Width" Value="60"></Setter>
+            <Setter Property="Height" Value="60"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
         </Style>
         
         <Style Selector="TextBox.ligneStyle">
@@ -214,7 +229,7 @@
                 </Grid.ColumnDefinitions>
                             
                 <StackPanel Grid.Column="0" Spacing="20" VerticalAlignment="Center" Margin="0 0 30 0">
-                    <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource Metamorphous}" FontSize="12" LetterSpacing="2" Foreground="#666">
+                    <TextBlock Classes="titreCategorie">
                         ORIGINES
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" Spacing="20">
@@ -245,6 +260,25 @@
                                 </StackPanel>
                             </Grid>
                         </Border>
+                    </StackPanel>
+                    
+                    <StackPanel Spacing="10">
+                        <TextBlock Classes="titreCategorie">ITEMS POSSIBLES</TextBlock>
+                        <TextBlock FontFamily="{StaticResource Alice}" FontSize="10" Foreground="#666" TextAlignment="Center">Un de ces items sera généré aléatoirement dans votre inventaire</TextBlock>
+                        <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                            <Border Classes="itemBorder" BorderBrush="#3498DB">
+                                <Image Name="imgItemCommun"></Image>
+                            </Border>
+                            <Border Classes="itemBorder" BorderBrush="#2ECC71">
+                                <Image Name="imgItemRare"></Image>
+                            </Border>
+                            <Border Classes="itemBorder" BorderBrush="#D400FF">
+                                <Image Name="imgItemEpique"></Image>
+                            </Border>
+                            <Border Classes="itemBorder" BorderBrush="#FFD700">
+                                <Image Name="imgItemLegendaire"></Image>
+                            </Border>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
                             
@@ -278,7 +312,7 @@
                         
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="15" Margin="0 30 0 20">
                         <StackPanel>
-                            <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="12" Foreground="#666" HorizontalAlignment="Center">
+                            <TextBlock Classes="titreCategorie">
                                 TITRE HONORIFIQUE
                             </TextBlock>
                             <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" Margin="50 0 0 0">

@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+             x:Class="SimulateurDuRamasseurCompulsif.userControl.validerCreation">
+    <Grid Background="#121212">
+        
+        <Border Width="900" Height="500" BorderBrush="#444" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
+                    <GradientStop Offset="1" Color="#161618"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        
+        
+        
+    </Grid>
+</UserControl>
