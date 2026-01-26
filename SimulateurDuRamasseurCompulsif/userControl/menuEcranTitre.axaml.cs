@@ -19,7 +19,9 @@ public partial class menuEcranTitre : UserControl
     }
 
     private void OnChargerClick(object? sender, RoutedEventArgs e) {
-        throw new System.NotImplementedException();
+        if (VisualRoot is MainWindow mainWindow){
+            mainWindow.ecranTitre.Content = new chargerPersonnage();
+        }
     }
 
     private void OnQuitterClick(object? sender, RoutedEventArgs e) {
@@ -29,7 +31,7 @@ public partial class menuEcranTitre : UserControl
     }
 
     private void verifierBoutons() {
-        boutonCharger.Opacity = 0.5;
-        boutonCharger.IsEnabled = false;
+        //boutonCharger.Opacity = 0.5;
+        //boutonCharger.IsEnabled = false;
     }
 }

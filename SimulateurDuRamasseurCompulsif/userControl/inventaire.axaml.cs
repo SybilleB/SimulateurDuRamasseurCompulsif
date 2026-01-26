@@ -1,5 +1,6 @@
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Avalonia;
     using Avalonia.Controls;
     using Avalonia.Input;
@@ -8,6 +9,7 @@
     using Avalonia.Media;
     using Avalonia.Media.Imaging;
     using Avalonia.Platform;
+    using Avalonia.Platform.Storage;
     using SimulateurDuRamasseurCompulsif.Classes;
     using SimulateurDuRamasseurCompulsif.Classes.Items;
 
@@ -116,39 +118,31 @@
             TypeItem type = TypeItem.ObjetQuete;
             
             if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
-                rng = random.Next(1, 4);
+                rng = random.Next(40, 100);
             } else {
-                rng = random.Next(0, 4);
+                rng = random.Next(0, 100);
             }
 
-            if (rng == 0) {
+            if (rng < 40) {
                 rarete = Rarete.Commune;
-                
-            }
-            if (rng == 1) {
+            } else if (rng < 70) {
                 rarete = Rarete.Rare;
-            }
-            if (rng == 2) {
+            } else if (rng < 90) {
                 rarete = Rarete.Epique;
-            }
-            if (rng == 3) {
+            } else {
                 rarete = Rarete.Legendaire;
             }
             
 
             if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {
                 type = TypeItem.Armure;
-            }
-            if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
+            } else if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
                 type = TypeItem.Livre;
-            }
-            if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
+            } else if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
                 type = TypeItem.Bijou;
-            }
-            if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
+            } else if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
                 type = TypeItem.Potion;
-            }
-            if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
+            } else if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
                 type = TypeItem.Instrument;
             }
 
@@ -267,13 +261,6 @@
         }
 
         private void onCreationPersonnageClick(object? sender, RoutedEventArgs e) {
-            if (VisualRoot is MainWindow mainWindow) {
-                mainWindow.ecranTitre.Content = new validerCreation();
-            }
-        }
-
-        private void OnExporterClick(object? sender, RoutedEventArgs e)
-        {
             throw new NotImplementedException();
         }
     }

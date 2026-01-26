@@ -1,0 +1,68 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SimulateurDuRamasseurCompulsif.userControl.chargerPersonnage">
+    <Grid Background="#121212">
+        
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top"
+                Padding="30,10" Margin="30 30 0 0" 
+                Background="Transparent" Cursor="Hand" Click="onRetourClick">
+            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
+                ❮ RETOUR
+            </TextBlock>
+        </Button>
+        
+        <Border Width="1000" Height="600" BorderBrush="#444" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8">
+            
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
+                    <GradientStop Offset="1" Color="#161618"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+            
+            <StackPanel Margin="50" Spacing="20">
+            
+            <TextBlock Text="CHARGER UNE PARTIE" FontFamily="{StaticResource Metamorphous}" 
+                       FontSize="30" Foreground="#D4AF37" HorizontalAlignment="Center"/>
+
+            <ListBox Name="listeSauvegardes" Height="400" Background="Transparent" CornerRadius="8">
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#333"/>
+                    </Style>
+                </ListBox.Styles>
+                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#444" BorderThickness="0 0 0 1" Padding="10">
+                            <Grid ColumnDefinitions="Auto, *, Auto">
+                                <TextBlock Grid.Column="0" Text="👤" FontSize="30" VerticalAlignment="Center" Margin="0 0 20 0"/> 
+                                
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock  FontFamily="{StaticResource Metamorphous}" FontSize="18" Foreground="#E0E0E0"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <TextBlock  Foreground="#999" FontFamily="{StaticResource Alice}"/>
+                                        <TextBlock Text="-" Foreground="#666"/>
+                                        <TextBlock  Foreground="#999" FontFamily="{StaticResource Alice}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                
+                                <Button Grid.Column="2" Content="JOUER ▶" Background="#20D4AF37" Foreground="#D4AF37"
+                                        BorderBrush="#D4AF37" BorderThickness="1" Cursor="Hand"
+                                        Click="OnJouerClick" Tag="{Binding}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button Content="RETOUR" HorizontalAlignment="Center" Foreground="#888" Background="Transparent"/>
+        </StackPanel>
+            
+            
+        </Border>
+    </Grid>
+</UserControl>

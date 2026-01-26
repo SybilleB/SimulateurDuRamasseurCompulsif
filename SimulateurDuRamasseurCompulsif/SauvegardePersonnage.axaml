@@ -1,11 +1,13 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
-             x:Class="SimulateurDuRamasseurCompulsif.userControl.inventaire">
-
-    <UserControl.Styles>
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SimulateurDuRamasseurCompulsif.SauvegardePersonnage"
+        Title="SauvegardePersonnage">
+    
+        
+        <Window.Styles>
         
         <Style Selector="TextBlock.raceClasse">
             <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
@@ -80,17 +82,10 @@
             
         </Style>
         
-    </UserControl.Styles>
+    </Window.Styles>
     
     
     <Grid Background="#121212">
-        
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Padding="30,10" Margin="30 30 0 0" 
-                Background="Transparent" Cursor="Hand" Click="onRetourClick">
-            <TextBlock Foreground="#888" FontFamily="{StaticResource Alice}" FontSize="15" >
-                ❮ RETOUR
-            </TextBlock>
-        </Button>
         
         <Border Width="1000" Height="600" BorderBrush="#333" BorderThickness="1" CornerRadius="8" BoxShadow="0 10 30 0 #000000" Name="borderFichePerso">
             
@@ -242,7 +237,7 @@
                     
                     <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 30 30">
                         <Button Background="Transparent" BorderBrush="#D4AF37" BorderThickness="1" Foreground="#D4AF37" CornerRadius="5" Padding="20 8" Cursor="Hand" 
-                                Click="onCreationPersonnageClick">
+                                Click="onMenuClick">
                             <TextBlock FontFamily="{StaticResource Alice}">RETOUR AU MENU</TextBlock>
                         </Button>
                     </StackPanel>
@@ -251,4 +246,4 @@
             </Grid>
         </Border>
     </Grid>
-</UserControl>
+</Window>

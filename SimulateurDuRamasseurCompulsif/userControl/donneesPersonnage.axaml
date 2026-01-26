@@ -125,11 +125,64 @@
             <Setter Property="Margin" Value="5"></Setter>
         </Style>
         
-        <Style Selector="Border.itemBorder">
+        <Style Selector="StackPanel.stackpanelItems">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Spacing" Value="5"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.chances">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="10"></Setter>
+            <Setter Property="Foreground" Value="#999"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style Selector="Border.borderItem">
             <Setter Property="Width" Value="80"></Setter>
             <Setter Property="Height" Value="80"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="ClipToBounds" Value="True"></Setter>
+        </Style>
+        
+        <Style Selector="Border.borderRarete">
+            <Setter Property="Background" Value="#CC111111"></Setter>
+            <Setter Property="BoxShadow" Value="0 2 4 0 #50000000"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="Padding" Value="6 2"></Setter>
+            <Setter Property="Margin" Value="0 0 0 5"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.itemRarete">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="9"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style Selector="StackPanel.stackpanelInventaire">
+            <Setter Property="Orientation" Value="Horizontal"></Setter>
+            <Setter Property="Spacing" Value="10"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.iconeInventaire">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Margin" Value="0 3 0 0"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.descriptionInventaire">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="10"></Setter>
+            <Setter Property="Foreground" Value="#666"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.inventaire">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
         </Style>
         
         <Style Selector="TextBox.ligneStyle">
@@ -201,30 +254,6 @@
             <Setter Property="Foreground" Value="#E0E0E0"></Setter>
         </Style>
 
-        <Style Selector="StackPanel.stackpanelInventaire">
-            <Setter Property="Orientation" Value="Horizontal"></Setter>
-            <Setter Property="Spacing" Value="10"></Setter>
-        </Style>
-        
-        <Style Selector="TextBlock.iconeInventaire">
-            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
-            <Setter Property="FontSize" Value="20"></Setter>
-            <Setter Property="Margin" Value="0 3 0 0"></Setter>
-        </Style>
-        
-        <Style Selector="TextBlock.descriptionInventaire">
-            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
-            <Setter Property="FontSize" Value="10"></Setter>
-            <Setter Property="Foreground" Value="#666"></Setter>
-        </Style>
-        
-        <Style Selector="TextBlock.inventaire">
-            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
-            <Setter Property="FontSize" Value="16"></Setter>
-            <Setter Property="FontWeight" Value="Bold"></Setter>
-            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
-        </Style>
-
     </UserControl.Styles>
     
     <Grid Background="#121212">
@@ -290,18 +319,53 @@
                         <TextBlock Classes="titreCategorie" Name="itemsPossibles"></TextBlock>
                         <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#999" TextAlignment="Center">Un de ces items sera généré aléatoirement dans votre inventaire</TextBlock>
                         <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
-                            <Border Classes="itemBorder" BorderBrush="#3498DB">
-                                <Image Name="imgItemCommun"></Image>
-                            </Border>
-                            <Border Classes="itemBorder" BorderBrush="#2ECC71">
-                                <Image Name="imgItemRare"></Image>
-                            </Border>
-                            <Border Classes="itemBorder" BorderBrush="#D400FF">
-                                <Image Name="imgItemEpique"></Image>
-                            </Border>
-                            <Border Classes="itemBorder" BorderBrush="#FFD700">
-                                <Image Name="imgItemLegendaire"></Image>
-                            </Border>
+                            <StackPanel Classes="stackpanelItems">
+                                <Border Classes="borderItem" BorderBrush="#3498DB">
+                                    <Grid>
+                                        <Image Name="imgItemCommun"></Image>
+                                        <Border Classes="borderRarete">
+                                            <TextBlock Classes="itemRarete" Foreground="#3498DB">Commun</TextBlock>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <TextBlock Classes="chances">40% de chance</TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel Classes="stackpanelItems">
+                                <Border Classes="borderItem" BorderBrush="#2ECC71">
+                                    <Grid>
+                                        <Image Name="imgItemRare"></Image>
+                                        <Border Classes="borderRarete">
+                                            <TextBlock Classes="itemRarete" Foreground="#2ECC71">Rare</TextBlock>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <TextBlock Classes="chances">30% de chance</TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel Classes="stackpanelItems">
+                                <Border Classes="borderItem" BorderBrush="#D400FF">
+                                    <Grid>
+                                        <Image Name="imgItemEpique"></Image>
+                                        <Border Classes="borderRarete">
+                                            <TextBlock Classes="itemRarete" Foreground="#D400FF">Epique</TextBlock>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <TextBlock Classes="chances">20% de chance</TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel Classes="stackpanelItems">
+                                <Border Classes="borderItem" BorderBrush="#FFD700">
+                                    <Grid>
+                                        <Image Name="imgItemLegendaire"></Image>
+                                        <Border Classes="borderRarete">
+                                            <TextBlock Classes="itemRarete" Foreground="#FFD700">Légendaire</TextBlock>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <TextBlock Classes="chances">10% de chance</TextBlock>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

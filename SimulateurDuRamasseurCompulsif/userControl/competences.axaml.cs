@@ -241,8 +241,10 @@ public partial class competences : UserControl {
         
         DonneesTemporaires.personnageFinal = personnage;
         
+        var fenetrePerso = new SauvegardePersonnage();
+        fenetrePerso.Show();
         if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new inventaire();
+            mainWindow.Close();
         }
     }
     public void onRetourClick(object? sender, RoutedEventArgs e) {
