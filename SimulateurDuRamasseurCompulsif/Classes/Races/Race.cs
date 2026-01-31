@@ -12,14 +12,14 @@ public class Race
     public string talent;
     public string descriptionTalent;
 
-    public Race(string _nomRace, string _description, string _talent, string _descriptionTalent, Stats _statsRace) {
+    public Race(string _nomRace, string _description, string _talent, string _descriptionTalent) {
         nomRace = _nomRace;
         or = 100;
         pv = 100;
         description = _description;
-        statsRace = _statsRace;
         talent = _talent;
         descriptionTalent = _descriptionTalent;
+        statsRace = new Stats();
     }
 
     public virtual bool classeAutorisee(HerosClasse classe) {

@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
 public class Fee : Race {
     
-    public Fee() : base("Fée", "Minuscule et insaisissable, elle manie la magie ancienne et voltige avec grâce.","Providence Ailée", "Améliore le butin trouvé parce qu'elle a des goûts de luxe et peu de patience." ,new Stats()) {
+    public Fee() : base("Fée", "Minuscule et insaisissable, elle manie la magie ancienne et voltige avec grâce.","Providence Ailée", "Améliore le butin trouvé parce qu'elle a des goûts de luxe et peu de patience.") {
         statsRace.agilite = 1;
         statsRace.chance = 1;
         statsRace.force = -1;

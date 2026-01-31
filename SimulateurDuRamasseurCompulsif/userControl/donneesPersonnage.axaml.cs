@@ -62,23 +62,19 @@ public partial class donneesPersonnage : UserControl {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/humain_v2.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Volonté de fer";
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/elfe_v2.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Vision Nocturne";
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/nain_v2.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Forgeron";
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/gobelin_v2.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Pillard";
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/fee_v3.png");
             imgRace.Source = new Bitmap(AssetLoader.Open(uri));
             txtRaceTalent.Text = "Providence Ailée";
@@ -93,23 +89,19 @@ public partial class donneesPersonnage : UserControl {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/guerrier_v1.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "Cri de guerre";
-        }
-        if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/mage_v1.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "Champs de force";
-        }
-        if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/voleur_v2.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "Festin de l'ombre";
-        }
-        if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/alchimiste_v1.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "La fiole de Schrödinger";
-        }
-        if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
             var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/troubadour_v1.png");
             imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
             txtClasseTalent.Text = "Concerto des Cieux";
@@ -213,7 +205,6 @@ public partial class donneesPersonnage : UserControl {
     }
     
     public void onValiderClick(object? sender, RoutedEventArgs e) {
-        
         determinerGenre();
         DonneesTemporaires.titreHonorifique = titreHonorifique.Text;
         

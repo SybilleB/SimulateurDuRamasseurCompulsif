@@ -4,6 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
+using SimulateurDuRamasseurCompulsif.Classes;
 
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
@@ -52,15 +53,12 @@ public partial class choixClasse : UserControl {
         
         if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
            interdireCarte(carteTroubadour); 
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
             interdireCarte(carteMage);
             interdireCarte(carteVoleur);
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
             interdireCarte(carteMage);
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
             interdireCarte(carteAlchimiste);
         }
     }
@@ -77,30 +75,23 @@ public partial class choixClasse : UserControl {
             affiniteGuerrier.IsVisible = true;
             combinaisonForteGuerrier.IsVisible = true;
             attributBonusGuerrier.IsVisible = true;
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
             affiniteVoleur.IsVisible = true;
             combinaisonForteVoleur.IsVisible = true;
             combinaisonImpossibleTroubadour.IsVisible = true;
             attributBonusVoleur.IsVisible = true;
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Nain")
-        {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
             affiniteAlchimiste.IsVisible = true;
             combinaisonForteAlchimiste.IsVisible = true;
             combinaisonImpossibleMage.IsVisible = true;
             combinaisonImpossibleVoleur.IsVisible = true;
             attributBonusAlchimiste.IsVisible = true;
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin")
-        {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
             affiniteTroubadour.IsVisible = true;
             combinaisonForteTroubadour.IsVisible = true;
             combinaisonImpossibleMage.IsVisible = true;
             attributBonusTroubadour.IsVisible = true;
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Fée")
-        {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
             affiniteMage.IsVisible = true;
             combinaisonForteMage.IsVisible = true;
             combinaisonImpossibleAlchimiste.IsVisible = true;

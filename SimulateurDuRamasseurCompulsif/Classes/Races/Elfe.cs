@@ -4,7 +4,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
 public class Elfe : Race {
     
-    public Elfe() : base("Elfe", "Etre gracieux et agile, maître de l'arc et de la magie naturelle.", "Vision Nocturne", "Repère les pièges assez tôt pour ne pas abimer ses cheveux.", new Stats()) {
+    public Elfe() : base("Elfe", "Etre gracieux et agile, maître de l'arc et de la magie naturelle.", "Vision Nocturne", "Repère les pièges assez tôt pour ne pas abimer ses cheveux.") {
         statsRace.intelligence = 1;
         statsRace.agilite = 1;
         statsRace.chance = 1;

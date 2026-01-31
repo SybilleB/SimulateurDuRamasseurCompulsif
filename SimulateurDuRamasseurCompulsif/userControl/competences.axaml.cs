@@ -29,33 +29,25 @@ public partial class competences : UserControl {
         
         if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
             raceDefinitive = new Humain();
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
             raceDefinitive = new Elfe();
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
             raceDefinitive = new Nain();
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
             raceDefinitive = new Gobelin();
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
             raceDefinitive = new Fee();
         }
 
         if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {
             classeDefinitive = new Guerrier();
-        }
-        if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
             classeDefinitive = new Mage();
-        }
-        if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
             classeDefinitive = new Voleur();
-        }
-        if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
             classeDefinitive = new Alchimiste();
-        }
-        if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
+        } else if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
             classeDefinitive = new Troubadour();
         }
         
@@ -73,17 +65,13 @@ public partial class competences : UserControl {
     public void pointsAffinites() {
         if (DonneesTemporaires.choixRaceDefinitif == "Humain" && DonneesTemporaires.choixClasseDefinitif == "Guerrier"){
             statsActualisees.force += 2;
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Elfe" && DonneesTemporaires.choixClasseDefinitif == "Voleur") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Elfe" && DonneesTemporaires.choixClasseDefinitif == "Voleur") {
             statsActualisees.agilite += 2;
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Nain" && DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Nain" && DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
             statsActualisees.vitalite += 2;
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Gobelin" && DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin" && DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
             statsActualisees.chance += 2;
-        }
-        if (DonneesTemporaires.choixRaceDefinitif == "Fée" && DonneesTemporaires.choixClasseDefinitif == "Mage") {
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Fée" && DonneesTemporaires.choixClasseDefinitif == "Mage") {
             statsActualisees.intelligence += 2;
         }
     }
@@ -175,20 +163,15 @@ public partial class competences : UserControl {
 
         if (nomStat == ptsForce) {
             statsActualisees.force += modificateur;
-        }
-        if (nomStat == ptsAgilite) {
+        } else if (nomStat == ptsAgilite) {
             statsActualisees.agilite += modificateur;
-        }
-        if (nomStat == ptsVitalite) {
+        } else if (nomStat == ptsVitalite) {
             statsActualisees.vitalite += modificateur;
-        }
-        if (nomStat == ptsIntelligence) {
+        } else if (nomStat == ptsIntelligence) {
             statsActualisees.intelligence += modificateur;
-        } 
-        if (nomStat == ptsCharisme) {
+        } else if (nomStat == ptsCharisme) {
             statsActualisees.charisme += modificateur;
-        } 
-        if (nomStat == ptsChance) {
+        } else if (nomStat == ptsChance) {
             statsActualisees.chance += modificateur;
         }
         

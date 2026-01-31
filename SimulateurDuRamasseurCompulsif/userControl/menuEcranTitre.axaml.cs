@@ -1,3 +1,5 @@
+using System;
+using System.Data;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -17,13 +19,11 @@ public partial class menuEcranTitre : UserControl
             mainWindow.ecranTitre.Content = new saisieNomJoueur();
         }
     }
-
+    
     private void OnChargerClick(object? sender, RoutedEventArgs e) {
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new chargerPersonnage();
-        }
+            throw new NotImplementedException();
     }
-
+    
     private void OnQuitterClick(object? sender, RoutedEventArgs e) {
         if (this.VisualRoot is Window mainWindow) {
             mainWindow.Close();
@@ -31,7 +31,9 @@ public partial class menuEcranTitre : UserControl
     }
 
     private void verifierBoutons() {
-        //boutonCharger.Opacity = 0.5;
-        //boutonCharger.IsEnabled = false;
+        boutonCharger.Opacity = 0.5;
+        boutonCharger.IsEnabled = false;
     }
+
+    
 }

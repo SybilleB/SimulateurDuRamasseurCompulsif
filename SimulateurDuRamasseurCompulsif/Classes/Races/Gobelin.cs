@@ -5,7 +5,7 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 public class Gobelin : Race {
     
     public Gobelin() : base("Gobelin", "Créature rusée et agile, compensant sa petite taille par sa malice et sa cupidité.", 
-        "Pillard", "Gagne 10% d'or bonus grâce à son talent pour secouer les cadavres encore chauds.", new Stats()) {
+        "Pillard", "Gagne 10% d'or bonus grâce à son talent pour secouer les cadavres encore chauds.") {
         statsRace.force = -1;
         statsRace.charisme = -2;
         statsRace.intelligence = 2;

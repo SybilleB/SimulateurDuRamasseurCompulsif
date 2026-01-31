@@ -91,6 +91,18 @@
             <Setter Property="TextAlignment" Value="Center"></Setter>
         </Style>
         
+        <Style Selector="Border.borderTitle">
+            <Setter Property="Background" Value="#121212"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="Padding" Value="5"></Setter>
+            <Setter Property="Margin" Value="40 0"></Setter>
+            <Setter Property="Opacity" Value="0.8"></Setter>
+        </Style>
+        
+        <Style Selector="Border.borderCarte:pointerover Border.borderTitle">
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+        
         <Style Selector="StackPanel.descriptions">
             <Setter Property="Spacing" Value="10"></Setter>
         </Style>
@@ -191,9 +203,9 @@
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/humain_v2.png"></Image>
                             <Border Classes="overlay"></Border>
                             <StackPanel Classes="blocDescription">
-                                <TextBlock Classes="titreRace" Name="titreRaceHumain">
-                                    
-                                </TextBlock>
+                                <Border Classes="borderTitle">
+                                    <TextBlock Classes="titreRace" Name="titreRaceHumain"></TextBlock>
+                                </Border>
                                 
                                 <StackPanel Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionHumain"></TextBlock>
@@ -221,10 +233,9 @@
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/elfe_v2.png"></Image>
                             <Border Classes="overlay"></Border>
                             <StackPanel Classes="blocDescription">
-                                <TextBlock Classes="titreRace" Name="titreRaceElfe">
-                                    
-                                </TextBlock>
-                                
+                                <Border Classes="borderTitle">
+                                    <TextBlock Classes="titreRace" Name="titreRaceElfe"></TextBlock>
+                                </Border>
                                 <StackPanel Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionElfe"></TextBlock>
                                     
@@ -254,8 +265,9 @@
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/nain_v2.png"></Image>
                             <Border Classes="overlay"></Border>
                             <StackPanel  Classes="blocDescription">
-                                <TextBlock  Classes="titreRace" Name="titreRaceNain"></TextBlock>
-                                
+                                <Border Classes="borderTitle">
+                                    <TextBlock  Classes="titreRace" Name="titreRaceNain"></TextBlock>
+                                </Border>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionNain"></TextBlock>
                                     <TextBlock Classes="description" Name="competencesNainPlus">
@@ -284,8 +296,9 @@
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/gobelin_v2.png"></Image>
                             <Border Classes="overlay"></Border>
                             <StackPanel  Classes="blocDescription">
-                                <TextBlock  Classes="titreRace" Name="titreRaceGobelin"></TextBlock>
-                                
+                                <Border Classes="borderTitle">
+                                    <TextBlock  Classes="titreRace" Name="titreRaceGobelin"></TextBlock>
+                                </Border>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionGobelin">
                                         
@@ -320,8 +333,9 @@
                             <Border Classes="overlay"></Border>
                             
                             <StackPanel  Classes="blocDescription">
-                                <TextBlock  Classes="titreRace" Name="titreRaceFee"></TextBlock>
-                                
+                                <Border Classes="borderTitle">
+                                    <TextBlock  Classes="titreRace" Name="titreRaceFee"></TextBlock>
+                                </Border>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionFee"></TextBlock>
                                     

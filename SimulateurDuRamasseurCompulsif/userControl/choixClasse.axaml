@@ -118,6 +118,17 @@
             <Setter Property="TextAlignment" Value="Center"></Setter>
         </Style>
         
+        <Style Selector="Border.borderTitle">
+            <Setter Property="Background" Value="#121212"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="Padding" Value="5"></Setter>
+            <Setter Property="Opacity" Value="0.8"></Setter>
+        </Style>
+        
+        <Style Selector="Border.borderCarte:pointerover Border.borderTitle">
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+        
         <Style Selector="StackPanel.descriptions">
             <Setter Property="Spacing" Value="10"></Setter>
         </Style>
@@ -231,10 +242,9 @@
                             </StackPanel>
                             
                             <StackPanel Classes="blocDescription">
-                                
-
-                                <TextBlock Classes=" titreClasse" Name="titreClasseGuerrier"></TextBlock>
-                                
+                                <Border Classes="borderTitle">
+                                    <TextBlock Classes=" titreClasse" Name="titreClasseGuerrier"></TextBlock>
+                                </Border>
                                 <StackPanel Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionGuerrier"></TextBlock>
                                     
@@ -280,8 +290,9 @@
                             </StackPanel>
                             
                             <StackPanel Classes="blocDescription">
-                                <TextBlock Classes=" titreClasse" Name="titreClasseMage"></TextBlock>
-                                
+                                <Border Classes="borderTitle">
+                                    <TextBlock Classes=" titreClasse" Name="titreClasseMage"></TextBlock>
+                                </Border>
                                 <StackPanel Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionMage"></TextBlock>
                                     
@@ -329,8 +340,9 @@
                             </StackPanel>
                             
                             <StackPanel  Classes="blocDescription">
-                                <TextBlock  Classes=" titreClasse" Name="titreClasseVoleur"></TextBlock>
-                                
+                                <Border Classes="borderTitle">
+                                    <TextBlock  Classes=" titreClasse" Name="titreClasseVoleur"></TextBlock>
+                                </Border>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionVoleur"></TextBlock>
                                     <TextBlock Classes="description">
@@ -374,8 +386,9 @@
                                 </TextBlock>
                             </StackPanel>
                             <StackPanel  Classes="blocDescription">
-                                <TextBlock  Classes=" titreClasse" Name="titreClasseAlchimiste"></TextBlock>
-                                
+                                <Border Classes="borderTitle">
+                                    <TextBlock  Classes=" titreClasse" Name="titreClasseAlchimiste"></TextBlock>
+                                </Border>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionAlchimiste"></TextBlock>
                                     
@@ -423,8 +436,9 @@
                             </StackPanel>
                             
                             <StackPanel  Classes="blocDescription">
-                                <TextBlock  Classes=" titreClasse" Name="titreClasseTroubadour"></TextBlock>
-                                
+                                <Border Classes="borderTitle">
+                                    <TextBlock  Classes=" titreClasse" Name="titreClasseTroubadour"></TextBlock>
+                                </Border>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionTroubadour"></TextBlock>
                                     
