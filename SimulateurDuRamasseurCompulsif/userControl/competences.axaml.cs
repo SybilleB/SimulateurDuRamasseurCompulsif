@@ -63,16 +63,23 @@ public partial class competences : UserControl {
     }
     
     public void pointsAffinites() {
-        if (DonneesTemporaires.choixRaceDefinitif == "Humain" && DonneesTemporaires.choixClasseDefinitif == "Guerrier"){
-            statsActualisees.force += 2;
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Elfe" && DonneesTemporaires.choixClasseDefinitif == "Voleur") {
-            statsActualisees.agilite += 2;
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Nain" && DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
-            statsActualisees.vitalite += 2;
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin" && DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
-            statsActualisees.chance += 2;
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Fée" && DonneesTemporaires.choixClasseDefinitif == "Mage") {
-            statsActualisees.intelligence += 2;
+        if (raceDefinitive.classeFavorite(classeDefinitive)) {
+            if (raceDefinitive is Humain) {
+                statsBase.force += 2;
+                statsActualisees.force += 2;
+            } else if (raceDefinitive is Elfe) {
+                statsBase.agilite += 2;
+                statsActualisees.agilite += 2;
+            } else if (raceDefinitive is Nain) {
+                statsBase.vitalite += 2;
+                statsActualisees.vitalite += 2;
+            } else if (raceDefinitive is Gobelin) {
+                statsBase.chance += 2;
+                statsActualisees.chance += 2;
+            } else if (raceDefinitive is Fee) {
+                statsBase.intelligence += 2;
+                statsActualisees.intelligence += 2;
+            }
         }
     }
     
@@ -84,9 +91,8 @@ public partial class competences : UserControl {
         de1.Text = lancer1.ToString();
         de2.Text = lancer2.ToString();
         
-        if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
+        if (raceDefinitive is Humain) {
             pointsDispos = lancer1 + lancer2 + 3;
-
         } else {
             pointsDispos = lancer1 + lancer2;
         }
@@ -107,11 +113,11 @@ public partial class competences : UserControl {
 
         ptsRestants.Text = pointsDispos.ToString();
 
-        if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
+        if (raceDefinitive is Humain) {
             bonusHumain.IsVisible = true;
         }
 
-        if (deslances == true) {
+        if (deslances) {
             moinsForce.IsEnabled = statsActualisees.force > statsBase.force;
             moinsAgilite.IsEnabled = statsActualisees.agilite > statsBase.agilite;
             moinsVitalite.IsEnabled = statsActualisees.vitalite > statsBase.vitalite;
@@ -120,7 +126,7 @@ public partial class competences : UserControl {
             moinsChance.IsEnabled = statsActualisees.chance > statsBase.chance;
         }
 
-        if (deslances == true && pointsDispos == 0) {
+        if (deslances && pointsDispos == 0) {
             boutonConfirmerStats.IsEnabled = true;
         } else {
             boutonConfirmerStats.IsEnabled = false;
@@ -160,7 +166,6 @@ public partial class competences : UserControl {
     }
     
     public void modifierStats(TextBlock nomStat, int modificateur) {
-
         if (nomStat == ptsForce) {
             statsActualisees.force += modificateur;
         } else if (nomStat == ptsAgilite) {
@@ -224,16 +229,10 @@ public partial class competences : UserControl {
         
         DonneesTemporaires.personnageFinal = personnage;
         
-        var fenetrePerso = new SauvegardePersonnage();
-        fenetrePerso.Show();
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.Close();
-        }
+        MainWindow.Instance.changerEcran(new inventaire());
     }
     public void onRetourClick(object? sender, RoutedEventArgs e) {
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new donneesPersonnage();
-        }
+        MainWindow.Instance.changerEcran(new donneesPersonnage());
     }
     
 }

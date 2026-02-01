@@ -1,10 +1,7 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using Avalonia.Media;
 using SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
-using SimulateurDuRamasseurCompulsif.Classes;
+using SimulateurDuRamasseurCompulsif.Classes.Races;
 
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
@@ -48,54 +45,75 @@ public partial class choixClasse : UserControl {
         titreTalentTroubadour.Text = troubadour.talent;
         descriptionTalentTroubadour.Text = troubadour.descriptionTalent;
     }
-
-    public void restrictionsClasse() {
-        
-        if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
-           interdireCarte(carteTroubadour); 
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
-            interdireCarte(carteMage);
-            interdireCarte(carteVoleur);
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
-            interdireCarte(carteMage);
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
-            interdireCarte(carteAlchimiste);
-        }
-    }
-
+    
     public void interdireCarte(Border carte) {
-        carte.Opacity = 0.3;
+        carte.Opacity = 0.2;
         carte.IsEnabled = false;
     }
-
+    
+    public Race raceTemporaire() {
+        if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
+            return new Humain();
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
+            return new Elfe();
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
+            return new Nain();
+        } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
+            return new Gobelin();
+        } else  {
+            return new Fee();
+        }
+    }
+    
+    public void restrictionsClasse() {
+        Race race = raceTemporaire();
+        
+        if (!race.classeAutorisee(new Guerrier())) {
+            interdireCarte(carteGuerrier);
+        }
+        if (!race.classeAutorisee(new Mage())) {
+            interdireCarte(carteMage);
+        }
+        if (!race.classeAutorisee(new Voleur())) {
+            interdireCarte(carteVoleur);
+        }
+        if (!race.classeAutorisee(new Alchimiste())) {
+            interdireCarte(carteAlchimiste);
+        }
+        if (!race.classeAutorisee(new Troubadour())) {
+            interdireCarte(carteTroubadour);
+        }
+    }
+    
     public void affinite() {
-
-        if (DonneesTemporaires.choixRaceDefinitif == "Humain")
-        {
+        Race race = raceTemporaire();
+        
+        combinaisonImpossibleGuerrier.IsVisible = !race.classeAutorisee(new Guerrier());
+        combinaisonImpossibleMage.IsVisible = !race.classeAutorisee(new Mage());
+        combinaisonImpossibleVoleur.IsVisible = !race.classeAutorisee(new Voleur());
+        combinaisonImpossibleAlchimiste.IsVisible = !race.classeAutorisee(new Alchimiste());
+        combinaisonImpossibleTroubadour.IsVisible = !race.classeAutorisee(new Troubadour());
+        
+        if (race.classeFavorite(new Guerrier())) {
             affiniteGuerrier.IsVisible = true;
             combinaisonForteGuerrier.IsVisible = true;
             attributBonusGuerrier.IsVisible = true;
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
-            affiniteVoleur.IsVisible = true;
-            combinaisonForteVoleur.IsVisible = true;
-            combinaisonImpossibleTroubadour.IsVisible = true;
-            attributBonusVoleur.IsVisible = true;
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
-            affiniteAlchimiste.IsVisible = true;
-            combinaisonForteAlchimiste.IsVisible = true;
-            combinaisonImpossibleMage.IsVisible = true;
-            combinaisonImpossibleVoleur.IsVisible = true;
-            attributBonusAlchimiste.IsVisible = true;
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
-            affiniteTroubadour.IsVisible = true;
-            combinaisonForteTroubadour.IsVisible = true;
-            combinaisonImpossibleMage.IsVisible = true;
-            attributBonusTroubadour.IsVisible = true;
-        } else if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
+        } else if (race.classeFavorite(new Mage())) {
             affiniteMage.IsVisible = true;
             combinaisonForteMage.IsVisible = true;
-            combinaisonImpossibleAlchimiste.IsVisible = true;
             attributBonusMage.IsVisible = true;
+        } else if (race.classeFavorite(new Voleur())) {
+            affiniteVoleur.IsVisible = true;
+            combinaisonForteVoleur.IsVisible = true;
+            attributBonusVoleur.IsVisible = true;
+        } else if (race.classeFavorite(new Alchimiste())) {
+            affiniteAlchimiste.IsVisible = true;
+            combinaisonForteAlchimiste.IsVisible = true;
+            attributBonusAlchimiste.IsVisible = true;
+        } else if (race.classeFavorite(new Troubadour())) {
+            affiniteTroubadour.IsVisible = true;
+            combinaisonForteTroubadour.IsVisible = true;
+            attributBonusTroubadour.IsVisible = true;
         }
     }
     
@@ -116,15 +134,10 @@ public partial class choixClasse : UserControl {
             DonneesTemporaires.choixClasseDefinitif = "Troubadour";
         }
         
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new donneesPersonnage();
-        }
+        MainWindow.Instance.changerEcran(new donneesPersonnage());
     }
 
-    private void onRetourClick(object? sender, RoutedEventArgs e)
-    {
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new choixRace();
-        }
+    private void onRetourClick(object? sender, RoutedEventArgs e) {
+        MainWindow.Instance.changerEcran(new choixRace());
     }
 }

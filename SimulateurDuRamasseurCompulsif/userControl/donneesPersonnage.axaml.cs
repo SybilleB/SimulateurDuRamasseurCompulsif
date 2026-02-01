@@ -4,8 +4,10 @@ using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Avalonia.Platform.Storage;
-using System.IO;
 using Avalonia.Input;
+using SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
+using SimulateurDuRamasseurCompulsif.Classes.Items;
+using SimulateurDuRamasseurCompulsif.Classes.Races;
 
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
@@ -17,15 +19,11 @@ public partial class donneesPersonnage : UserControl {
         affichageRace();
         affichageClasse();
         afficherItems();
-        nbHP.Text = $"{DonneesTemporaires.hp} HP";
-        nbOr.Text = $"{DonneesTemporaires.or} Or";
-        
         txtNomJoueur.Text = DonneesTemporaires.nomJoueur;
         photoProfilDefaut();
     }
 
     public void gererBoutonConfirmer() {
-        
         bool genreChecked = false;
         bool titreRempli = false;
         string contenuTitre = titreHonorifique.Text;
@@ -38,7 +36,7 @@ public partial class donneesPersonnage : UserControl {
             titreRempli = true;
         }
 
-        if (genreChecked == true && titreRempli == true) {
+        if (genreChecked && titreRempli) {
             confirmerIdentite.IsEnabled = true;
         } else {
             confirmerIdentite.IsEnabled = false;
@@ -46,7 +44,6 @@ public partial class donneesPersonnage : UserControl {
     }
 
     public void determinerGenre() {
-
         if (Femme.IsChecked == true) {
             DonneesTemporaires.genre = "Femme";
         } else if (Homme.IsChecked == true) {
@@ -57,92 +54,119 @@ public partial class donneesPersonnage : UserControl {
     }
     
     public void affichageRace() {
-
+        Race raceChoisie = null;
+        string nomImage = "";
+        
         if (DonneesTemporaires.choixRaceDefinitif == "Humain") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/humain_v2.png");
-            imgRace.Source = new Bitmap(AssetLoader.Open(uri));
-            txtRaceTalent.Text = "Volonté de fer";
+            nomImage = "humain_v2.png";
+            raceChoisie = new Humain();
         } else if (DonneesTemporaires.choixRaceDefinitif == "Elfe") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/elfe_v2.png");
-            imgRace.Source = new Bitmap(AssetLoader.Open(uri));
-            txtRaceTalent.Text = "Vision Nocturne";
+            nomImage = "elfe_v2.png";
+            raceChoisie = new Elfe();
         } else if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/nain_v2.png");
-            imgRace.Source = new Bitmap(AssetLoader.Open(uri));
-            txtRaceTalent.Text = "Forgeron";
+            nomImage = "nain_v2.png";
+            raceChoisie = new Nain();
         } else if (DonneesTemporaires.choixRaceDefinitif == "Gobelin") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/gobelin_v2.png");
-            imgRace.Source = new Bitmap(AssetLoader.Open(uri));
-            txtRaceTalent.Text = "Pillard";
+            nomImage = "gobelin_v2.png";
+            raceChoisie = new Gobelin();
         } else if (DonneesTemporaires.choixRaceDefinitif == "Fée") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/fee_v3.png");
-            imgRace.Source = new Bitmap(AssetLoader.Open(uri));
-            txtRaceTalent.Text = "Providence Ailée";
+            nomImage = "fee_v3.png";
+            raceChoisie = new Fee();
         }
-        txtRaceNom.Text = DonneesTemporaires.choixRaceDefinitif;
-
+        txtRaceNom.Text = raceChoisie.nomRace;
+        txtRaceTalent.Text = raceChoisie.talent;
+        var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/{nomImage}");
+        imgRace.Source = new Bitmap(AssetLoader.Open(uri));
     }
 
     public void affichageClasse() {
-
+        HerosClasse classeChoisie = null;
+        string nomImage = "";
+        
         if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/guerrier_v1.png");
-            imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
-            txtClasseTalent.Text = "Cri de guerre";
+            nomImage = "guerrier_v1.png";
+            classeChoisie = new Guerrier();
         } else if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/mage_v1.png");
-            imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
-            txtClasseTalent.Text = "Champs de force";
+            nomImage = "mage_v1.png";
+            classeChoisie = new Mage();
         } else if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/voleur_v2.png");
-            imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
-            txtClasseTalent.Text = "Festin de l'ombre";
+            nomImage = "voleur_v2.png";
+            classeChoisie = new Voleur();
         } else if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/alchimiste_v1.png");
-            imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
-            txtClasseTalent.Text = "La fiole de Schrödinger";
+            nomImage = "alchimiste_v1.png";
+            classeChoisie = new Alchimiste();
         } else if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
-            var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/troubadour_v1.png");
-            imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
-            txtClasseTalent.Text = "Concerto des Cieux";
+            nomImage = "troubadour_v1.png";
+            classeChoisie = new Troubadour();
         }
-        txtClasseNom.Text = DonneesTemporaires.choixClasseDefinitif;
+        txtClasseNom.Text = classeChoisie.nomClasse;
+        txtClasseTalent.Text = classeChoisie.talent;
+        var uri = new Uri($"avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/{nomImage}");
+        imgClasse.Source = new Bitmap(AssetLoader.Open(uri));
     }
 
-    public Bitmap chargerImage(string fichierItem ) {
-        string chemin = $"avares://SimulateurDuRamasseurCompulsif/assets/pictures/itemsClasses/{fichierItem}";
-        return new Bitmap(AssetLoader.Open(new Uri(chemin)));
-    }
-
-    public void afficherItems()
-    {
-
+    public void afficherItems() {
         string affichageNomItem = "ITEMS POSSIBLES : ";
-        string nomItem = null;
+        string nomItem = "";
+        TypeItem typeItem =  TypeItem.Consommable;
+        
 
         if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {
             nomItem = "armure";
             affichageNomItem += "Armure";
+            typeItem = TypeItem.Armure;
         } else if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
             nomItem = "livre";
             affichageNomItem += "Livre";
+            typeItem = TypeItem.Livre;
         } else if (DonneesTemporaires.choixClasseDefinitif == "Voleur") {
             nomItem = "bijou";
             affichageNomItem += "Bijou";
+            typeItem = TypeItem.Bijou;
         } else if (DonneesTemporaires.choixClasseDefinitif == "Alchimiste") {
             nomItem = "potion";
             affichageNomItem += "Potion";
+            typeItem = TypeItem.Potion;
         } else if (DonneesTemporaires.choixClasseDefinitif == "Troubadour") {
             nomItem = "instrument";
             affichageNomItem += "Instrument";
+            typeItem = TypeItem.Instrument;
         }
-
         itemsPossibles.Text = affichageNomItem;
-        imgItemCommun.Source = chargerImage($"{nomItem}_commun.png");
-        imgItemRare.Source = chargerImage($"{nomItem}_rare.png");
-        imgItemEpique.Source = chargerImage($"{nomItem}_epique.png");
-        imgItemLegendaire.Source = chargerImage($"{nomItem}_legendaire.png");
         
+        var itemCommun = new InventaireStuff("Commun", "", typeItem, Rarete.Commune, $"{nomItem}_commun.png");
+        var itemRare = new InventaireStuff("Rare", "", typeItem, Rarete.Rare, $"{nomItem}_rare.png");
+        var itemEpique = new InventaireStuff("Epique", "", typeItem, Rarete.Epique, $"{nomItem}_epique.png");
+        var itemLegendaire = new InventaireStuff("Legendaire", "", typeItem, Rarete.Legendaire, $"{nomItem}_legendaire.png");
+
+        if (DonneesTemporaires.choixRaceDefinitif == "Nain") {
+            borderCommun.Opacity = 0.2;
+            texteValeurCommun.Text = "Pas concerné";
+            texteValeurRare.Text = "50% de chance";
+            texteValeurEpique.Text = "33% de chance";
+            texteValeurLegendaire.Text = "17% de chance";
+        } else {
+            texteValeurCommun.Text = "40% de chance";
+            texteValeurRare.Text = "30% de chance";
+            texteValeurEpique.Text = "20% de chance";
+            texteValeurLegendaire.Text = "10% de chance";
+        }
+        
+        imgItemCommun.Source = itemCommun.fichierImage;
+        borderCommun.BorderBrush = itemCommun.couleurBorder;
+        textCommun.Foreground = itemCommun.couleurBorder;
+        
+        imgItemRare.Source = itemRare.fichierImage;
+        borderRare.BorderBrush = itemRare.couleurBorder;
+        textRare.Foreground = itemRare.couleurBorder;
+        
+        imgItemEpique.Source = itemEpique.fichierImage;
+        borderEpique.BorderBrush = itemEpique.couleurBorder;
+        textEpique.Foreground = itemEpique.couleurBorder;
+        
+        imgItemLegendaire.Source = itemLegendaire.fichierImage;
+        borderLegendaire.BorderBrush = itemLegendaire.couleurBorder;
+        textLegendaire.Foreground = itemLegendaire.couleurBorder;
     }
     
     public void photoProfilDefaut() {
@@ -153,8 +177,19 @@ public partial class donneesPersonnage : UserControl {
     }
 
     public async void onImporterPpClick(object? sender, RoutedEventArgs e) {
-        var explorateurFichier = TopLevel.GetTopLevel(this);
-        var fichierChoisi = await explorateurFichier.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions{});
+        var topLevel = TopLevel.GetTopLevel(this);
+
+        var filtresImages = new FilePickerFileType("Images (PNG, JPEG)") {
+            Patterns = new[] { "*.png", "*.jpg", "*.jpeg" }
+        };
+
+        var typesImages = new FilePickerOpenOptions {
+            Title = "Choisir une photo de profil",
+            AllowMultiple = false, 
+            FileTypeFilter = new[] { filtresImages }
+        };
+        
+        var fichierChoisi = await topLevel.StorageProvider.OpenFilePickerAsync(typesImages);
         
         if (fichierChoisi.Count >= 1) {
             var imgFinale = fichierChoisi[0];
@@ -168,7 +203,6 @@ public partial class donneesPersonnage : UserControl {
     }
 
     public void OnAleatoireClick(object? sender, RoutedEventArgs e) {
-
         string[] titresHonorifiques = {
             "Le Sherpa officiel à durée déterminée",
             "L'aimant à ennui",
@@ -199,17 +233,12 @@ public partial class donneesPersonnage : UserControl {
     }
     
     public void onRetourClick(object? sender, RoutedEventArgs e) {
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new choixClasse();
-        }
+        MainWindow.Instance.changerEcran(new choixClasse());
     }
     
     public void onValiderClick(object? sender, RoutedEventArgs e) {
         determinerGenre();
         DonneesTemporaires.titreHonorifique = titreHonorifique.Text;
-        
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new competences();
-        }
+        MainWindow.Instance.changerEcran(new competences());
     }
 }

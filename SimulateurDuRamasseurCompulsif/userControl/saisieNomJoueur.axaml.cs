@@ -1,7 +1,6 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
+
 
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
@@ -13,26 +12,21 @@ public partial class saisieNomJoueur : UserControl {
 
     public void onConfirmerNomClick(object? sender, RoutedEventArgs e) {
         DonneesTemporaires.nomJoueur = inputNomJoueur.Text;
-            
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new choixRace();
-        }
+        MainWindow.Instance.changerEcran(new choixRace());
     }
     public void verifierNom() {
         if (string.IsNullOrWhiteSpace(inputNomJoueur.Text)) {
             boutonConfirmer.IsEnabled = false;
-        }
-        else {
+        } else {
             boutonConfirmer.IsEnabled = true;
         }
     }
+    
     public void OnTextChanged(object? sender, TextChangedEventArgs e) {
         verifierNom();
     }
 
     public void onRetourClick(object? sender, RoutedEventArgs e) {
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new menuEcranTitre();
-        }
+        MainWindow.Instance.changerEcran(new menuEcranTitre());
     }
 }

@@ -16,12 +16,12 @@ public class Stats {
         chance = 0;
     }
 
-    public void ajouterStats(Stats bonusStat) {
-        force += bonusStat.force;
-        charisme += bonusStat.charisme;
-        intelligence += bonusStat.intelligence;
-        agilite += bonusStat.agilite;
-        vitalite += bonusStat.vitalite;
-        chance += bonusStat.chance;
+    public void ajouterStats(Stats stats) {
+        force += stats.force;
+        charisme += stats.charisme;
+        intelligence += stats.intelligence;
+        agilite += stats.agilite;
+        vitalite += stats.vitalite;
+        chance += stats.chance;
     }
 }

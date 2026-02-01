@@ -15,8 +15,15 @@ public class Gobelin : Race {
     public override bool classeAutorisee(HerosClasse classe) {
         if (classe is Guerrier || classe is Voleur || classe is Troubadour) {
             return true;
+        } else {
+            return false;
         }
-        else {
+    }
+    
+    public override bool classeFavorite(HerosClasse classe) {
+        if (classe is Troubadour) {
+            return true;
+        } else {
             return false;
         }
     }

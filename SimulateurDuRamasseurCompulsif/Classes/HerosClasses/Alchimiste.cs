@@ -24,8 +24,7 @@ public class Alchimiste : HerosClasse {
         if (resultatDe %2 == 0) {
             defense += (personnage.race.statsRace.agilite * 15 / 100);
             Console.WriteLine("Youpi, le chat est vivant et a un bouclier !");
-        }
-        else {
+        } else {
             defense -= (personnage.race.statsRace.force * 15 / 100);
             Console.WriteLine("Mauvaise pioche, le chat est mort et l'armure s'effrite...");
         }

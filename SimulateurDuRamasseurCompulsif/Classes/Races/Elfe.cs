@@ -4,7 +4,8 @@ namespace SimulateurDuRamasseurCompulsif.Classes.Races;
 
 public class Elfe : Race {
     
-    public Elfe() : base("Elfe", "Etre gracieux et agile, maître de l'arc et de la magie naturelle.", "Vision Nocturne", "Repère les pièges assez tôt pour ne pas abimer ses cheveux.") {
+    public Elfe() : base("Elfe", "Etre gracieux et agile, maître de l'arc et de la magie naturelle.", 
+        "Vision Nocturne", "Repère les pièges assez tôt pour ne pas abimer ses cheveux.") {
         statsRace.intelligence = 1;
         statsRace.agilite = 1;
         statsRace.chance = 1;
@@ -14,8 +15,15 @@ public class Elfe : Race {
     public override bool classeAutorisee(HerosClasse classe) {
         if (classe is Guerrier || classe is Mage || classe is Voleur || classe is Alchimiste) {
             return true;
+        } else {
+            return false;
         }
-        else {
+    }
+    
+    public override bool classeFavorite(HerosClasse classe) {
+        if (classe is Voleur) {
+            return true;
+        } else {
             return false;
         }
     }

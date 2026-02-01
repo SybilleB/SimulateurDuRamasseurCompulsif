@@ -2,12 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+             mc:Ignorable="d" d:DesignWidth="1600" d:DesignHeight="900"
              x:Class="SimulateurDuRamasseurCompulsif.userControl.choixRace">
     
     
     <UserControl.Styles>
-        
         <Style Selector="Border.borderCarte">
             <Setter Property="Width" Value="240"></Setter>
             <Setter Property="Height" Value="380"></Setter>
@@ -67,8 +66,8 @@
             <Setter Property="ClipToBounds" Value="True"></Setter>
             <Setter Property="Transitions">
                 <Transitions>
-                    <DoubleTransition Property="MaxHeight" Duration="0:0:0.4" Easing="CubicEaseOut"/>
-                    <DoubleTransition Property="Opacity" Duration="0:0:0.4" Easing="CubicEaseOut"/>
+                    <DoubleTransition Property="MaxHeight" Duration="0:0:0.4" Easing="CubicEaseOut"></DoubleTransition>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.4" Easing="CubicEaseOut"></DoubleTransition>
                 </Transitions>
             </Setter>
         </Style>
@@ -89,14 +88,6 @@
             <Setter Property="Foreground" Value="#D4AF34"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
-        </Style>
-        
-        <Style Selector="Border.borderTitle">
-            <Setter Property="Background" Value="#121212"></Setter>
-            <Setter Property="CornerRadius" Value="4"></Setter>
-            <Setter Property="Padding" Value="5"></Setter>
-            <Setter Property="Margin" Value="40 0"></Setter>
-            <Setter Property="Opacity" Value="0.8"></Setter>
         </Style>
         
         <Style Selector="Border.borderCarte:pointerover Border.borderTitle">
@@ -172,7 +163,6 @@
             <Setter Property="Foreground" Value="#111"></Setter>
             <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
         </Style>
-        
     </UserControl.Styles>
     
     <Grid Background="#121212">
@@ -182,7 +172,6 @@
                 ❮ RETOUR
             </TextBlock>
         </Button>
-        
         
         <Border BorderBrush="#333" BorderThickness="1" BoxShadow="0 10 30 0 #000000" CornerRadius="8" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="0 40" Margin="20 0">
             <Border.Background>
@@ -203,9 +192,7 @@
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/humain_v2.png"></Image>
                             <Border Classes="overlay"></Border>
                             <StackPanel Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock Classes="titreRace" Name="titreRaceHumain"></TextBlock>
-                                </Border>
+                                <TextBlock Classes="titreRace" Name="titreRaceHumain"></TextBlock>
                                 
                                 <StackPanel Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionHumain"></TextBlock>
@@ -233,9 +220,7 @@
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/elfe_v2.png"></Image>
                             <Border Classes="overlay"></Border>
                             <StackPanel Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock Classes="titreRace" Name="titreRaceElfe"></TextBlock>
-                                </Border>
+                                <TextBlock Classes="titreRace" Name="titreRaceElfe"></TextBlock>
                                 <StackPanel Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionElfe"></TextBlock>
                                     
@@ -265,9 +250,7 @@
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/nain_v2.png"></Image>
                             <Border Classes="overlay"></Border>
                             <StackPanel  Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock  Classes="titreRace" Name="titreRaceNain"></TextBlock>
-                                </Border>
+                                <TextBlock  Classes="titreRace" Name="titreRaceNain"></TextBlock>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionNain"></TextBlock>
                                     <TextBlock Classes="description" Name="competencesNainPlus">
@@ -296,9 +279,7 @@
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/gobelin_v2.png"></Image>
                             <Border Classes="overlay"></Border>
                             <StackPanel  Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock  Classes="titreRace" Name="titreRaceGobelin"></TextBlock>
-                                </Border>
+                                <TextBlock  Classes="titreRace" Name="titreRaceGobelin"></TextBlock>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionGobelin">
                                         
@@ -329,13 +310,9 @@
                     <Border Classes="borderCarte">
                         <Grid>
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgRaces/fee_v3.png"></Image>
-                           
                             <Border Classes="overlay"></Border>
-                            
                             <StackPanel  Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock  Classes="titreRace" Name="titreRaceFee"></TextBlock>
-                                </Border>
+                                <TextBlock  Classes="titreRace" Name="titreRaceFee"></TextBlock>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionFee"></TextBlock>
                                     

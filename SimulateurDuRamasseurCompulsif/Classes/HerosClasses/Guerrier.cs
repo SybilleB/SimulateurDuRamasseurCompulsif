@@ -22,8 +22,7 @@ public class Guerrier : HerosClasse {
         if (resultatDe >= 5) { 
             attaque += 20;
             Console.WriteLine("Veine sur la tempe activée : +20 de force");
-        }
-        else {
+        } else {
             Console.WriteLine("Un grand cri... pour absolument rien");
         }
         return attaque;

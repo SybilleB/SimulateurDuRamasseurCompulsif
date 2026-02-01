@@ -20,8 +20,7 @@ public class Voleur : HerosClasse {
         if (resultatDe >= 5) {
             personnage.race.pv += 15;
             Console.WriteLine("La ceinture crie au secours mais le festin était succulent");
-        }
-        else {
+        } else {
             Console.WriteLine("Le ventre sonne tellement creux qu'on peut y entendre l'écho de la déception");
         }
         return personnage.race.pv;

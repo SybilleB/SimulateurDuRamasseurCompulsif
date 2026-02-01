@@ -94,8 +94,8 @@
             <Setter Property="ClipToBounds" Value="True"></Setter>
             <Setter Property="Transitions">
                 <Transitions>
-                    <DoubleTransition Property="MaxHeight" Duration="0:0:0.4" Easing="CubicEaseOut"/>
-                    <DoubleTransition Property="Opacity" Duration="0:0:0.4" Easing="CubicEaseOut"/>
+                    <DoubleTransition Property="MaxHeight" Duration="0:0:0.4" Easing="CubicEaseOut"></DoubleTransition>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.4" Easing="CubicEaseOut"></DoubleTransition>
                 </Transitions>
             </Setter>
         </Style>
@@ -116,13 +116,6 @@
             <Setter Property="Foreground" Value="#D4AF34"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
-        </Style>
-        
-        <Style Selector="Border.borderTitle">
-            <Setter Property="Background" Value="#121212"></Setter>
-            <Setter Property="CornerRadius" Value="4"></Setter>
-            <Setter Property="Padding" Value="5"></Setter>
-            <Setter Property="Opacity" Value="0.8"></Setter>
         </Style>
         
         <Style Selector="Border.borderCarte:pointerover Border.borderTitle">
@@ -242,9 +235,7 @@
                             </StackPanel>
                             
                             <StackPanel Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock Classes=" titreClasse" Name="titreClasseGuerrier"></TextBlock>
-                                </Border>
+                                <TextBlock Classes=" titreClasse" Name="titreClasseGuerrier"></TextBlock>
                                 <StackPanel Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionGuerrier"></TextBlock>
                                     
@@ -275,11 +266,8 @@
                     <Border Classes="borderCarte" Name="carteMage">
                         <Grid>
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/mage_v1.png"></Image>
-                            
                             <Border Classes="overlayOr" Name = "affiniteMage"></Border>
-                            
                             <Border Classes="overlay"></Border>
-                            
                             <StackPanel>
                                 <TextBlock Classes="combinaison" Name ="combinaisonForteMage">
                                     Combinaison forte
@@ -290,9 +278,7 @@
                             </StackPanel>
                             
                             <StackPanel Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock Classes=" titreClasse" Name="titreClasseMage"></TextBlock>
-                                </Border>
+                                <TextBlock Classes=" titreClasse" Name="titreClasseMage"></TextBlock>
                                 <StackPanel Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionMage"></TextBlock>
                                     
@@ -325,11 +311,8 @@
                     <Border Classes="borderCarte" Name="carteVoleur">
                         <Grid>
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/voleur_v2.png"></Image>
-                            
                             <Border Classes="overlayOr" Name ="affiniteVoleur"></Border>
-                            
                             <Border Classes="overlay"></Border>
-                            
                             <StackPanel>
                                 <TextBlock Classes="combinaison" Name ="combinaisonForteVoleur">
                                     Combinaison forte
@@ -340,9 +323,7 @@
                             </StackPanel>
                             
                             <StackPanel  Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock  Classes=" titreClasse" Name="titreClasseVoleur"></TextBlock>
-                                </Border>
+                                <TextBlock  Classes=" titreClasse" Name="titreClasseVoleur"></TextBlock>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionVoleur"></TextBlock>
                                     <TextBlock Classes="description">
@@ -372,11 +353,8 @@
                     <Border Classes="borderCarte" Name="carteAlchimiste">
                         <Grid>
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/alchimiste_v1.png"></Image>
-                            
                             <Border Classes="overlayOr" Name ="affiniteAlchimiste"></Border>
-                            
                             <Border Classes="overlay"></Border>
-                            
                             <StackPanel>
                                 <TextBlock Classes="combinaison" Name ="combinaisonForteAlchimiste">
                                     Combinaison forte
@@ -385,10 +363,9 @@
                                     Combinaison impossible
                                 </TextBlock>
                             </StackPanel>
+                            
                             <StackPanel  Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock  Classes=" titreClasse" Name="titreClasseAlchimiste"></TextBlock>
-                                </Border>
+                                <TextBlock  Classes=" titreClasse" Name="titreClasseAlchimiste"></TextBlock>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionAlchimiste"></TextBlock>
                                     
@@ -421,11 +398,8 @@
                     <Border Classes="borderCarte" Name="carteTroubadour">
                         <Grid>
                             <Image Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/imgClasses/troubadour_v1.png"></Image>
-                           
                             <Border Classes="overlayOr" Name ="affiniteTroubadour"></Border>
-                            
                             <Border Classes="overlay"></Border>
-                            
                             <StackPanel>
                                 <TextBlock Classes="combinaison" Name ="combinaisonForteTroubadour">
                                     Combinaison forte
@@ -436,9 +410,7 @@
                             </StackPanel>
                             
                             <StackPanel  Classes="blocDescription">
-                                <Border Classes="borderTitle">
-                                    <TextBlock  Classes=" titreClasse" Name="titreClasseTroubadour"></TextBlock>
-                                </Border>
+                                <TextBlock  Classes=" titreClasse" Name="titreClasseTroubadour"></TextBlock>
                                 <StackPanel  Classes="descriptions">
                                     <TextBlock Classes="description" Name="descriptionTroubadour"></TextBlock>
                                     

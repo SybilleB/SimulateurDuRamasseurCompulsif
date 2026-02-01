@@ -1,7 +1,4 @@
-using System;
-using System.IO;
 using Avalonia.Media.Imaging;
-using Avalonia.Platform;
 using SimulateurDuRamasseurCompulsif.Classes;
 
 namespace SimulateurDuRamasseurCompulsif;
@@ -19,4 +16,16 @@ public static class DonneesTemporaires {
 
     
     public static Personnage personnageFinal;
+    
+    public static void reinitialiser() {
+        nomJoueur = "";
+        titreHonorifique = "";
+        photoProfil = null;
+        genre = "";
+        hp = 0; 
+        or = 0;
+        choixRaceDefinitif = null;
+        choixClasseDefinitif = null;
+        personnageFinal = null;
+    }
 }

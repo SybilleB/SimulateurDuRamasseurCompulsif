@@ -1,9 +1,7 @@
-using System;
 using SimulateurDuRamasseurCompulsif.Classes;
 using SimulateurDuRamasseurCompulsif.Classes.HerosClasses;
 
-public class Race
-{
+public class Race {
     public string nomRace;
     public int or;
     public int pv;
@@ -24,6 +22,10 @@ public class Race
 
     public virtual bool classeAutorisee(HerosClasse classe) {
         return true;
+    }
+    
+    public virtual bool classeFavorite(HerosClasse classe) {
+        return false;
     }
     
 }

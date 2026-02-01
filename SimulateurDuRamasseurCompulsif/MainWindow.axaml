@@ -6,8 +6,8 @@
         x:Class="SimulateurDuRamasseurCompulsif.MainWindow"
         Icon="assets/pictures/icone_jeu.png"
         Title="Le Simulateur Du Ramasseur Compulsif"
-        Width="1600"
-        Height="900">
+        Width="1600" Height="900"
+        WindowStartupLocation="CenterScreen">
     
     <ContentControl Name="ecranTitre"></ContentControl>
     

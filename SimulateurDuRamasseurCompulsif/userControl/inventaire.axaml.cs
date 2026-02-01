@@ -1,18 +1,17 @@
-using Avalonia;
-using Avalonia.Controls;
 using System;
 using System.Collections.Generic;
+using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Media;
 using SimulateurDuRamasseurCompulsif.Classes;
 using SimulateurDuRamasseurCompulsif.Classes.Items;
-using SimulateurDuRamasseurCompulsif.userControl;
 
-namespace SimulateurDuRamasseurCompulsif;
+namespace SimulateurDuRamasseurCompulsif.userControl;
 
-public partial class SauvegardePersonnage : Window {
-    public SauvegardePersonnage() {
+public partial class inventaire : UserControl {
+    Dictionary<string, InventaireStuff> sacoche = new Dictionary<string, InventaireStuff>();
+    public inventaire() {
         InitializeComponent();
         remplirSacoche();
         creerItemAleatoire();
@@ -28,13 +27,23 @@ public partial class SauvegardePersonnage : Window {
 
         txtRace.Text = DonneesTemporaires.choixRaceDefinitif;
         txtClasse.Text = DonneesTemporaires.choixClasseDefinitif;
+        
+        nbHP.Text = $"{DonneesTemporaires.hp}";
+        nbOr.Text = $"{DonneesTemporaires.or}";
+    }
+    
+    public void remplirSacoche() {
+        sacoche.Add("item1", new InventaireStuff("Carte du Monde",
+            "Tellement mal repliée qu'elle a créé de nouvelles montagnes et supprimé deux villages.",
+            TypeItem.ObjetQuete, Rarete.Autre, "map.png"));
 
-        forceInventaire.Text = $"⚔️ Force : {perso.statsPerso.force} pts";
-        agiliteInventaire.Text = $"🏹 Agilité : {perso.statsPerso.agilite} pts";
-        vitaliteInventaire.Text = $"💖 Vitalité : {perso.statsPerso.vitalite} pts";
-        intelligenceInventaire.Text = $"📖 Intelligence : {perso.statsPerso.intelligence} pts";
-        charismeInventaire.Text = $"👑️ Charisme : {perso.statsPerso.charisme} pts";
-        chanceInventaire.Text = $"🎲 Chance : {perso.statsPerso.chance} pts";
+        sacoche.Add("item2", new InventaireStuff("Pain rassi",
+            "A survécu à trois guerres, deux famines et au fond de votre sac. Le goût est en option, mais les calories sont bien là.",
+            TypeItem.Consommable, Rarete.Autre, "pain.png"));
+
+        sacoche.Add("item3", new InventaireStuff("Couteau à beurre",
+            "Officiellement une arme blanche. Ne coupe absolument rien, au moins vous ne risquez pas de vous blesser en le rangeant.",
+            TypeItem.Arme, Rarete.Commune, "couteau_a_beurre.png"));
     }
 
     public void creerItemAleatoire() {
@@ -109,8 +118,7 @@ public partial class SauvegardePersonnage : Window {
             "Relique en métal noir forgée pour le chaos. Ses solos sont littéralement mortels et ses accords brisent les os.",
             TypeItem.Instrument,
             Rarete.Legendaire, "instrument_legendaire.png"));
-
-
+        
         Random random = new Random();
         int rng;
         Rarete rarete = Rarete.Autre;
@@ -132,7 +140,6 @@ public partial class SauvegardePersonnage : Window {
             rarete = Rarete.Legendaire;
         }
 
-
         if (DonneesTemporaires.choixClasseDefinitif == "Guerrier") {
             type = TypeItem.Armure;
         } else if (DonneesTemporaires.choixClasseDefinitif == "Mage") {
@@ -153,26 +160,8 @@ public partial class SauvegardePersonnage : Window {
                 break;
             }
         }
-
         sacoche.Add("item4", itemTrouve);
         afficherItems();
-    }
-
-
-    Dictionary<string, InventaireStuff> sacoche = new Dictionary<string, InventaireStuff>();
-
-    public void remplirSacoche() {
-        sacoche.Add("item1", new InventaireStuff("Carte du Monde",
-            "Tellement mal repliée qu'elle a créé de nouvelles montagnes et supprimé deux villages.",
-            TypeItem.ObjetQuete, Rarete.Autre, "map.png"));
-
-        sacoche.Add("item2", new InventaireStuff("Pain rassi",
-            "A survécu à trois guerres, deux famines et au fond de votre sac. Le goût est en option, mais les calories sont bien là.",
-            TypeItem.Consommable, Rarete.Autre, "pain.png"));
-
-        sacoche.Add("item3", new InventaireStuff("Couteau à beurre",
-            "Officiellement une arme blanche. Ne coupe absolument rien, au moins vous ne risquez pas de vous blesser en le rangeant.",
-            TypeItem.Arme, Rarete.Commune, "couteau_a_beurre.png"));
     }
 
     public void afficherItems() {
@@ -182,17 +171,9 @@ public partial class SauvegardePersonnage : Window {
             Image imgItem = (Image)borderDisplay.Child;
             imgItem.Source = item.Value.fichierImage;
 
-            if (item.Value.rareteItem == Rarete.Commune) {
-                borderDisplay.BorderBrush = SolidColorBrush.Parse("#3498DB");
-            } else if (item.Value.rareteItem == Rarete.Rare) {
-                borderDisplay.BorderBrush = SolidColorBrush.Parse("#2ECC71");
-            } else if (item.Value.rareteItem == Rarete.Epique) {
-                borderDisplay.BorderBrush = SolidColorBrush.Parse("#D400FF");
-            } else if (item.Value.rareteItem == Rarete.Legendaire) {
-                borderDisplay.BorderBrush = SolidColorBrush.Parse("#FFD700");
-            }
-
+            borderDisplay.BorderBrush = item.Value.couleurBorder;
             borderDisplay.BorderThickness = new Thickness(1);
+            
         }
 
         int nbItemsSacoche = sacoche.Count + 1;
@@ -220,37 +201,25 @@ public partial class SauvegardePersonnage : Window {
             }
 
             rareteItemDetail.Text = objetRecupere.rareteItem.ToString();
-
-            if (objetRecupere.rareteItem == Rarete.Commune) {
-                borderRareteItem.BorderBrush = SolidColorBrush.Parse("#3498DB");
-                borderRareteItem.Background = SolidColorBrush.Parse("#0E1B26");
-            } else if (objetRecupere.rareteItem == Rarete.Rare) {
-                borderRareteItem.BorderBrush = SolidColorBrush.Parse("#2ECC71");
-                borderRareteItem.Background = SolidColorBrush.Parse("#14261C");
-            } else if (objetRecupere.rareteItem == Rarete.Epique) {
-                borderRareteItem.BorderBrush = SolidColorBrush.Parse("#D400FF");
-                borderRareteItem.Background = SolidColorBrush.Parse("#120A1A");
-            } else if (objetRecupere.rareteItem == Rarete.Legendaire) {
-                borderRareteItem.BorderBrush = SolidColorBrush.Parse("#FFD700");
-                borderRareteItem.Background = SolidColorBrush.Parse("#0F0F0F");
-            } else {
-                borderRareteItem.BorderBrush = SolidColorBrush.Parse("#333");
-                borderRareteItem.Background = SolidColorBrush.Parse("#333");
-            }
-
+            
+            borderRareteItem.BorderBrush = objetRecupere.couleurBorder;
+            borderRareteItem.Background = objetRecupere.couleurBackground;
+            borderRareteItem.IsVisible = true;
+            borderRareteItem.BorderThickness = new Thickness(1);
+            
             descriptionItemDetail.Text = objetRecupere.descriptionItem;
             borderDetail.IsVisible = true;
             borderTypeItem.IsVisible = true;
-            borderRareteItem.IsVisible = true;
-            borderRareteItem.BorderThickness = new Thickness(1);
-            borderImgDetail.BorderBrush = borderClick.BorderBrush;
+            borderImgDetail.BorderBrush = objetRecupere.couleurBorder;
         }
     }
 
-    private void onMenuClick(object? sender, RoutedEventArgs e) {
-        
-        var mainWindow = new MainWindow();
-        mainWindow.Show();
-        this.Close();
+    private void onValiderClick(object? sender, RoutedEventArgs e) {
+        DonneesTemporaires.personnageFinal.Inventaire = sacoche;
+        var fenetrePerso = new RecapitulatifPersonnage();
+        fenetrePerso.Show();
+        if (VisualRoot is MainWindow mainWindow){
+            mainWindow.Close();
+        }
     }
 }

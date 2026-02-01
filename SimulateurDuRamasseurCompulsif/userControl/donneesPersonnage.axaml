@@ -47,7 +47,6 @@
                             Padding="{TemplateBinding Padding}">
                         <ContentPresenter Content="{TemplateBinding Content}" 
                                           Foreground="{TemplateBinding Foreground}">
-                            
                         </ContentPresenter>
                     </Border>
                 </ControlTemplate>
@@ -55,7 +54,6 @@
         </Style>
         
         <Style Selector="Button.boutonValider:pointerover">
-            <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="Background" Value="#D4AF37"></Setter>
             <Setter Property="Foreground" Value="#111"></Setter>
         </Style>
@@ -320,51 +318,51 @@
                         <TextBlock FontFamily="{StaticResource Alice}" FontSize="12" Foreground="#999" TextAlignment="Center">Un de ces items sera généré aléatoirement dans votre inventaire</TextBlock>
                         <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
                             <StackPanel Classes="stackpanelItems">
-                                <Border Classes="borderItem" BorderBrush="#3498DB">
+                                <Border Classes="borderItem" Name="borderCommun">
                                     <Grid>
                                         <Image Name="imgItemCommun"></Image>
                                         <Border Classes="borderRarete">
-                                            <TextBlock Classes="itemRarete" Foreground="#3498DB">Commun</TextBlock>
+                                            <TextBlock Classes="itemRarete" Name="textCommun">Commun</TextBlock>
                                         </Border>
                                     </Grid>
                                 </Border>
-                                <TextBlock Classes="chances">40% de chance</TextBlock>
+                                <TextBlock Classes="chances" Name="texteValeurCommun"></TextBlock>
                             </StackPanel>
                             
                             <StackPanel Classes="stackpanelItems">
-                                <Border Classes="borderItem" BorderBrush="#2ECC71">
+                                <Border Classes="borderItem" Name="borderRare">
                                     <Grid>
                                         <Image Name="imgItemRare"></Image>
                                         <Border Classes="borderRarete">
-                                            <TextBlock Classes="itemRarete" Foreground="#2ECC71">Rare</TextBlock>
+                                            <TextBlock Classes="itemRarete" Name="textRare">Rare</TextBlock>
                                         </Border>
                                     </Grid>
                                 </Border>
-                                <TextBlock Classes="chances">30% de chance</TextBlock>
+                                <TextBlock Classes="chances" Name="texteValeurRare"></TextBlock>
                             </StackPanel>
                             
                             <StackPanel Classes="stackpanelItems">
-                                <Border Classes="borderItem" BorderBrush="#D400FF">
+                                <Border Classes="borderItem" Name="borderEpique">
                                     <Grid>
                                         <Image Name="imgItemEpique"></Image>
                                         <Border Classes="borderRarete">
-                                            <TextBlock Classes="itemRarete" Foreground="#D400FF">Epique</TextBlock>
+                                            <TextBlock Classes="itemRarete" Name="textEpique">Epique</TextBlock>
                                         </Border>
                                     </Grid>
                                 </Border>
-                                <TextBlock Classes="chances">20% de chance</TextBlock>
+                                <TextBlock Classes="chances" Name="texteValeurEpique"></TextBlock>
                             </StackPanel>
                             
                             <StackPanel Classes="stackpanelItems">
-                                <Border Classes="borderItem" BorderBrush="#FFD700">
+                                <Border Classes="borderItem" Name="borderLegendaire">
                                     <Grid>
                                         <Image Name="imgItemLegendaire"></Image>
                                         <Border Classes="borderRarete">
-                                            <TextBlock Classes="itemRarete" Foreground="#FFD700">Légendaire</TextBlock>
+                                            <TextBlock Classes="itemRarete" Name="textLegendaire">Légendaire</TextBlock>
                                         </Border>
                                     </Grid>
                                 </Border>
-                                <TextBlock Classes="chances">10% de chance</TextBlock>
+                                <TextBlock Classes="chances" Name="texteValeurLegendaire"></TextBlock>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -372,12 +370,11 @@
                             
                 <Border Grid.Column="1" Background="#333" Width="1" Margin="0 20"></Border>
                             
-                <Grid Grid.Column="2" Margin="40 10 0 0">
+                <Grid Grid.Column="2" Margin="40 40 0 0">
                                 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                                 
@@ -399,7 +396,7 @@
                         </StackPanel>
                     </StackPanel>
                         
-                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="15" Margin="0 30 0 20">
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30" Margin="0 30 0 20">
                         <StackPanel>
                             <TextBlock Classes="titreCategorie">
                                 TITRE HONORIFIQUE
@@ -422,27 +419,8 @@
                         </StackPanel>
                     </StackPanel>
                     
-                    <Border Grid.Row="2" BorderBrush="#333" BorderThickness="0 1 0 0" Margin="20 0" Padding="0 20 0 0" VerticalAlignment="Bottom">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="40">
-                            <StackPanel Classes="stackpanelInventaire">
-                                <TextBlock Classes="iconeInventaire">❤️</TextBlock>
-                                <StackPanel>
-                                    <TextBlock Classes="descriptionInventaire">PV INITIAUX</TextBlock>
-                                    <TextBlock Classes="inventaire" Name="nbHP"></TextBlock>
-                                </StackPanel>
-                            </StackPanel>
-                            
-                            <StackPanel Classes="stackpanelInventaire">
-                                <TextBlock Classes="iconeInventaire">🪙</TextBlock>
-                                <StackPanel>
-                                    <TextBlock Classes="descriptionInventaire">BOURSE INITIALE</TextBlock>
-                                    <TextBlock Classes="inventaire" Name="nbOr"></TextBlock>
-                                </StackPanel>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
                     
-                    <Button Grid.Row="3" Classes="boutonValider" Click="onValiderClick" Name="confirmerIdentite">
+                    <Button Grid.Row="2" Classes="boutonValider" Click="onValiderClick" Name="confirmerIdentite">
                         <TextBlock Classes="texteValider">
                             VALIDER
                         </TextBlock>

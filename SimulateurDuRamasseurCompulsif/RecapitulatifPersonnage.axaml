@@ -1,0 +1,314 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+        x:Class="SimulateurDuRamasseurCompulsif.RecapitulatifPersonnage"
+        Icon="assets/pictures/icone_jeu.png"
+        Title="Récapitulatif du Personnage"
+        Width="1600" Height="900"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+        <Style Selector="TextBlock.raceClasse">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style Selector="Border.borderEtat">
+            <Setter Property="Width" Value="120"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="Padding" Value="15 8"></Setter>
+        </Style>
+        
+        <Style Selector="StackPanel.blocEtat">
+            <Setter Property="Orientation" Value="Horizontal"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Spacing" Value="10"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.logoEtat">
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.titreEtat">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="10"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.nbEtat">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style Selector="Border.blocStat">
+            <Setter Property="Background" Value="#15FFFFFF"></Setter>
+            <Setter Property="BorderBrush" Value="#333"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="Margin" Value="7 5 7 5"></Setter>
+            <Setter Property="Padding" Value="10"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.nomStat">
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="Foreground" Value="#999"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="LetterSpacing" Value="2"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.valeurStat">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="Foreground" Value="#E0E0E0"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style Selector="Border.item">
+            <Setter Property="Width" Value="85"></Setter>
+            <Setter Property="Height" Value="85"></Setter>
+            <Setter Property="Background" Value="#1A1A1A"></Setter>
+            <Setter Property="BorderBrush" Value="#444"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="ClipToBounds" Value="True"></Setter>
+            <Setter Property="Margin" Value="8"></Setter>
+            <Setter Property="BoxShadow" Value="0 2 5 0 #30000000"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.titreSection">
+            <Setter Property="FontFamily" Value="{StaticResource Metamorphous}"></Setter>
+            <Setter Property="FontSize" Value="22"></Setter>
+            <Setter Property="Foreground" Value="#D4AF37"></Setter>
+            <Setter Property="Margin" Value="0 0 0 20"></Setter>
+            <Setter Property="Effect">
+                <DropShadowEffect Color="Black" BlurRadius="5" Opacity="0.5" OffsetX="1" OffsetY="1"/>
+            </Setter>
+        </Style>
+        
+        <Style Selector="Button.retourMenu">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="#D4AF37"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource Alice}"></Setter>
+            <Setter Property="BorderBrush" Value="#D4AF37"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="5"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+            <Setter Property="Margin" Value="0 15 0 0"></Setter>
+            <Setter Property="Padding" Value="20 8"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Cursor="{TemplateBinding Cursor}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}" 
+                                          Foreground="{TemplateBinding Foreground}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        
+        <Style Selector="Button.retourMenu:pointerover">
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="Background" Value="#D4AF37"></Setter>
+            <Setter Property="Foreground" Value="#111"></Setter>
+        </Style>
+    </Window.Styles>
+    
+    <Grid Background="#121212">
+        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="25">
+            
+            <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="36" 
+                       Foreground="#D4AF37" HorizontalAlignment="Center">
+                A L'AVENTURE !
+            </TextBlock>
+
+            <Border Width="1000" Height="600" BorderBrush="#333" BorderThickness="1" CornerRadius="8" BoxShadow="0 10 30 0 #000000">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Offset="0" Color="#1E1E24"></GradientStop>
+                        <GradientStop Offset="1" Color="#0F0F10"></GradientStop> </LinearGradientBrush>
+                </Border.Background>
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="350"></ColumnDefinition>
+                        <ColumnDefinition Width="1"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                            
+                        <StackPanel Grid.Row="0" Spacing="20" Margin="0 50 0 20">
+                            <Border Width="110" Height="110" CornerRadius="60" ClipToBounds="True" BoxShadow="0 0 20 0 #20D4AF37">
+                                <Image Name="imgAvatarJoueur" Source="avares://SimulateurDuRamasseurCompulsif/assets/pictures/defaultPP.png" Stretch="UniformToFill"/>
+                            </Border>
+                                
+                            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource Metamorphous}"
+                                       FontSize="26" Foreground="#D4AF37" Name="txtNomJoueur" Margin="0 5 0 0">Nom du joueur
+                            </TextBlock>
+                            
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10" VerticalAlignment="Center">
+                                <TextBlock Name="txtRace" Classes="raceClasse" Margin="0 5 0 0">Race</TextBlock>
+                                <TextBlock FontFamily="{StaticResource Alice}" FontSize="25" Foreground="#666">|</TextBlock>
+                                <TextBlock Name="txtClasse" Classes="raceClasse" Margin="0 5 0 0">Classe</TextBlock>
+                            </StackPanel>
+                            
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#999" TextAlignment="Center" HorizontalAlignment="Center" Name="genre">Genre
+                            </TextBlock>
+                                
+                            <TextBlock FontFamily="{StaticResource Alice}" FontSize="14" Foreground="#999" FontStyle="Italic"
+                                       TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Name="titreHonorifique">Titre honorifique
+                            </TextBlock>
+                        </StackPanel>
+                            
+                        <Border Grid.Row="1" Width="260" Height="1" Background="#333"></Border>
+                            
+                        <StackPanel Grid.Row="2" Spacing="15" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock FontFamily="{StaticResource Metamorphous}" FontSize="14" Foreground="#666" 
+                                       HorizontalAlignment="Center" LetterSpacing="2">
+                                ÉTAT ACTUEL
+                            </TextBlock>
+
+                            <Border Classes="borderEtat" Background="#20FF0000" BorderBrush="#50FF0000">
+                                <StackPanel Classes="blocEtat">
+                                    <TextBlock Classes="logoEtat" Foreground="#E0E0E0">❤️</TextBlock>
+                                    <StackPanel>
+                                        <TextBlock Name="nbHP" Classes="nbEtat">100</TextBlock>
+                                        <TextBlock Classes="titreEtat" Foreground="#AA8888">Points de Vie</TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Classes="borderEtat" Background="#20D4AF37" BorderBrush="#50D4AF37">
+                                <StackPanel Classes="blocEtat">
+                                    <TextBlock Classes="logoEtat">🪙</TextBlock>
+                                    <StackPanel>
+                                        <TextBlock Name="nbOr" Classes="nbEtat">100</TextBlock>
+                                        <TextBlock Classes="titreEtat" Foreground="#886644">Pièces d'Or</TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                    
+                    <Border Grid.Column="1" Width="1" Margin="0 30" Background="#333"></Border>
+                    
+                    <Grid Grid.Column="2" Margin="40 0" VerticalAlignment="Center">
+    
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Classes="titreSection">Attributs</TextBlock>
+                            
+                            <UniformGrid Columns="2" Rows="3" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                                
+                                <Border Classes="blocStat">
+                                     <Grid ColumnDefinitions="*, Auto">
+                                        <TextBlock Grid.Column="0" Classes="nomStat">Force</TextBlock>
+                                        <TextBlock Grid.Column="1" Name="statForce" Classes="valeurStat" >5</TextBlock>
+                                    </Grid>
+                                </Border>
+                                
+                                <Border Classes="blocStat">
+                                     <Grid ColumnDefinitions="*, Auto">
+                                        <TextBlock Grid.Column="0" Classes="nomStat">Intelligence</TextBlock>
+                                        <TextBlock Grid.Column="1" Name="statIntelligence" Classes="valeurStat">5</TextBlock>
+                                    </Grid>
+                                </Border>
+                                
+                                <Border Classes="blocStat">
+                                     <Grid ColumnDefinitions="*, Auto">
+                                        <TextBlock Grid.Column="0" Classes="nomStat">Agilité</TextBlock>
+                                        <TextBlock Grid.Column="1" Name="statAgilite" Classes="valeurStat">10</TextBlock>
+                                    </Grid>
+                                </Border>
+                                
+                                <Border Classes="blocStat">
+                                    <Grid ColumnDefinitions="*, Auto">
+                                        <TextBlock Grid.Column="0" Classes="nomStat">Charisme</TextBlock>
+                                        <TextBlock Grid.Column="1" Name="statCharisme" Classes="valeurStat">10</TextBlock>
+                                    </Grid>
+                                </Border>
+                                
+                                <Border Classes="blocStat">
+                                    <Grid ColumnDefinitions="*, Auto">
+                                        <TextBlock Grid.Column="0" Classes="nomStat">Vitalité</TextBlock>
+                                        <TextBlock Grid.Column="1" Name="statVitalite" Classes="valeurStat">10</TextBlock>
+                                    </Grid>
+                                </Border>
+                                
+                                <Border Classes="blocStat">
+                                    <Grid ColumnDefinitions="*, Auto">
+                                        <TextBlock Grid.Column="0" Classes="nomStat">Chance</TextBlock>
+                                        <TextBlock Grid.Column="1" Name="statChance" Classes="valeurStat">10</TextBlock>
+                                    </Grid>
+                                </Border>
+                            </UniformGrid>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Margin="0 30 0 0">
+                            <TextBlock Classes="titreSection" Margin="0 0 0 15">Sacoche</TextBlock>
+                            
+                            <UniformGrid Columns="4" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                <Border Classes="item" Name="borderItem1">
+                                    <Image Name="imgItem1" Stretch="UniformToFill"></Image>
+                                </Border>
+                                <Border Classes="item" Name="borderItem2">
+                                    <Image Name="imgItem2" Stretch="UniformToFill"></Image>
+                                </Border>
+                                <Border Classes="item" Name="borderItem3">
+                                    <Image Name="imgItem3" Stretch="UniformToFill"></Image>
+                                </Border>
+                                <Border Classes="item" Name="borderItem4">
+                                    <Image Name="imgItem4" Stretch="UniformToFill"></Image>
+                                </Border>
+                                <Border Classes="item" Name="borderItem5">
+                                    <Image Name="imgItem5" Stretch="UniformToFill"></Image>
+                                </Border>
+                                <Border Classes="item" Name="borderItem6">
+                                    <Image Name="imgItem6" Stretch="UniformToFill"></Image>
+                                </Border>
+                                <Border Classes="item" Name="borderItem7">
+                                    <Image Name="imgItem7" Stretch="UniformToFill"></Image>
+                                </Border>
+                                <Border Classes="item" Name="borderItem8">
+                                    <Image Name="imgItem8" Stretch="UniformToFill"></Image>
+                                </Border>
+                            </UniformGrid>
+                        </StackPanel>
+                        <Button Grid.Row="2" Click="OnMenuClick" Classes="retourMenu">
+                            <TextBlock>RETOUR AU MENU PRINCIPAL</TextBlock>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Border>
+            
+        </StackPanel>
+    </Grid>
+</Window>

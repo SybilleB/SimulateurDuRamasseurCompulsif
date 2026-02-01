@@ -1,7 +1,5 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using SimulateurDuRamasseurCompulsif.Classes.Races;
 
 namespace SimulateurDuRamasseurCompulsif.userControl;
@@ -59,15 +57,10 @@ public partial class choixRace : UserControl {
         } else if (button.Name == "choixFee") {
             DonneesTemporaires.choixRaceDefinitif = "Fée";
         }
-        
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new choixClasse();
-        }
+        MainWindow.Instance.changerEcran(new choixClasse());
     }
     
     private void onRetourClick(object? sender, RoutedEventArgs e) {
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new saisieNomJoueur();
-        }
+        MainWindow.Instance.changerEcran(new saisieNomJoueur());
     }
 }

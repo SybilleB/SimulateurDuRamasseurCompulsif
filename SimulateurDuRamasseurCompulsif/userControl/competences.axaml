@@ -294,7 +294,7 @@
                     </Grid>
                     
                     <Button Classes="boutonConfirmerStats" Click="onValiderClick" Name="boutonConfirmerStats">
-                        <TextBlock FontFamily="{StaticResource Metamorphous}" LetterSpacing="1">SAUVEGARDER LE PERSONNAGE</TextBlock>
+                        <TextBlock FontFamily="{StaticResource Metamorphous}" LetterSpacing="1">VALIDER</TextBlock>
                     </Button>
                 </StackPanel>
             </Grid>

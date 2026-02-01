@@ -1,27 +1,22 @@
 using System;
-using System.Data;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
+
 
 namespace SimulateurDuRamasseurCompulsif.userControl;
 
-public partial class menuEcranTitre : UserControl
-{
+public partial class menuEcranTitre : UserControl {
     public menuEcranTitre() {
         InitializeComponent();
         verifierBoutons();
     }
 
     private void OnNouvellePartieClick(object? sender, RoutedEventArgs e) {
-        if (VisualRoot is MainWindow mainWindow){
-            mainWindow.ecranTitre.Content = new saisieNomJoueur();
-        }
+        MainWindow.Instance.changerEcran(new saisieNomJoueur());
     }
     
     private void OnChargerClick(object? sender, RoutedEventArgs e) {
-            throw new NotImplementedException();
+        throw new NotImplementedException();
     }
     
     private void OnQuitterClick(object? sender, RoutedEventArgs e) {
@@ -34,6 +29,4 @@ public partial class menuEcranTitre : UserControl
         boutonCharger.Opacity = 0.5;
         boutonCharger.IsEnabled = false;
     }
-
-    
 }
