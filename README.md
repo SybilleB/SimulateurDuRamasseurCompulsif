@@ -53,13 +53,13 @@ Par défaut, l'application mesure 1600x900px. Afin d'optimiser votre expérience
 ## Lancement 
 1. Cloner le dépôt : 
 ```bash
-    git clone [https://github.com/SybilleB/SimulateurDuRamasseurCompulsif.git](https://github.com/SybilleB/SimulateurDuRamasseurCompulsif.git)
-    ```
+  git clone https://github.com/SybilleB/SimulateurDuRamasseurCompulsif.git
+```
 2. Ouvrir le projet dans Rider ou Visual Studio
 3. Compiler et lancer : 
 ```bash
-    dotnet run
-    ```
+  dotnet run
+```
 
 ### À propos des développeurs
 Ce projet a été développé par **Sybille BRASSIER** et **Maïlys DAGUERRE**, dans le cadre d'un apprentissage approfondi du langage C# et du framework Avalonia UI, sous la supervision de **M. Benoit ESTIVAL**.
