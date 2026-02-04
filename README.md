@@ -22,7 +22,7 @@ Le but ? Créer un héros de RPG fantastique et générer aléatoirement un inve
 
 ### Système de Statistiques
 Le cœur du héros repose sur ses caractéristiques, définies par un mélange de chance et d'optimisation :
-- ** Six attributs clés** : Force, Agilité, Vitalité, Intelligence, Charisme, Chance.
+- **Six attributs clés** : Force, Agilité, Vitalité, Intelligence, Charisme, Chance.
 - **Lancer de Dés (RNG)** : Simulation de jets de deux dés de 6 pour déterminer les valeurs des attributs.
 - **Calcul Dynamique** : Les statistiques finales sont calculées en temps réel en additionnant les jets de dés et les bonus passifs liés à la Race et la Classe. *Exemple* : Un Nain recevra automatiquement un bonus en *Vitalité*, tandis qu'un Mage verra son *Intelligence* boostée, quelle que soit la valeur des dés.
 - **Visualisation** : Affichage clair de la répartition des points pour évaluer la puissance du personnage.
@@ -53,12 +53,12 @@ Par défaut, l'application mesure 1600x900px. Afin d'optimiser votre expérience
 ## Lancement 
 1. Cloner le dépôt : 
 ```bash
-  git clone https://github.com/SybilleB/SimulateurDuRamasseurCompulsif.git
+git clone https://github.com/SybilleB/SimulateurDuRamasseurCompulsif.git
 ```
 2. Ouvrir le projet dans Rider ou Visual Studio
 3. Compiler et lancer : 
 ```bash
-  dotnet run
+dotnet run
 ```
 
 ### À propos des développeurs
